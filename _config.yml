@@ -12,7 +12,7 @@ title_separator          : "-"
 name                     : "Daniel M. Sullivan"
 description              : "An amazing website."
 url                      : "https://dmsul.github.io"
-baseurl                  : "/"
+baseurl                  :
 repository               : "dmsul/dmsul.github.io"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 # breadcrumbs            : false # true, false (default)
