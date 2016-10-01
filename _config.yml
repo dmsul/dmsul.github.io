@@ -78,11 +78,11 @@ analytics:
 # Site Author
 author:
   name             : "Daniel M. Sullivan"
-  avatar           : "bio-photo.jpg"
-  bio              : "I am an amazing person."
+  avatar           : "1dms.jpg"
+  bio              :
   location         : "Washington, D.C."
   email            : "sullivan@rff.org"
-  uri              :
+  uri              : "http://www.rff.org/people/profile/daniel-m-sullivan"
   bitbucket        :
   codepen          :
   dribbble         :
