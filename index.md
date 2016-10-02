@@ -10,7 +10,7 @@ excerpt: "Economist, Resources for the Future"
 ---
 {% include base_path %}
 
-![](/images/dms_small.JPG)
+![](/images/dms.jpg)
 
 I am a Fellow at [Resources for the Future](http://www.rff.org).
 My research focuses on environmental and urban economics, particularly local
