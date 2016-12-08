@@ -21,6 +21,8 @@ November 2016 | [Paper](/assets/Sullivan_2016_Sorting_Pollution.pdf) |
 
 "Industrial Air Pollution and Infant Health"
 
+"Do Firms Strategically Avoid Air Pollution Monitors?"
+
 ## Publications
 
 "Lawyers Steer Clients toward Lucrative Filings: Evidence from Consumer
