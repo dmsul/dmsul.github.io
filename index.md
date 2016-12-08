@@ -15,13 +15,3 @@ excerpt: "Economist, Resources for the Future"
 I am a Fellow at [Resources for the Future](http://www.rff.org).
 My research focuses on environmental and urban economics, particularly local
   air pollution.
-
-# Recent Research
-
-## The True Cost of Air Pollution
-
-Click here to find out more.
-
-## The Incidence of Local Public Goods
-
-Click here to find out more.
