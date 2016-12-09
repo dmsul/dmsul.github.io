@@ -12,19 +12,21 @@ December 2016 | [Paper](/assets/Sullivan_2016_Cost_of_Pollution.pdf) |
 "Residential Sorting and the Incidence of Local Public Goods: Theory and
 Evidence from Air Pollution"\\
 November 2016 | [Paper](/assets/Sullivan_2016_Sorting_Pollution.pdf) |
-[Abstract](/poll_sort)
+[Abstract](/poll_sort)\\
+Press: [Fusion](http://fusion.net/story/319892/true-cost-of-environmental-gentrification-study/)
 
-"Income Stagnation Among the Bankrupt"\\
-2010
+"Income Stagnation Among the Bankrupt" with Frank McIntyre\\
+May 2010 | [Paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1684616) | [Abstract](/bank_income)
 
 ## Research in Progress
 
 "Industrial Air Pollution and Infant Health"
 
-"Do Firms Strategically Avoid Air Pollution Monitors?"
+"Do Polluters Strategically Avoid Air Pollution Monitors?"
 
 ## Publications
 
-"Lawyers Steer Clients toward Lucrative Filings: Evidence from Consumer
-Bankruptcy" with Frank McIntyre and Laura Summers. 2015. American Law and
-Economics Review.
+McIntyre, Frank, Daniel M. Sullivan, and Laura Summers. 2015. "Lawyers Steer
+Clients toward Lucrative Filings: Evidence from Consumer
+Bankruptcy." *American Law and Economics Review* 17(1):245--289.\\
+[Paper](http://aler.oxfordjournals.org/content/17/1/245.short)
