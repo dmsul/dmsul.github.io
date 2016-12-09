@@ -3,7 +3,7 @@ title: "Long-Term Income Stagnation Among the Bankrupt"
 permalink: /bank_income
 ---
 
-[Paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1684616)
+[PDF](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1684616)
 
 
 There is ongoing interest in determining what predicts that a person will file
