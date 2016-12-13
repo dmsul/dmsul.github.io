@@ -10,7 +10,7 @@ locale                   : "en"
 title                    : "Daniel M. Sullivan"
 title_separator          : "-"
 name                     : "Daniel M. Sullivan"
-description              : "An amazing website."
+description              : "Daniel M. Sullivan economic research"
 url                      : "http://www.danielmsullivan.com"
 baseurl                  : ""
 repository               : "dmsul/dmsul.github.io"
@@ -181,6 +181,7 @@ gems:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
+  - jekyll-seo-tag
   - jemoji
 
 # mimic GitHub Pages with --safe
