@@ -4,8 +4,9 @@ layout: splash
 permalink: /
 share: false
 header:
+  overlay_image: "copper_map.jpg"
   overlay_color: "#17268E"
-  overlay_filter: "0.9"
+  overlay_filter: "0.4"
 excerpt: "Economist, Resources for the Future"
 ---
 {% include base_path %}
