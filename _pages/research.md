@@ -10,7 +10,7 @@ December 2016 | [Abstract](/poll_house)
 
 [Residential Sorting and the Incidence of Local Public Goods: Theory and
 Evidence from Air Pollution](/assets/Sullivan_Sorting_Pollution.pdf)\\
-November 2016 | [Abstract](/poll_sort)\\
+October 2016 | [Abstract](/poll_sort)\\
 Press: [Fusion](http://fusion.net/story/319892/true-cost-of-environmental-gentrification-study/)
 
 [Income Stagnation Among the Bankrupt with Frank McIntyre](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1684616)\\
