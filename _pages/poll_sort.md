@@ -3,7 +3,7 @@ title: "Residential Sorting and the Incidence of Local Public Goods: Theory and 
 permalink: /poll_sort
 ---
 
-[PDF](/assets/Sullivan_2016_Sorting_Pollution.pdf)
+[PDF](/assets/Sullivan_Sorting_Pollution.pdf)
 
 **Abstract**\\
 While the costs of environmental policies are generally thought to be

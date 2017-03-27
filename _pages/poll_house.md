@@ -3,7 +3,7 @@ title: "The True Cost of Air Pollution: Evidence from the Housing Market"
 permalink: /poll_house
 ---
 
-[PDF](/assets/Sullivan_2016_Cost_of_Pollution.pdf)
+[PDF](/assets/Sullivan_Cost_of_Pollution_housing.pdf)
 
 **Abstract**\\
 This paper presents evidence that current research significantly underestimates
