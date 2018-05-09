@@ -5,6 +5,9 @@ permalink: /research
 
 ## Working Papers
 
+"The Benefits of Uniform Compliance with National Air Quality Standards" with Alan Krupnick\\
+May 2018
+
 [The True Cost of Air Pollution: Evidence from the Housing Market](/assets/Sullivan_Cost_of_Pollution_housing.pdf)\\
 March 2017 | [Abstract](/poll_house)
 
@@ -13,14 +16,13 @@ Evidence from Air Pollution](/assets/Sullivan_Sorting_Pollution.pdf)\\
 March 2017 | [Abstract](/poll_sort)\\
 Press: [Fusion](http://fusion.net/story/319892/true-cost-of-environmental-gentrification-study/)
 
-[Income Stagnation Among the Bankrupt with Frank McIntyre](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1684616)\\
+["Income Stagnation Among the Bankrupt"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1684616) with Frank McIntyre\\
 May 2010 | [Abstract](/bank_income)
 
 ## Research in Progress
 
 "Industrial Air Pollution and Infant Health"
 
-"Do Polluters Strategically Avoid Air Pollution Monitors?"
 
 ## Publications
 
