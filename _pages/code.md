@@ -7,12 +7,12 @@ permalink: /code
 
 The ``econtools`` ([source code](https://github.com/dmsul/econtools),
 [documentation](http://www.danielmsullivan.com/econtools/overview)) package is
-a set of data maniuplation and econometrics tools for Python's SciPy library.
+a set of data manipulation and econometrics tools for Python's SciPy library.
 
 ## cyvincenty
 
 [cyvincenty](https://github.com/dmsul/cyvincenty) is a very fast Cython (Python
-and C pidgen) implementation of vincenty's distance formula.
+and C pidgin) implementation of Vincenty's distance formula.
 
 ## Stata syntax for Vim
 
