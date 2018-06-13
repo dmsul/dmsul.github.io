@@ -5,9 +5,9 @@ permalink: /code
 
 ## Econtools for Python
 
-The ``econtools`` ([source code](https://github.com/dmsul/econtools),
-[documentation](http://www.danielmsullivan.com/econtools/overview)) package is
-a set of data manipulation and econometrics tools for Python's SciPy library.
+The ``econtools`` package ([source code](https://github.com/dmsul/econtools),
+[documentation](http://www.danielmsullivan.com/econtools)) is a set of data
+manipulation and econometrics tools for Python's SciPy library.
 
 ## cyvincenty
 
