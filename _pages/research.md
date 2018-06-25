@@ -21,6 +21,11 @@ May 2010 | [Abstract](/bank_income)
 
 ## Research in Progress
 
+"Does unconventional oil and gas development affect infant health through air
+pollution?" with Elaine Hill and Alan Krupnick
+
+"Do emissions permits flow to poor neighborhoods?"
+
 "Industrial Air Pollution and Infant Health"
 
 
