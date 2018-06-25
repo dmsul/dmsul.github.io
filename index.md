@@ -1,5 +1,5 @@
 ---
-title: "Daniel M. Sullivan"
+title: "Daniel M. Sullivan, Ph.D."
 layout: splash
 permalink: /
 share: false
