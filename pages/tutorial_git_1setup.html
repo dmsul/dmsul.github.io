@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Daniel M. Sullivan</title>
+    <title>Setting up Git - Daniel M. Sullivan</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,15 +9,16 @@
 
 
 
-<link rel="canonical" href="">
-        <meta name="author" content="Daniel M. Sullivan" />
+<link rel="canonical" href="/pages/tutorial_git_1setup.html">
 
-    <!-- Open Graph tags -->
-        <meta property="og:site_name" content="Daniel M. Sullivan" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Daniel M. Sullivan"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Daniel M. Sullivan"/>
+        <meta name="author" content="Daniel M. Sullivan" />
+        <meta name="description" content="Overview Next: First Steps: Making Commits First, make sure you can access git from the command line by executing the following command: $ git --version You should see something like this: $ git --version git version 2.17.1.windows.2 If instead you see bash: git: command not found, double check you have git installed. [Coming soon: Tutoral on installation and making sure this works.] Second …" />
+
+    <meta property="og:site_name" content="Daniel M. Sullivan" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Setting up Git"/>
+    <meta property="og:url" content="/pages/tutorial_git_1setup.html"/>
+    <meta property="og:description" content="Overview Next: First Steps: Making Commits First, make sure you can access git from the command line by executing the following command: $ git --version You should see something like this: $ git --version git version 2.17.1.windows.2 If instead you see bash: git: command not found, double check you have git installed. [Coming soon: Tutoral on installation and making sure this works.] Second …" />
 
 
 
@@ -68,7 +69,57 @@ Daniel M. Sullivan            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
+    <section id="content" class="body">
+        <h1 class="entry-title">Setting up Git</h1>
+        
+        <div class="entry-content">
+            <ul class="simple">
+<li><a class="reference external" href="tutorial_git_0overview.html">Overview</a></li>
+<li>Next: <a class="reference external" href="tutorial_git_2commits.html">First Steps: Making Commits</a></li>
+</ul>
+<p>First, make sure you can access git from the command line by executing the
+following command:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git --version
+</pre></div>
+<p>You should see something like this:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git --version
+<span class="go">git version 2.17.1.windows.2</span>
+</pre></div>
+<p>If instead you see <code>bash: git: command not found</code>, double check you have git
+installed. [Coming soon: Tutoral on installation and making sure this works.]</p>
+<p>Second, configure git to fit you.
+Instead of a options menu, git is configured through a <code>.gitconfig</code> file
+in your home directory.
+You can quickly set it up by copying the following settings into your
+<code>.gitconfig</code> file:</p>
+<div class="highlight"><pre><span></span>[user]
+        name <span class="o">=</span> Firstname Lastname               <span class="c1"># Fill this in</span>
+        email <span class="o">=</span> me@mailhost.com                 <span class="c1"># Fill this in</span>
+[push]
+        <span class="k">default</span> <span class="o">=</span> matching
+[core]
+        excludesfile <span class="o">=</span> ~/.gitignore_global
+        autocrlf <span class="o">=</span> false
+        fileMode <span class="o">=</span> false
+        editor <span class="o">=</span> atom                           <span class="c1"># Fill this in</span>
+[color]
+        ui <span class="o">=</span> true
+[difftool]
+        <span class="k">prompt</span> <span class="o">=</span> false
+[alias]
+        st <span class="o">=</span> status
+        ci <span class="o">=</span> commit
+        ch <span class="o">=</span> checkout
+        br <span class="o">=</span> branch -vva
+        shortlog <span class="o">=</span> log --graph --abbrev-commit --decorate --date=relative --format=format:&#39;%C(bold blue)%h%C(reset) - %C(bold yellow)%d%C(reset) %C(white)%s%C(reset)&#39; --all
+</pre></div>
+<p>Double check that your <code>.gitconfig</code> is ready by running this command:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> cat ~/.gitconfig
+</pre></div>
+<p>The <code>cat</code> command will print the file on your screen. You can also use <code>git config --list</code>.</p>
 
+        </div>
+    </section>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
