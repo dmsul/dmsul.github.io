@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Project File Organization - Daniel M. Sullivan</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_workflow_2project_org.html">
+
+        <meta name="author" content="Daniel M. Sullivan" />
+        <meta name="description" content="Writing Code in Econ Overview Previous: Software Setup Next: TBD Contents 1   Data-only project 1.1   Where&#39;s the data? 1.2   Define data locations once (and only once) 1.3   Pull it all together 2   Full empirical project 2.1   Output path 2.2   Code organization Never memorize anything you can look up. ~ Albert Einstein, maybe It&#39;s a good idea to keep your code organized …" />
+
+    <meta property="og:site_name" content="Daniel M. Sullivan" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Project File Organization"/>
+    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_workflow_2project_org.html"/>
+    <meta property="og:description" content="Writing Code in Econ Overview Previous: Software Setup Next: TBD Contents 1   Data-only project 1.1   Where&#39;s the data? 1.2   Define data locations once (and only once) 1.3   Pull it all together 2   Full empirical project 2.1   Output path 2.2   Code organization Never memorize anything you can look up. ~ Albert Einstein, maybe It&#39;s a good idea to keep your code organized …" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.danielmsullivan.com/" class="navbar-brand">
+Daniel M. Sullivan            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pdf/Sullivan_CV.pdf">CV</a></li>
+                    <li><a href="/pages/research.html">Research</a></li>
+                    <li><a href="/pages/code.html">Code</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content" class="body">
+        <h1 class="entry-title">Project File Organization</h1>
+        
+        <div class="entry-content">
+            <ul class="simple">
+<li><a class="reference external" href="tutorial_workflow_0overview.html">Writing Code in Econ Overview</a></li>
+<li>Previous: <a class="reference external" href="tutorial_workflow_1setup.html">Software Setup</a></li>
+<li>Next: TBD</li>
+</ul>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#data-only-project" id="id1">1&nbsp;&nbsp;&nbsp;Data-only project</a><ul class="auto-toc">
+<li><a class="reference internal" href="#where-s-the-data" id="id2">1.1&nbsp;&nbsp;&nbsp;Where's the data?</a></li>
+<li><a class="reference internal" href="#define-data-locations-once-and-only-once" id="id3">1.2&nbsp;&nbsp;&nbsp;Define data locations once (and only once)</a></li>
+<li><a class="reference internal" href="#pull-it-all-together" id="id4">1.3&nbsp;&nbsp;&nbsp;Pull it all together</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#full-empirical-project" id="id5">2&nbsp;&nbsp;&nbsp;Full empirical project</a><ul class="auto-toc">
+<li><a class="reference internal" href="#output-path" id="id6">2.1&nbsp;&nbsp;&nbsp;Output path</a></li>
+<li><a class="reference internal" href="#code-organization" id="id7">2.2&nbsp;&nbsp;&nbsp;Code organization</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<!--  -->
+<blockquote>
+Never memorize anything you can look up.
+~ Albert Einstein, maybe</blockquote>
+<p>It's a good idea to keep your code organized. As projects get bigger, and as
+you step away from them and return, it's easier to get lost.  A corollary to
+the supposed Einstein quote is &quot;never memorize anything you can re-derive when
+you need it.&quot; It's easier to come back to code after a long time and go through
+logic like &quot;a script like X would probably be in folder Y&quot; than it is to read
+through every file and every folder searching for X.</p>
+<p>The file and folder structure outlined here is one way to do that.</p>
+<div class="section" id="data-only-project">
+<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Data-only project</a></h2>
+<p>An important principle in coding is to only define something once, whether it's
+a variable or a function, and refer back to that singular definition everywhere
+else. No copying and pasting snippets of code! If you find an error in a
+sequence of code you've copied-and-pasted to 5 other files, you'd better hope
+you remember what those files are. This &quot;do it once and never do it again&quot;
+principle includes code that accesses data files, which is a lot of what we do.</p>
+<p>To this end, we will write a separate (usually small) Python package for each
+major data source we use. This will make it easy to use the data again and
+again across different projects without copying and pasting.</p>
+<p>The folders in such a project will generally look like this:</p>
+<pre class="literal-block">
+data-project-name/
+|── setup.py
+|── data_project_name/
+    |── __init__.py
+    |── util/
+    |   |── __init__.py
+    |   |── env.py
+    |── clean/
+        |── __init__.py
+        |── raw.py
+</pre>
+<p>The top-level <code>data-project-name</code> is a Git repository that contains
+everything else. The folder with the same name (substituting dashes for
+underscores) just underneath it is the Python package within the Git
+repository. They don't have to be the same, but it makes things easier. The
+<code>setup.py</code> script is a boilerplate script used to install a Python
+package so that it can be referenced in any other Python script on the
+computer.</p>
+<p>The <code>__init__.py</code> files will usually be empty and are there to let Python
+know that the folder is part of a Python package (see <a class="reference external" href="https://stackoverflow.com/questions/448271/what-is-init-py-for">here</a>).</p>
+<div class="section" id="where-s-the-data">
+<h3><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;Where's the data?</a></h3>
+<p>Notice that there's no <code>data</code> folder here. That's because the data files
+are (usually ) not kept in the Python package or the Git repository.
+First, they often can't be, since raw data files can be several gigabytes which
+would make hosting the repository online at Github or Bitbucket difficult.
+Second, they don't need to be, as we'll see with the <code>data_path</code> function
+below.
+Since the data files often can't be stored in the repo, and never <em>have</em> to be
+stored there, it's easiest to be uniform across all projects and just put the
+data <em>somewhere</em> on your hard drive and point the rest of your code to where
+that is (using the <code>data_path</code> function, explained below).</p>
+<p>The folder where the data files are stored still has a set structure:</p>
+<pre class="literal-block">
+mass-data-folder-on-big-hard-drive/
+|── data-project-name-data/
+|   |── src/
+|   |── clean_file_1.dta
+|   |── clean_file_2.dta
+|── other-data-project-name/
+    |── src/
+</pre>
+<p>The key principle here is to preserve the source data for each project which is
+kept in <code>src</code>. The rule is that raw data goes from the BLS website or
+where ever it came from straight into <code>src</code> and the raw files are never
+touched again. <em>Never manually edit the raw CSV files.</em> All cleaning is
+programmatic, which means that you should be able to download the data fresh
+from the source and immediately run the code.  files from <code>src</code> and save
+them to <code>data-project-name-data</code>. That way you know that anything not in
+<code>src</code> was created by you and can be deleted as long as you still have the
+code that created the file in the first place.</p>
+</div>
+<div class="section" id="define-data-locations-once-and-only-once">
+<h3><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;Define data locations once (and only once)</a></h3>
+<p>The <code>util</code> folder is for scripts that will be used a lot within the data
+cleaning itself but not by any other Python code or projects. In fact,
+<code>util</code> will often just contain a single file, <code>env.py</code>. The
+<code>util/env.py</code> file contains environmental variables for the project,
+hence the name. These are variables like where on the hard drive the raw data
+are stored.  A basic <code>util/env.py</code> file looks like this:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">data_root</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;d:/&#39;</span>
+<span class="n">DATA_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_root</span><span class="p">,</span> <span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;data-project-name&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">data_path</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_PATH</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">src_path</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+<p>The <code>src_path</code> and <code>data_path</code> functions take a file name as a
+string and appends all the folder information to it, so all you need to worry
+about is the name of the actual file, not all the folders. The basic use of the
+functions looks like this.</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">util.env</span> <span class="k">import</span> <span class="n">data_path</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;main_file.dta&#39;</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="s1">&#39;d:</span><span class="se">\\</span><span class="s1">Data</span><span class="se">\\</span><span class="s1">data-project-name</span><span class="se">\\</span><span class="s1">main_file.dta&#39;</span>
+</pre></div>
+<p>These functions are <em>the</em> canonical definitions of where the data files are
+found on the computer.  All other scripts will refer to these definitions by
+importing them. For example, a function that cleans and saves a dataset might
+look like this:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">util.env</span> <span class="k">import</span> <span class="n">src_path</span><span class="p">,</span> <span class="n">data_path</span>
+
+<span class="k">def</span> <span class="nf">clean_gdp_data</span><span class="p">():</span>
+    <span class="c1"># Read data from raw CSV file</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">src_path</span><span class="p">(</span><span class="s1">&#39;annual_gdp.csv&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Fudge the numbers</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;gdp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;gdp&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+
+    <span class="c1"># Save to Stata DTA</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_stata</span><span class="p">(</span><span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;annual_gdp.dta&#39;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">clean_gdp_data</span><span class="p">()</span>
+</pre></div>
+<p>If you're working with big data files and have lots of people on your team, you
+can use Python's builtin <code>socket</code> library to code if-then statements that
+change the <code>data_root</code> variable depending on the name of the computer
+running the code.</p>
+<p><strong>NOTE:</strong> These <code>data_path</code> and <code>src_path</code> functions should <em>never</em>
+be used in code outside <code>data_project_name</code>. Other projects will have
+their own data access functions.</p>
+</div>
+<div class="section" id="pull-it-all-together">
+<h3><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;Pull it all together</a></h3>
+<p>The <code>clean</code> folder contains scripts that clean the raw data.
+Usually we'll call the barebones basic script that reads the source data
+<code>raw.py</code>, but sometimes that's all there is. If it's a very simple
+project, there may be a <cite>clean.py</cite> file instead of a folder.</p>
+<p>Finally, after all the cleaning functions are written, we'll import them into
+the project-level <code>__init__.py</code> file like this:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">clean.raw</span> <span class="k">import</span> <span class="n">load_data_1</span><span class="p">,</span> <span class="n">load_data_2</span>  <span class="c1"># etc.</span>
+</pre></div>
+<p>That way we don't have to worry about the interal file structure of
+<code>data-project-name</code> when we're using the data package in other projects.
+Did <code>data-project-name</code> use a <code>clean.py</code> file or a <code>clean</code>
+folder? Did it use any other folders? If we import any externally facing
+functions into the project-level <code>__init__.py</code>, it doesn't matter. All we
+have to do in other projects is</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">code_package_name</span> <span class="k">import</span> <span class="n">load_data_1</span>
+</pre></div>
+<p>This is the advantage of installing the package using <code>setup.py</code> and
+making the data package accessible to any other scripts. You don't have to
+remember the details of the cleaning code beyond the specific function you
+want, and for that you just have to look in a single <code>__init__.py</code> file.</p>
+</div>
+</div>
+<div class="section" id="full-empirical-project">
+<h2><a class="toc-backref" href="#id5">2&nbsp;&nbsp;&nbsp;Full empirical project</a></h2>
+<p>Full projects that form the basis of an academic paper are structured in a
+similar way.</p>
+<pre class="literal-block">
+project-name/
+|── draft/              &lt;- Is a Git repo
+|── present/            &lt;- Maybe a Git repo
+|── lit/
+|── data/
+|   |── src/
+|── out/
+|   |── 1807/
+|   |── 1808/
+|       |── plot_variable.png
+|       |── reg_main.tex
+|── code/               &lt;- Is a Git repo
+    |── util/
+    |   |── env.py
+    |── clean/
+    |── analysis/
+    |── driver.sh
+    |── summ_a_variable.py
+    |── plot_a_variable.py
+    |── reg_main.py
+</pre>
+<p>The <code>data/</code> folder is for incidental data that is specific to this
+project. If it's data like CPI data or Census data that's likely to be used
+again and again, it should be in its own data-only project.</p>
+<p>The <code>draft/</code> folder is for drafts of the paper if/when we get that far,
+including <code>bib</code> files and anything else that goes with the draft.  Same
+goes for <code>present/</code> (presentations) and <code>lit/</code> (other papers from
+the literature we'll need to refer to).</p>
+<div class="section" id="output-path">
+<h3><a class="toc-backref" href="#id6">2.1&nbsp;&nbsp;&nbsp;Output path</a></h3>
+<p>The <code>util</code> folder is the same as above. The <code>util/env.py</code> file will
+also have an <code>out_path</code> function that defines where we want the output of
+analyses saved.  This will usually just point to the <code>out/</code> folder,
+however we will often keep the <code>out/</code> folder on Dropbox so we can always
+access our results. Actual figures and tables are saved in individual folders
+within <code>out/</code> depending on the month the file was generated, e.g., 1808
+for August 2018. Adding the month-year folder is handled automatically by
+<code>out_path</code>.</p>
+</div>
+<div class="section" id="code-organization">
+<h3><a class="toc-backref" href="#id7">2.2&nbsp;&nbsp;&nbsp;Code organization</a></h3>
+<p>Python makes it very easy to import functions from one file into another.
+One danger of this that you can get circular imports, where Script A imports
+from Script B and Script B imports from Script A. Python will raise an error if
+this happens. This is surprisingly easy to do once you get nested imports,
+where A imports B imports C and so on.</p>
+<p>To avoid this, the <code>code/</code> folder has a hierarchical structure:</p>
+<ol class="arabic">
+<li><p class="first"><code>util/</code>: useful utility functions that will be used a lot all over the
+package. Things like coordinate converters or ID generators. Scripts in
+<code>util/</code> <em>never</em> import from other scripts in the project. That way you
+know that any other script can use the tools in <code>util/</code>. It's a
+universal donor to other scripts and never receives from them.</p>
+</li>
+<li><p class="first"><code>clean/</code>: for incidental data cleaning. Can import from <code>util/</code>
+but that's it.</p>
+</li>
+<li><p class="first"><code>analysis/</code>: This is for prepping regression files and the like.
+Remember to define things once and only once. This goes for regression
+samples, too, and <code>analysis</code> is the place to put them. Can import from
+<code>util/</code> and <code>clean/</code>.</p>
+</li>
+<li><p class="first">The root folder, <code>code/</code>: this is where we put scripts that create
+final output. Regressions, figures, summary stats, all here. These scripts
+can import from anywhere else in the project and they should never be
+imported from. If you write a function in <cite>reg_main.py</cite> that you want to use
+somehwere else, move it to <code>analysis</code> first.</p>
+<blockquote>
+<p>The final output scripts in <code>code/</code> are prefixed by what they do,
+<code>summ_</code> for summary stats, <code>plot_</code> for plots, etc.</p>
+</blockquote>
+</li>
+</ol>
+<p>Finally, there's <code>driver.sh</code>. In theory, this is a simple script that if
+run would ideally create all the final tables and figures for our paper. In
+practice, the script is never run but serves as a shopping list of sorts to
+remind us of the command line options, etc., that we've settled on. A simple
+example is:</p>
+<div class="highlight"><pre><span></span><span class="ch">#! /bin/bash</span>
+
+python reg_main.py --lag <span class="m">3</span>
+python plot_a_variable.py --grayscale
+</pre></div>
+</div>
+</div>
+
+        </div>
+    </section>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="http://www.danielmsullivan.com/images/dms_med.jpg"/>
+        </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/dmsul"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="mailto:sullivan@rff.org"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ" target="_blank">Google Scholar</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://orcid.org/0000-0002-0380-7681" target="_blank">ORCID</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://ideas.repec.org/f/psu490.html" target="_blank">RePEc</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://www.rff.org/people/profile/daniel-m-sullivan" target="_blank">RFF page</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy;  Daniel M. Sullivan
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-88761020-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
