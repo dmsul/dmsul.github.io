@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>A brief intro to Git - Daniel M. Sullivan</title>
+    <title>Remotes: Sharing Code Online - Daniel M. Sullivan</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,16 +9,16 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">
+<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_git_4remotes.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
-        <meta name="description" content="Git is awesome, everyone should use it. Setting up Git First Steps: Making commits Branches and Merging Remotes: Sharing Code Online" />
+        <meta name="description" content="A Brief Intro to Git: Overview Previous: Branches and Merging Contents 1   Downloading (Cloning) a Repository 2   Pull 3   Push So far, everything we&#39;ve done has been on your local computer--no one else can see your code or contribute to it. While cloud services like Dropbox and Google Drive are popular for sharing most files within a research team, they are not very well suited …" />
 
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="A brief intro to Git"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html"/>
-    <meta property="og:description" content="Git is awesome, everyone should use it. Setting up Git First Steps: Making commits Branches and Merging Remotes: Sharing Code Online" />
+    <meta property="og:title" content="Remotes: Sharing Code Online"/>
+    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_git_4remotes.html"/>
+    <meta property="og:description" content="A Brief Intro to Git: Overview Previous: Branches and Merging Contents 1   Downloading (Cloning) a Repository 2   Pull 3   Push So far, everything we&#39;ve done has been on your local computer--no one else can see your code or contribute to it. While cloud services like Dropbox and Google Drive are popular for sharing most files within a research team, they are not very well suited …" />
 
 
 
@@ -70,16 +70,63 @@ Daniel M. Sullivan            </a>
     <div class="row">
         <div class="col-sm-9">
     <section id="content" class="body">
-        <h1 class="entry-title">A brief intro to Git</h1>
+        <h1 class="entry-title">Remotes: Sharing Code Online</h1>
         
         <div class="entry-content">
-            <p>Git is awesome, everyone should use it.</p>
-<ol class="arabic simple">
-<li><a class="reference external" href="tutorial_git_1setup.html">Setting up Git</a></li>
-<li><a class="reference external" href="tutorial_git_2commits.html">First Steps: Making commits</a></li>
-<li><a class="reference external" href="tutorial_git_3branches.html">Branches and Merging</a></li>
-<li><a class="reference external" href="tutorial_git_4remotes.html">Remotes: Sharing Code Online</a></li>
-</ol>
+            <p>A Brief Intro to Git:</p>
+<ul class="simple">
+<li><a class="reference external" href="tutorial_git_0overview.html">Overview</a></li>
+<li>Previous: <a class="reference external" href="tutorial_git_3branches.html">Branches and Merging</a></li>
+</ul>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#downloading-cloning-a-repository" id="id3">1&nbsp;&nbsp;&nbsp;Downloading (Cloning) a Repository</a></li>
+<li><a class="reference internal" href="#pull" id="id4">2&nbsp;&nbsp;&nbsp;Pull</a></li>
+<li><a class="reference internal" href="#push" id="id5">3&nbsp;&nbsp;&nbsp;Push</a></li>
+</ul>
+</div>
+<hr class="docutils" />
+<p>So far, everything we've done has been on your local computer--no one else can
+see your code or contribute to it. While cloud services like Dropbox and Google
+Drive are popular for sharing most files within a research team, they are not
+very well suited for Git repos. <a class="footnote-reference" href="#id2" id="id1">[1]</a> Using a service designed specifcally for Git, like GitHub
+or Bitbucket, is a better solution.</p>
+<p>Any of the projects we work on will be hosted on one of the PI's GitHub or
+Bitbucket accounts, so in the context of our work you won't need to worry about
+creating a repo online. However, you can follow <a class="reference external" href="https://help.github.com/articles/creating-a-new-repository/">these</a> instructions
+if you want to practice that on your own.</p>
+<div class="section" id="downloading-cloning-a-repository">
+<h2><a class="toc-backref" href="#id3">1&nbsp;&nbsp;&nbsp;Downloading (Cloning) a Repository</a></h2>
+<p>To copy a repository hosted online to your computer, use the <code>clone</code>
+command and the URL of the online repo.</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/dmsul/econtools.git
+</pre></div>
+<p>This will create a folder <code>econtools/</code> in the current folder that
+contains all the info about the Git repository hosted at the given URL.</p>
+<p>You can also tell Git to name your cloned repo something else:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/dmsul/econtools.git different-folder-name
+</pre></div>
+<p>This will clone the <code>econtools</code> Git repo into a folder called
+<code>different-folder-name/</code> instead of <code>econtools/</code>.</p>
+</div>
+<div class="section" id="pull">
+<h2><a class="toc-backref" href="#id4">2&nbsp;&nbsp;&nbsp;Pull</a></h2>
+</div>
+<div class="section" id="push">
+<h2><a class="toc-backref" href="#id5">3&nbsp;&nbsp;&nbsp;Push</a></h2>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The problem is that all information about the Git repository is stored
+in a hidden folder called <code>.git/</code>. During certain operations, Git the
+software makes lots of changes to files in <code>.git/</code> the folder very
+quickly. Dropbox et al. can sometimes have trouble keeping up and will try to
+change these files at the same time Git is, resulting in corrupted files. Once
+that happens, you have to scrap your repo and re-clone it.</td></tr>
+</tbody>
+</table>
+</div>
 
         </div>
     </section>

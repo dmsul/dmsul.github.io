@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>The (very) basics of Vim - Daniel M. Sullivan</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_vim.html">
+
+        <meta name="author" content="Daniel M. Sullivan" />
+        <meta name="description" content="Contents Normal Mode Saving and quitting Moving around the buffer Basic motion commands move cursor... Moving quickly between words Moving within a line Moving to a specific point in the buffer Searching the buffer Editing the text in Normal Mode (and composing commands) Composing Commands Special Motion Commands Undo/Redo Misc. Other Commands Scrolling Insert Mode Other stuff Registers (for yank and paste) Substitution Spellcheck …" />
+
+    <meta property="og:site_name" content="Daniel M. Sullivan" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="The (very) basics of Vim"/>
+    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_vim.html"/>
+    <meta property="og:description" content="Contents Normal Mode Saving and quitting Moving around the buffer Basic motion commands move cursor... Moving quickly between words Moving within a line Moving to a specific point in the buffer Searching the buffer Editing the text in Normal Mode (and composing commands) Composing Commands Special Motion Commands Undo/Redo Misc. Other Commands Scrolling Insert Mode Other stuff Registers (for yank and paste) Substitution Spellcheck …" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.danielmsullivan.com/" class="navbar-brand">
+Daniel M. Sullivan            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pdf/Sullivan_CV.pdf">CV</a></li>
+                    <li><a href="/pages/research.html">Research</a></li>
+                    <li><a href="/pages/code.html">Code</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content" class="body">
+        <h1 class="entry-title">The (very) basics of Vim</h1>
+        
+        <div class="entry-content">
+            <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#normal-mode" id="id1">Normal Mode</a><ul>
+<li><a class="reference internal" href="#saving-and-quitting" id="id2">Saving and quitting</a></li>
+<li><a class="reference internal" href="#moving-around-the-buffer" id="id3">Moving around the buffer</a><ul>
+<li><a class="reference internal" href="#basic-motion-commands-move-cursor" id="id4">Basic motion commands move cursor...</a></li>
+<li><a class="reference internal" href="#moving-quickly-between-words" id="id5">Moving quickly between words</a></li>
+<li><a class="reference internal" href="#moving-within-a-line" id="id6">Moving within a line</a></li>
+<li><a class="reference internal" href="#moving-to-a-specific-point-in-the-buffer" id="id7">Moving to a specific point in the buffer</a></li>
+<li><a class="reference internal" href="#searching-the-buffer" id="id8">Searching the buffer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#editing-the-text-in-normal-mode-and-composing-commands" id="id9">Editing the text in Normal Mode (and composing commands)</a><ul>
+<li><a class="reference internal" href="#composing-commands" id="id10">Composing Commands</a></li>
+<li><a class="reference internal" href="#special-motion-commands" id="id11">Special Motion Commands</a></li>
+<li><a class="reference internal" href="#undo-redo" id="id12">Undo/Redo</a></li>
+<li><a class="reference internal" href="#misc-other-commands" id="id13">Misc. Other Commands</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scrolling" id="id14">Scrolling</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#insert-mode" id="id15">Insert Mode</a></li>
+<li><a class="reference internal" href="#other-stuff" id="id16">Other stuff</a><ul>
+<li><a class="reference internal" href="#registers-for-yank-and-paste" id="id17">Registers (for yank and paste)</a></li>
+<li><a class="reference internal" href="#substitution" id="id18">Substitution</a></li>
+<li><a class="reference internal" href="#spellcheck" id="id19">Spellcheck</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#visual-mode" id="id20">Visual &quot;Mode&quot;</a></li>
+<li><a class="reference internal" href="#tricks-and-extra-special-commands" id="id21">Tricks And Extra Special Commands</a><ul>
+<li><a class="reference internal" href="#repeating-commands-the-mighty" id="id22">Repeating Commands (The Mighty <code>.</code>)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>NOTE</strong>: Specific examples given for options, flags, commands variations,
+etc., are not comprehensive.</p>
+<div class="section" id="normal-mode">
+<h2><a class="toc-backref" href="#id1">Normal Mode</a></h2>
+<p>Vim has 2 main &quot;modes.&quot; In each mode, every key on your keyboard does something
+different. The default mode of Vim is Normal Mode and is mostly used for moving
+the cursor and navigating the current file.</p>
+<div class="section" id="saving-and-quitting">
+<h3><a class="toc-backref" href="#id2">Saving and quitting</a></h3>
+<p>Some important (or longer) commands begin with <code>:</code>. After typing
+<code>:</code>, you will a colon appear in the bottom left of the screen, followed
+by any subsequent charactser you type.  screen.</p>
+<ul class="simple">
+<li><code>:q[uit]</code> - quit (the current window of) Vim. (&quot;Window&quot; here is
+internal to Vim, not if you have multiple OS-level windows of Vim open at
+once.)</li>
+<li><code>:q!</code> - force quit (if the current buffer has been changed since the
+last save)</li>
+<li><code>:e[dit] {filename}</code> - read file {filename} into a new buffer. If
+<code>{filename}</code> doesn't exist, create a buffer (<em>not</em> a file) associated
+with that filename.  Vim doesn't &quot;open&quot; files like MS Word does. Instead, it
+reads the contents of a file into RAM and then you edit the &quot;buffer&quot; in RAM.
+Other programs may access and change the underlying file you originally
+opened (Vim will notice this and issue a warning).</li>
+<li><code>:w[rite] {filename}</code> - write the current buffer to {filename}. If no
+filename passed (i.e., <code>:w</code>) and the buffer already has an
+associated filename (the one used with <code>:e {filename}</code>), that
+associated filename will be used.  A simple <code>:w</code> is like MS Word &quot;save&quot;
+and <code>:w {new_filename}</code> is &quot;save a copy as <code>{new_filename}</code> but
+keep the current buffer.</li>
+<li><code>:w!</code> - force write (e.g., even if the underlying file has been been
+changed by another program and this write will overwrite those changes)</li>
+<li><code>:save {filename}</code> - Save as (and change current buffer to {filename})</li>
+<li><code>:save! {filename}</code> - Save as and overwrite {filename} if it exists.</li>
+</ul>
+<p>These commands can be combined, e.g.  <code>:wq</code> - write the buffer and quit
+<code>:wq!</code> - force write and quit</p>
+</div>
+<div class="section" id="moving-around-the-buffer">
+<h3><a class="toc-backref" href="#id3">Moving around the buffer</a></h3>
+<div class="section" id="basic-motion-commands-move-cursor">
+<h4><a class="toc-backref" href="#id4">Basic motion commands move cursor...</a></h4>
+<ul class="simple">
+<li><code>j</code> - down</li>
+<li><code>k</code> - up</li>
+<li><code>h</code> - left</li>
+<li><code>l</code> - right</li>
+</ul>
+</div>
+<div class="section" id="moving-quickly-between-words">
+<h4><a class="toc-backref" href="#id5">Moving quickly between words</a></h4>
+<ul class="simple">
+<li><code>w</code> - forward one word (alphanumeric, <code>\_;</code>, or consective chars that
+are none of those)</li>
+<li><code>e</code> - end of current word (or next word if currently at end of word)</li>
+<li><code>b</code> - to beginning of word (or previous word if currently at beginning)</li>
+<li><code>}</code> - Move forward a paragraph (or a function or a section, depending
+on the type of file you're editing).</li>
+<li><code>{</code> - Move back a paragraph.</li>
+<li><code>%</code> - If the cursor is inside parentheses (or or quotes, brackets,
+etc.), move to opening paren. If the cursor is on a paren, move to its
+partner paren. If not between parens, do nothing. (Can do weird stuff with
+unmatched parens.)</li>
+</ul>
+</div>
+<div class="section" id="moving-within-a-line">
+<h4><a class="toc-backref" href="#id6">Moving within a line</a></h4>
+<ul class="simple">
+<li><code>0</code> - Move to beginning of line</li>
+<li><code>^</code> - Move to first non-space character in line (same as &quot;0&quot; if the
+line starts with a non-space character)</li>
+<li><code>$</code> - Move to end of line</li>
+</ul>
+<p><em>Note</em>: <code>^</code> and <code>$</code> are Regular Expression shortcuts for beginning
+and end of a string, respectively</p>
+</div>
+<div class="section" id="moving-to-a-specific-point-in-the-buffer">
+<h4><a class="toc-backref" href="#id7">Moving to a specific point in the buffer</a></h4>
+<ul class="simple">
+<li><code>[#]gg</code> - go to line <code>[#]</code> (Example <code>20gg</code> goes to line 20)</li>
+<li><code>gg</code> - go to beginning of buffer</li>
+<li><code>G</code> - go to end of buffer</li>
+<li><code>[#]|</code> - go to column <code>[#]</code> on current line, e.g. <code>10|</code>
+goes to col 10.</li>
+<li><code>''</code> - jump to wherever you were before the last jump. This is useful
+after using commands like <code>gg</code> to get back to wherever you were when
+you used <code>gg</code> to jump to the beginning of the buffer. Using <code>''</code>
+repeatedly will jump you back and forth.</li>
+</ul>
+</div>
+<div class="section" id="searching-the-buffer">
+<h4><a class="toc-backref" href="#id8">Searching the buffer</a></h4>
+<ul class="simple">
+<li><code>f&lt;char&gt;</code> - put cursor on next instance of <code>&lt;char&gt;</code> in the
+current line. Example: <code>fa</code> will jump to the next &quot;a&quot;.</li>
+<li><code>F</code> - <code>f</code> but backwards search  <code>t</code> - &quot;to&quot;/ like</li>
+<li><code>t</code> - Just like <code>f</code>, but put cursor right before the character
+you're searching instead of on it.</li>
+<li><code>T</code> - <code>t</code> but backwards search</li>
+<li><code>;</code> - move to next instance of your most recent <code>f</code> or <code>t</code>
+This will not take you past the end of the current line.</li>
+</ul>
+<p><strong>Note</strong>: You can think of <code>f</code> and <code>t</code> as &quot;find&quot; and &quot;to&quot;.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code>/&lt;RegEx&gt;&lt;Enter&gt;</code> - Go to next instance of <code>&lt;RegEx&gt;</code> in the current buffer. This uses full Regular Expression matching (with a bit of Vim-specific syntax).</dt>
+<dd><ul class="first last">
+<li><code>/Hello</code> takes you to the next &quot;Hello&quot;</li>
+<li><code>/^Hello</code> takes you to the next &quot;Hello&quot; that is at the beginning of a line.</li>
+<li><code>/\sHello</code> takes you to the next &quot;Hello&quot; that has a space (or tab) right in front of it.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><code>?</code> - Same as <code>/</code> but search backward in the buffer instead of
+forward</li>
+<li><code>n(N)</code> - next (previous) instance of the most recent <code>/</code> or
+<code>?</code> search</li>
+<li><code>*</code> - Do a <code>/</code> search for word under cursor</li>
+</ul>
+<p><strong>Note</strong>: While these commands are a quick way to move your cursor, they are
+also the basic search functionality in Vim.  For example, <code>/gen&lt;Enter&gt;</code>
+will take you to the next instance of the string &quot;gen&quot;.  Then you can hit
+<code>n</code> repeatedly to move to each subsequent instance of &quot;gen&quot;. When you get
+to the end of the file, it will cycle back to the beginning.</p>
+</div>
+</div>
+<div class="section" id="editing-the-text-in-normal-mode-and-composing-commands">
+<h3><a class="toc-backref" href="#id9">Editing the text in Normal Mode (and composing commands)</a></h3>
+<p>Most composing of actual text will be done in Insert Mode, explained below.
+However, there are a number of commands that are meant to quickly edit the text
+without leaving Normal Mode.</p>
+<p>Many of these commands require a motion command (signified here as <code>[m]</code>)
+to specify the extent over which to execute the edit. Several common
+conventions for many (but not all) commands:</p>
+<ul class="simple">
+<li>double-tap: execute command for entire line cursor is currently on</li>
+<li>shift + command: execute command from cursor to end of current line</li>
+</ul>
+<p>More generally, the composability of editing commands and motion is what makes
+Vim particularly powerful. If you know 5 editing commands and 5 motion
+commands, you actually know (at least) 25 commands.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code>d[m]</code> - delete from cursor location to wherever <code>[m]</code> takes the cursor. Examples:</dt>
+<dd><ul class="first last">
+<li><code>dw</code> delete from here (location of cursor) to beginning of next
+word (includes character under the cursor)</li>
+<li><code>dtT</code> deletes &quot;to&quot; (up to but not including) the next instance of
+&quot;T&quot; on this line</li>
+<li><code>df)</code> deletes to (&quot;finds&quot;) the next instance of &quot;)&quot; on this line</li>
+<li><code>d/the</code> deletes everything between the cursor and the next instance
+of &quot;the&quot; in the buffer.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><code>dd</code> delete this entire line</li>
+<li><code>D</code> delete from here to end of line</li>
+<li><code>4dd</code> delete this line and next 3 (4 total)</li>
+</ul>
+<!--  -->
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code>y[m]</code> yank (copy). Same basic behavior as d (delete).</dt>
+<dd><ul class="first last">
+<li><code>yw</code> yank from here to beginning of next word</li>
+<li><code>y$</code> yank from here to end of line</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><code>yy</code> - yank the current line</li>
+</ul>
+<p><em>Note</em>: To make it consistent with <code>D</code>, it's common to add an analagous
+mapping for <code>Y</code> in your vimrc like so: <code>nnoremap Y y$</code></p>
+<ul class="simple">
+<li><code>p</code> - paste after cursor location. Example: To copy the current line,
+use <code>yyp</code>, which yanks the current line and then pastes it.</li>
+<li><code>P</code> - paste before cursor location</li>
+</ul>
+<!--  -->
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code>&gt;[m]</code> - Indent through modtion <code>m</code>.</dt>
+<dd><ul class="first last">
+<li><code>&gt;&gt;</code> - Indent current line.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><code>&lt;[m]</code> - Un-indent/opposite of <code>&gt;</code>.</li>
+</ul>
+<div class="section" id="composing-commands">
+<h4><a class="toc-backref" href="#id10">Composing Commands</a></h4>
+<p>Most motion and editing commands can take a number before them to execute that
+number of times.</p>
+<ul class="simple">
+<li><code>4j</code> - Move cursor down 4 times</li>
+<li><code>10w</code> - Move cursor forward 10 &quot;words&quot;</li>
+<li><code>d4w</code> - Delete from here to beginning of 4th word forward</li>
+<li><code>&lt;G</code> - Indent everything from cursor to end of buffer</li>
+</ul>
+</div>
+<div class="section" id="special-motion-commands">
+<h4><a class="toc-backref" href="#id11">Special Motion Commands</a></h4>
+<ul class="simple">
+<li><code>daw</code> - &quot;Delete a word&quot;; delete the word under the cursor plus any trailing space.</li>
+<li><code>diw</code> - &quot;Delete inner word&quot;; delete the word under the cursor, leave spaces.</li>
+</ul>
+<p>Explain.</p>
+<ul class="simple">
+<li><code>[e]ip</code></li>
+<li><code>[e]ap</code></li>
+<li><code>[e]i(</code></li>
+<li><code>[e]a(</code></li>
+</ul>
+</div>
+<div class="section" id="undo-redo">
+<h4><a class="toc-backref" href="#id12">Undo/Redo</a></h4>
+<ul class="simple">
+<li><code>u</code> - undo</li>
+<li><code>c-r</code> - redo</li>
+</ul>
+</div>
+<div class="section" id="misc-other-commands">
+<h4><a class="toc-backref" href="#id13">Misc. Other Commands</a></h4>
+<p>Change letter case</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code>~</code> - toggle the case of this character</dt>
+<dd><ul class="first last">
+<li><code>[#]~</code> - toggle case of <code>[#]</code> next character(s)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><code>g~[m]</code> - toggle case with motion [m]</li>
+<li><code>gU[m]</code> - uppercase</li>
+<li><code>gu[m]</code> - lowercase</li>
+</ul>
+<p>Combine lines</p>
+<ul class="simple">
+<li><code>J</code> - Take the next line and move it to the end of this line.</li>
+</ul>
+<p>Format line/wrap text</p>
+<ul class="simple">
+<li><code>gq[m]</code> - Format the text between here and <code>[m]</code> (usually just
+breaks overly long lines to smaller lines, by default 80 characters).</li>
+<li><code>gqq</code> - Format the current line</li>
+<li><code>gqap</code> - Format this (&quot;a&quot;) paragraph</li>
+</ul>
+</div>
+</div>
+<div class="section" id="scrolling">
+<h3><a class="toc-backref" href="#id14">Scrolling</a></h3>
+<ul class="simple">
+<li><code>c-e</code> - scroll forward, keeping cursor in place</li>
+<li><code>e-y</code> - scroll backward, keeping cursor in place</li>
+<li><code>c-u</code> - move cursor Up full page</li>
+<li><code>c-d</code> - move cursor Down full page</li>
+<li><code>c-f</code> - Forward half-page</li>
+<li><code>c-b</code> - Back half-page</li>
+</ul>
+<p><strong>Note</strong>: <code>c-u</code> or <code>C-u</code> in Vim mappings is short for
+<code>Ctrl+u</code>. <code>m-u</code> is for &quot;meta&quot;, which will be the Alt key on Windows
+machines. Be aware that meta bindings will not always work on Unix systems,
+especially old ones.</p>
+<ul class="simple">
+<li><code>H</code> - Move cursor to highest line on screen (home)</li>
+<li><code>M</code> - Move cursor to middle line on screen</li>
+<li><code>L</code> - Move cursor to lowest line on screen</li>
+</ul>
+</div>
+</div>
+<div class="section" id="insert-mode">
+<h2><a class="toc-backref" href="#id15">Insert Mode</a></h2>
+<p>Most commands are executed in Normal Mode. If you actually want to add to the
+text (type a &quot;j&quot; instead of moving down one line) you need to enter Insert
+Mode. There are several ways to do this.</p>
+<ul class="simple">
+<li><code>i</code> - Enter Insert mode before the current character</li>
+<li><code>a</code> - Enter insert mode After the current character</li>
+<li><code>&lt;Esc&gt;</code> - Exit Insert Mode (go back to Normal Mode).</li>
+</ul>
+<p><em>Note</em>: Because <code>&lt;Esc&gt;</code> is a little out of the way, it's common to remap
+a more convenient keybinding to also exit Insert Mode. For example,
+<code>inoremap jk &lt;Esc&gt;</code> in your vimrc will allow you to use a quick
+<code>jk</code> instead of <code>&lt;Esc&gt;</code>.</p>
+<ul class="simple">
+<li><code>I</code> - Enter insert mode at the beginning of the current line's text
+(same as doing <code>^</code> then <code>i:code:</code>)</li>
+<li><code>A</code> - Enter insert mode After the end of th current line (like
+<code>$</code> then <code>a:code:</code>). &quot;Append&quot; is another good pnemonic.</li>
+<li><code>o</code> - Add a new line after the current line and enter insert mode (like
+doing <code>A&lt;Enter&gt;:code:</code>)</li>
+<li><code>O</code> - Add a new line before the current line and enter insert mode</li>
+</ul>
+<!--  -->
+<p>The &quot;change&quot; commands delete the desired text and immediately enters insert mode.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code>c[m]</code> - Change text from here to [m]. This includes &quot;advanced&quot; movements.</dt>
+<dd><ul class="first last">
+<li><code>ci(</code> - Change everything between the current parentheses.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><code>cc</code> - Change this whole line.</li>
+<li><code>C</code> - Change from here to end of line.</li>
+</ul>
+<p>&quot;Replace&quot; commands:</p>
+<ul class="simple">
+<li><code>r</code> - replace the current character with the next character typed (only
+one character allowed)</li>
+<li><code>R</code> - Replace characters until you hit <code>&lt;Esc&gt;</code> (like
+replace/overwrite mode in Word)</li>
+</ul>
+</div>
+<div class="section" id="other-stuff">
+<h2><a class="toc-backref" href="#id16">Other stuff</a></h2>
+<div class="section" id="registers-for-yank-and-paste">
+<h3><a class="toc-backref" href="#id17">Registers (for yank and paste)</a></h3>
+<p><code>&quot;&lt;char&gt;y</code> - yank to register <code>&lt;char&gt;</code>.  This allows you to have
+multiple things in your clipboard. Note the Vim clipboard is separate from the
+OS clipboard. To move between the two (copy/paste between Vim and another
+program) use the <code>*</code> register, so:</p>
+<ul class="simple">
+<li><code>y$</code> - yanks to end of line, puts in default register</li>
+<li><code>&quot;a$</code> - yank to register &quot;a&quot;</li>
+<li><code>&quot;*yG</code> - yanks to end of file, puts in OS register</li>
+<li><code>p</code> - pastes what's in the default register (after the cursor, like
+<code>a:code:</code>)</li>
+<li><code>P</code> - paste before cursor (like command <code>i:code:</code>)</li>
+<li><code>&quot;*p</code> - pastes what's in the OS register (i.e., if you already yanked
+to * or you did a Ctrl+C copy in another program)</li>
+</ul>
+<p><strong>NOTE:</strong> deleting text puts that text into the default register, so if you
+<code>yy:code:</code>, move to another line, then <code>dd:code:</code>, you'll lose
+whatever whatever you yanked with <code>yy:code:</code>. There is a plugin to
+override this behavior (I think by Tim Pope).</p>
+</div>
+<div class="section" id="substitution">
+<h3><a class="toc-backref" href="#id18">Substitution</a></h3>
+<p><code>:&lt;range&gt;s/&lt;re&gt;/&lt;str&gt;/&lt;flags&gt;</code> - substitute first instance of
+<code>&lt;re&gt;</code> in each line in <code>&lt;range&gt;</code> with <code>&lt;str&gt;</code>.
+<code>&lt;flags&gt;</code> change default behavior.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code>&lt;range&gt;</code>:</dt>
+<dd><ul class="first last">
+<li>default range is this line only</li>
+<li><code>%</code> - global (whole file)</li>
+<li><code>&lt;a&gt;,&lt;b&gt;</code> - between lines/markers/etc</li>
+<li><code>.</code> - current line</li>
+<li><code>$</code> - last line in file (so <code>:.,$s</code> is &quot;from here to end
+of file&quot;)</li>
+<li>There are other <code>&lt;range&gt;</code> things, most common is just
+<code>%</code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code>&lt;flags&gt;</code></dt>
+<dd><ul class="first last">
+<li><code>g</code> - global/all instances of <code>&lt;re&gt;</code> on line (not just
+first instance on line)</li>
+<li><code>c</code> - confirm (will highlight next instance of <code>&lt;re&gt;</code> and
+ask you to press &quot;y&quot; to execute change</li>
+<li><code>i</code> - case insensitive</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Specific substitution: Use <code>\zs</code> and <code>\ze</code> to demark a sub-RegEx
+within the matched RegEx that should be substituted. Example:</p>
+<p><code>:%s/Year \zs2007\ze is over/2008/g</code></p>
+<p>This changes all instances of &quot;Year 2007 is over&quot; to &quot;Year 2008 is over&quot;, but
+not all &quot;2007&quot; to &quot;2008&quot;.</p>
+<p># Advanced motion(ish) commands There are &quot;motion&quot; commands that can be used
+with delete, yank, etc., that can be used to target specific text objects.
+<code>dw</code> will delete from cursor to beginning of next word, so will not
+delete the entire current word under the cursor unless the cursor happens to be
+at the beginning of the word. So <code>bdw</code> will delete the whole word and the
+space(s) after it (unless the cursor is already at the beginning of the word).</p>
+<p>A shortcut around this is these motion-like object commands.</p>
+<p><code>daw</code> - Delete &quot;a&quot; &quot;word&quot;. Deletes the current word and space(s) after
+it.
+<code>diw</code> - Delete &quot;inner&quot; &quot;word&quot;. Deletes current word but not trailing
+space(s).
+<code>dap</code> - Delete a paragraph. A &quot;paragraph&quot; to Vim is a group of
+consecutive lines of text between an empty line(s).
+<code>yaw</code> - Yanks a
+word.
+<code>yiw</code> - Yanks inner word.
+<code>ya(</code> - Yank a parenthetical. If
+cursor between (), yank everything between those parens and the parens
+themselves. Else do Nothing.
+<code>yi(</code> - Yank inner parenthetical. Like <code>ya(:code:</code>, but excluding the parens.
+<code>ya)</code> - <code>ya(</code>
+<code>ya[</code> - Same as <code>ya(</code> but for brackets <code>[]</code>.
+<code>ya&quot;</code> - Same</p>
+<p><code>da(</code> - Deletes a parenthetical.
+<code>di(</code> - Deletes within parenthetical.
+<code>g~i(</code> - Toggles the case of the inner parenthetical.</p>
+<p><code>ciw</code> - Change inner word
+<code>ci[</code> - Change inner (within) brackets (delete text within brackets and
+enter Insert Mode).</p>
+<p># Other very useful stuff</p>
+<p>## Predictive completion (while in Insert Mode) <code>c-p</code> - predictive
+completion (word)  <code>c-x c-l</code> - predictive completion (line)</p>
+<p>This takes what you've already typed (either word or line) and uses the text in
+the rest of any open buffers to predict what will come next. If there's only
+one possibility, it will be filled in. If there are several possibilities, it
+will give you the choices.</p>
+<p>Vim autocomplete is pretty nice, but there are better, automated predictive
+text solutions (specifcally, the package YouCompleteMe). However, I've found
+they're a bit too demanding for most laptops and only useful on desktop
+computers.</p>
+<p>## Global command by line <code>:g/&lt;RegEx&gt;/&lt;edit command&gt;</code> - perform the edit
+command on every line that matches RegEx  <code>:g!/...</code> or <code>:v/...</code> -
+the same but for lines that don't match  Examples:  <code>:g/DEL THIS/d</code>
+deletes every line that contains &quot;DEL THIS&quot;  <code>:g/ $/d</code> deletes every line
+that ends with a space.</p>
+<p>## Macros</p>
+<p>Hit <code>q</code> then some letter, WLOG <code>a</code> to begin recording macro &quot;a&quot;.
+Do your thing.  Hit <code>q</code> to stop recording.  <code>&#64;a</code> to repeat the new
+macro. <code>[#]&#64;a</code> repeats a <code>[#]</code> times.</p>
+<p># Other moderately useful stuff</p>
+<p>## Marks</p>
+<p>Lower case are local, upper case are global (across files). Jumping to a mark
+is a standard motion command for deleting, yanking, etc.</p>
+<p><code>ma</code> - sets mark on current cursor location (line and column), WLOG,
+called &quot;a&quot;
+<code>'a</code> - jump to line of &quot;a&quot; (first non-blank character of line)
+<code>\`a</code> - jump to position of &quot;a&quot; (line and col)
+<code>:marks</code> - lists all current marks
+<code>:delmarks &lt;args&gt;</code> - delete specific marks
+<code>:delmarks!</code> - delete all lowercase in buffer
+<code>]'</code>, <code>['</code> - jump to next (previous) line with a lowercase mark
+<code>\`]</code> <code>\`[</code></p>
+<p>### Special Marks (Most useful when beginning) <code>'</code> - The line you were on
+before making a &quot;jump&quot;. So if you're on line 57 and jump to beginning of file
+using <code>gg:</code>, hitting <code>''</code> will take you right back to line 57.
+<code>.</code> - last edit in current buffer  :code:<tt class="docutils literal">` :code:</tt> :code:<tt class="docutils literal">` - jump
+back to position (line and col) where just jumped from&nbsp; :code:</tt> <code>[
+:code:`</code>, :code:`` <code>] :code:`</code> - jump to beg/end of last changed or
+yanked text</p>
+</div>
+<div class="section" id="spellcheck">
+<h3><a class="toc-backref" href="#id19">Spellcheck</a></h3>
+<p>Turn on with <code>:set spell</code>, turn off with <code>:set nospell</code>.</p>
+<ul class="simple">
+<li><code>z=</code> - Suggest correctly spelled words</li>
+<li><code>]s</code>, <code>[s</code> - Move to next/previous mispelled word (use <code>S</code> for &quot;bad words only&quot;)</li>
+<li><code>zq</code> - Add word under cursor as good word to first name in 'spellfile'</li>
+<li><code>zw</code> - Mark as bad word</li>
+<li><code>zu[q,w]</code> - Undo marking</li>
+</ul>
+</div>
+</div>
+<div class="section" id="visual-mode">
+<h2><a class="toc-backref" href="#id20">Visual &quot;Mode&quot;</a></h2>
+<ul class="simple">
+<li><code>v[m]</code> - Go into visual (highlight) mode to select characters, then use
+usual motion commands like <code>j</code> or <code>k</code> to add to selection as
+the cursor moves.</li>
+<li><code>V</code> - Visual mode, but grab whole lines at a time instead of characters.</li>
+<li><code>c-v</code> - Visual mode, but select vertically (by columns) instead of
+horizontally</li>
+<li><code>ggvG</code> - Highlight whole file, i.e., go to beginning of file
+(<code>gg:code:</code>), enter visual mode (<code>v:code:</code>), go to end of file
+(<code>G:code:</code>).</li>
+</ul>
+<p>Once a selection has been made, you can use an edit command on that selection
+and it will (usually) behave as you'd expect.</p>
+</div>
+<div class="section" id="tricks-and-extra-special-commands">
+<h2><a class="toc-backref" href="#id21">Tricks And Extra Special Commands</a></h2>
+<div class="section" id="repeating-commands-the-mighty">
+<h3><a class="toc-backref" href="#id22">Repeating Commands (The Mighty <code>.</code>)</a></h3>
+<p>The command <code>.</code> repeats last edit command you executed, including insert,
+replace, indent, etc.  <strong>This is one of the most useful features in Vim.</strong>
+Some examples:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code>A;&lt;Esc&gt;j.</code></dt>
+<dd><ul class="first last">
+<li>Enter insert mode at end of line (<code>A</code>),</li>
+<li>type a semi-colon (<code>;</code>),</li>
+<li>exit Insert Mode; (<code>&lt;Esc&gt;</code>),</li>
+<li>move down one line (<code>j</code>),</li>
+<li>add a semi-colon to the end of this new line without leaving Normal Mode
+(<code>.</code> which equals <code>A;&lt;Esc&gt;</code>).</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code>&gt;&gt;...</code></dt>
+<dd><ul class="first last">
+<li>Indent this line <code>&gt;&gt;</code>,</li>
+<li>then indent it another three times (<code>...</code>).</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+        </div>
+    </section>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="http://www.danielmsullivan.com/images/dms_med.jpg"/>
+        </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/dmsul"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="mailto:sullivan@rff.org"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ" target="_blank">Google Scholar</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://orcid.org/0000-0002-0380-7681" target="_blank">ORCID</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://ideas.repec.org/f/psu490.html" target="_blank">RePEc</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://www.rff.org/people/profile/daniel-m-sullivan" target="_blank">RFF page</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy;  Daniel M. Sullivan
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-88761020-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Best Practices when Writing Python - Daniel M. Sullivan</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_workflow_3python.html">
+
+        <meta name="author" content="Daniel M. Sullivan" />
+        <meta name="description" content="Writing Code in Econ: Overview Previous: Project Organization Contents 1   No copying and pasting 2   Write self-documenting code 3   Use functions like paragraphs 4   Scripts should only contain functions and an &#34;if-main&#34; block 5   Use the IPython terminal and a text editor 6   Incrementally build your code in a script 7   Use a consistent style 7.1   Lines should be less than 80 characters wide …" />
+
+    <meta property="og:site_name" content="Daniel M. Sullivan" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Best Practices when Writing Python"/>
+    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_workflow_3python.html"/>
+    <meta property="og:description" content="Writing Code in Econ: Overview Previous: Project Organization Contents 1   No copying and pasting 2   Write self-documenting code 3   Use functions like paragraphs 4   Scripts should only contain functions and an &#34;if-main&#34; block 5   Use the IPython terminal and a text editor 6   Incrementally build your code in a script 7   Use a consistent style 7.1   Lines should be less than 80 characters wide …" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.danielmsullivan.com/" class="navbar-brand">
+Daniel M. Sullivan            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pdf/Sullivan_CV.pdf">CV</a></li>
+                    <li><a href="/pages/research.html">Research</a></li>
+                    <li><a href="/pages/code.html">Code</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content" class="body">
+        <h1 class="entry-title">Best Practices when Writing Python</h1>
+        
+        <div class="entry-content">
+            <p>Writing Code in Econ:</p>
+<ul class="simple">
+<li><a class="reference external" href="tutorial_workflow_0overview.html">Overview</a></li>
+<li>Previous: <a class="reference external" href="tutorial_workflow_2project_org.html">Project Organization</a></li>
+</ul>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#no-copying-and-pasting" id="id1">1&nbsp;&nbsp;&nbsp;No copying and pasting</a></li>
+<li><a class="reference internal" href="#write-self-documenting-code" id="id2">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a></li>
+<li><a class="reference internal" href="#use-functions-like-paragraphs" id="id3">3&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></li>
+<li><a class="reference internal" href="#scripts-should-only-contain-functions-and-an-if-main-block" id="id4">4&nbsp;&nbsp;&nbsp;Scripts should only contain functions and an &quot;if-main&quot; block</a></li>
+<li><a class="reference internal" href="#use-the-ipython-terminal-and-a-text-editor" id="id5">5&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></li>
+<li><a class="reference internal" href="#incrementally-build-your-code-in-a-script" id="id6">6&nbsp;&nbsp;&nbsp;Incrementally build your code in a script</a></li>
+<li><a class="reference internal" href="#use-a-consistent-style" id="id7">7&nbsp;&nbsp;&nbsp;Use a consistent style</a><ul class="auto-toc">
+<li><a class="reference internal" href="#lines-should-be-less-than-80-characters-wide" id="id8">7.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></li>
+<li><a class="reference internal" href="#indentation" id="id9">7.2&nbsp;&nbsp;&nbsp;Indentation</a></li>
+<li><a class="reference internal" href="#imports" id="id10">7.3&nbsp;&nbsp;&nbsp;Imports</a></li>
+<li><a class="reference internal" href="#other-stuff" id="id11">7.4&nbsp;&nbsp;&nbsp;Other stuff</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-code" id="id12">8&nbsp;&nbsp;&nbsp;Example Code</a></li>
+</ul>
+</div>
+<hr class="docutils" />
+<blockquote>
+<p>Indeed, the ratio of time spent reading versus writing is well over 10 to
+1. We are constantly reading old code as part of the effort to write new
+code. ...[Therefore,] making it easy to read makes it easier to write.</p>
+<p>~ Robert C. Martin, Clean Code: A Handbook of Agile Software Craftsmanship</p>
+</blockquote>
+<p>Writing code clearly is important, especialy when you're working with a team.
+Code that's easy to read improves everyone's productivity, even when the
+&quot;other&quot; person reading the code is you two months from now after you've
+forgotten everything you wrote.</p>
+<div class="section" id="no-copying-and-pasting">
+<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;No copying and pasting</a></h2>
+<p>Variables and algorithms should be defined in exactly one place. This is a
+cardinal rule. If you copy and paste code to use it in multiple places, it is
+difficult to make sure any changes you make later also get copied and pasted.
+If a file name is defined in only one place and imported everywhere it's used,
+you can change the file name in a single place and you know for certain and all
+of your code will use the new file name.</p>
+</div>
+<div class="section" id="write-self-documenting-code">
+<h2><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a></h2>
+<p>Give variables, functions, and files descriptive names. Err on the side of
+names being too long and too descriptive. Part of the reason you should be
+using tools like a good text editor and a good console like CMDer is that they
+have lots of predictive text and auto-completion functions to help with long
+variable and file names. Use comments to clarify why a particular coding
+choice was made. A few examples:</p>
+<ul class="simple">
+<li>The filename <code>reg_sale_price.py</code> is beter than <code>reg.py</code>.
+A name like <code>table1.py</code> is completely forbidden.</li>
+<li>It is helpful to name functions or variables that only take on True/False
+values with <code>is_</code> or <code>has_</code>. See <code>is_triangle</code> in the
+example code below.</li>
+</ul>
+<p>A few other naming conventions we tend to follow:</p>
+<ul class="simple">
+<li>If a function only deals with a single Pandas DataFrame, call it <code>df</code>.</li>
+<li>Indexes in loops should still be descriptive. However, the index inside a
+list comprehension can be something short like <code>i</code> or <code>x</code>,
+provided there is only one variable being looped over.</li>
+<li>Data or a variable that is intended to be final output should have
+<code>out</code> somewhere in the name.</li>
+<li>Degrees longitude and latitude will tend to be called <code>x</code> and <code>y</code>
+respectively. This is not a requirement but we have found that it's easy to
+mix up &quot;latitude&quot; and &quot;longitude&quot;.</li>
+</ul>
+</div>
+<div class="section" id="use-functions-like-paragraphs">
+<h2><a class="toc-backref" href="#id3">3&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></h2>
+<p>The main unit of code should be functions. Even if you think you're only going
+to use a function once, breaking the code into functions makes it easier to
+read the code.</p>
+</div>
+<div class="section" id="scripts-should-only-contain-functions-and-an-if-main-block">
+<h2><a class="toc-backref" href="#id4">4&nbsp;&nbsp;&nbsp;Scripts should only contain functions and an &quot;if-main&quot; block</a></h2>
+<p>When you import something from another Python file, the entire file is executed
+first. Suppose you want to import a function called
+<code>computation_that_takes_forever</code> which is used in script
+<code>cleandata.py</code> that looks like this</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">computation_that_takes_forever</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; This takes a long time &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span> <span class="o">**</span> <span class="n">df</span> <span class="o">**</span> <span class="n">df</span>
+    <span class="c1"># Other stuff</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;giant_dataset.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">computation_that_takes_forever</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</td></tr></table><p>When you run <code>from cleandata import computation_that_takes_forever</code>, the
+entire <code>cleandata.py</code> script gets run, <strong>including the data loading and
+processing on lines 9 and 10!!</strong> We don't want to run this whole data cleaning
+process every time we import the function.</p>
+<p>The solution is to put that execution in a different function or in an
+&quot;if-main&quot; block like so:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">computation_that_takes_forever</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; This takes a long time &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span> <span class="o">**</span> <span class="n">df</span> <span class="o">**</span> <span class="n">df</span>
+    <span class="c1"># Other stuff</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;giant_dataset.csv&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">computation_that_takes_forever</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</td></tr></table><p>Any code inside the <code>if __name__ == '__main__'</code> block will only be
+executed if the script is called directly from the command line or via
+<code>%run</code> in IPython. It is <em>not</em> run if the script is imported by another
+script. So in our new version of <code>cleandata.py</code>, lines 10 and 11 only get
+executed if we run <code>python cleandata.py</code> from the command line or
+<code>%run cleandata.py</code> inside IPython.</p>
+</div>
+<div class="section" id="use-the-ipython-terminal-and-a-text-editor">
+<h2><a class="toc-backref" href="#id5">5&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></h2>
+<p>Jupyter and Spyder are great tools for analyzing data in Python. However, it
+is hard to keep perfect track of your computing environemnt (which versions of
+packages are loaded, etc.) while using these tools. Our preferred solution is
+to use a robust text editor (Atom, Vim, Emacs) alongside a CMDer window running
+the IPython terminal. You can then use the <code>%run</code> command inside IPython
+to run your code.</p>
+</div>
+<div class="section" id="incrementally-build-your-code-in-a-script">
+<h2><a class="toc-backref" href="#id6">6&nbsp;&nbsp;&nbsp;Incrementally build your code in a script</a></h2>
+<p>It's pretty common for data work in social science to look like this: You open
+STATA, R, Python, etc. and start poking around on the command line, interacting
+with the data until you get where you want. Then you use the command history
+(or your memory) to reconstruct what you did and put it in a script.</p>
+<p>This is a bad way to work. Reconstructing exactly what you did is often
+difficult. At best, you're doing everything twice. Jupyter notebooks were
+designed in part to address this problem. However, as mentioned above, our
+work doesn't always play nice with Jupyter notebooks.</p>
+<p>You can avoid duplicating your work and introducing bugs by incrementally
+writing your script. Start with a script that's empty except for the if-main
+block. Write the beginnings of your first function in the if-main block:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># Prep data for regression</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TX&#39;</span><span class="p">]</span>    <span class="c1"># Restrict to Texas</span>
+    <span class="c1"># Do other cleaning</span>
+</pre></div>
+<p>Now run your script using <code>%run</code> in IPython. Use some basic interactivity
+to figure out any bugs (e.g., maybe the state variable isn't called &quot;state&quot;).
+After you fix a problem in your script, <code>%run</code> it again. Keep doing this
+until you're done with the given task (e.g., prepping the data for a
+regression), then move that code into a function.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">prep_data_for_reg</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Prep data for regression &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TX&#39;</span><span class="p">]</span>    <span class="c1"># Restrict to Texas</span>
+    <span class="c1"># Do other cleaning...</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">prep_data_for_reg</span><span class="p">()</span>
+</pre></div>
+<p>Now you can start work on your next task in the if-main block in the same way.
+This is also a good time to commit your changes in Git if you haven't already
+done so.</p>
+<p>When you're done, there should be a very simple if-main block or no if-main
+block at all.</p>
+</div>
+<div class="section" id="use-a-consistent-style">
+<h2><a class="toc-backref" href="#id7">7&nbsp;&nbsp;&nbsp;Use a consistent style</a></h2>
+<p>Just like for writing prose, there are style guides for writing code. Python as
+an official style guide called PEP8 that contains more rules than I'll go over
+here. However, there is a create Python tool called Flake8 that will
+automatically check your code for PEP8 errors and syntax errors. It can be
+integrated into the Atom editor using the <code>linter-flake8</code> plugin.</p>
+<p>A few examples of important PEP8 rules that we'll follow:</p>
+<div class="section" id="lines-should-be-less-than-80-characters-wide">
+<h3><a class="toc-backref" href="#id8">7.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></h3>
+<dl class="docutils">
+<dt>Lines of code should be less than 80 characters wide. Fortunately in Python</dt>
+<dd>line wrapping is very easy. Anything within parentheses can be broken across
+lines, including function calls:</dd>
+</dl>
+<div class="highlight"><pre><span></span><span class="n">std_dev</span> <span class="o">=</span> <span class="n">find_std_dev</span><span class="p">(</span><span class="n">dataset1</span><span class="p">,</span>
+                       <span class="n">dataset2</span><span class="p">,</span>
+                       <span class="n">dataset3</span><span class="p">)</span>
+</pre></div>
+<p>Even if a line of code won't break 80 characters, it's often easier to break it
+into several lines for clarity.</p>
+<div class="highlight"><pre><span></span><span class="n">bad_seconds_per_year</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span>
+
+<span class="n">good_seconds_per_year</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mi">60</span> <span class="o">*</span>     <span class="c1"># seconds per minute</span>
+    <span class="mi">60</span> <span class="o">*</span>     <span class="c1"># minutes per hour</span>
+    <span class="mi">24</span> <span class="o">*</span>     <span class="c1"># hours per day</span>
+    <span class="mi">365</span>      <span class="c1"># days per year</span>
+<span class="p">)</span>
+
+<span class="n">bad_dataframe_chain</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Yearly Avg&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;dumb_var&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bad_dataframe_chain</span> <span class="o">=</span> <span class="n">bad_dataframe_chain</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;state_id&#39;</span><span class="p">)</span>
+
+<span class="n">good_dataframe_chain</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span>
+                        <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Yearly Avg&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span>
+                        <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;dumb_var&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;state_id&#39;</span><span class="p">))</span>
+</pre></div>
+<p>Long strings can be wrapped in parenthesis as well and will automatically be
+concatenated. Just don't forget to add spaces where necessary.</p>
+<div class="highlight"><pre><span></span><span class="n">one_long_string</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;When in the course of human events &quot;</span>
+    <span class="s2">&quot;it becomes necessary for one &quot;</span>
+    <span class="s2">&quot;people to dissolve the political &quot;</span>
+    <span class="s2">&quot;bands which have connected them &quot;</span>
+    <span class="s2">&quot;with another and to assume among &quot;</span>
+    <span class="s2">&quot;the powers of the earth, the &quot;</span>
+    <span class="s2">&quot;separate and equal station to which &quot;</span>
+    <span class="s2">&quot;the Laws of Nature and of Nature&#39;s &quot;</span>
+    <span class="s2">&quot;God entitle them, a decent respect &quot;</span>
+    <span class="s2">&quot;to the opinions of mankind requires &quot;</span>
+    <span class="s2">&quot;that they should declare the causes &quot;</span>
+    <span class="s2">&quot;which impel them to the separation.&quot;</span>
+<span class="p">)</span>
+</pre></div>
+<p>This also holds for imports, which can also be broken across lines using parens</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datasource</span> <span class="k">import</span> <span class="p">(</span><span class="n">load_data_1</span><span class="p">,</span> <span class="n">load_data_2</span><span class="p">,</span> <span class="n">load_data_3</span><span class="p">,</span> <span class="n">load_data_4</span><span class="p">,</span>
+                        <span class="n">load_data_5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="indentation">
+<h3><a class="toc-backref" href="#id9">7.2&nbsp;&nbsp;&nbsp;Indentation</a></h3>
+<p>Whitespace is important in Python and screwing up indentation can cause your
+code to crash.</p>
+<ul class="simple">
+<li>Do not use tabs to indent. Use 4 spaces. Your editor should have a setting
+for this, so that when you hit the tab key the editor inserts 4 spaces
+instead of a tab code (<code>\t</code>).</li>
+<li>When you break a line using parentheses, the next line should line up with
+the open parenthesis on the line above. If the open parenthesis is the alone
+on that line, indent once.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># This is good</span>
+<span class="kn">from</span> <span class="nn">datasource</span> <span class="k">import</span> <span class="p">(</span><span class="n">load_data_1</span><span class="p">,</span> <span class="n">load_data_2</span><span class="p">,</span> <span class="n">load_data_3</span><span class="p">,</span> <span class="n">load_data_4</span><span class="p">,</span>
+                        <span class="n">load_data_5</span><span class="p">)</span>
+<span class="c1"># This is bad</span>
+<span class="kn">from</span> <span class="nn">datasource</span> <span class="k">import</span> <span class="p">(</span><span class="n">load_data_1</span><span class="p">,</span> <span class="n">load_data_2</span><span class="p">,</span> <span class="n">load_data_3</span><span class="p">,</span> <span class="n">load_data_4</span><span class="p">,</span>
+                            <span class="n">load_data_5</span><span class="p">)</span>
+
+<span class="c1"># This is good</span>
+<span class="n">good_seconds_per_year</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mi">60</span> <span class="o">*</span>     <span class="c1"># seconds per minute</span>
+    <span class="mi">60</span> <span class="o">*</span>     <span class="c1"># minutes per hour</span>
+    <span class="mi">24</span> <span class="o">*</span>     <span class="c1"># hours per day</span>
+    <span class="mi">365</span>      <span class="c1"># days per year</span>
+<span class="p">)</span>
+<span class="c1"># This is bad</span>
+<span class="n">bad_seconds_per_year</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="mi">60</span> <span class="o">*</span>     <span class="c1"># seconds per minute</span>
+            <span class="mi">60</span> <span class="o">*</span>     <span class="c1"># minutes per hour</span>
+            <span class="mi">24</span> <span class="o">*</span>     <span class="c1"># hours per day</span>
+            <span class="mi">365</span>      <span class="c1"># days per year</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="imports">
+<h3><a class="toc-backref" href="#id10">7.3&nbsp;&nbsp;&nbsp;Imports</a></h3>
+<ul class="simple">
+<li>Imports go at the top of the file.</li>
+<li><em>NEVER</em> import an entire package like this: <code>from numpy import *</code>.</li>
+<li>Separate and order imports like so</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>               <span class="c1"># Standard library (come with Python)</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>      <span class="c1"># Third-party packages</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">drillinginfo</span> <span class="k">import</span> <span class="n">clean_wells</span>    <span class="c1"># Packages developed by our team</span>
+
+<span class="kn">from</span> <span class="nn">util.env</span> <span class="k">import</span> <span class="n">data_path</span>          <span class="c1"># Imports from *this* project</span>
+</pre></div>
+</div>
+<div class="section" id="other-stuff">
+<h3><a class="toc-backref" href="#id11">7.4&nbsp;&nbsp;&nbsp;Other stuff</a></h3>
+<ul class="simple">
+<li>Spaces around assignments: <code>x = 7</code> not <code>x=7</code>.</li>
+<li>Name functions and variables with lowercase letters and underscores.</li>
+<li>Functions meant to be local (subroutines not meant to be imported by other
+scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</li>
+<li>Two lines between unrelated functions. One line between auxiliary functions:</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">primary_func1</span><span class="p">():</span>
+    <span class="c1"># Stuff</span>
+
+<span class="k">def</span> <span class="nf">_aux_to_1</span><span class="p">():</span>
+    <span class="c1"># Stuff</span>
+
+<span class="k">def</span> <span class="nf">_another_aux_to_1</span><span class="p">():</span>
+    <span class="c1"># Stuff</span>
+
+
+<span class="k">def</span> <span class="nf">primary_func2</span><span class="p">():</span>
+    <span class="c1"># Stuff</span>
+
+<span class="k">def</span> <span class="nf">_aux_to_2</span><span class="p">():</span>
+    <span class="c1"># Stuff</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="example-code">
+<h2><a class="toc-backref" href="#id12">8&nbsp;&nbsp;&nbsp;Example Code</a></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Task: read the words from the file `tmp.txt` and calculate each word&#39;s score</span>
+<span class="sd">based on the &quot;value&quot; of its letters, where A=1, B=2, etc. Then calculate how</span>
+<span class="sd">many words in the file are &quot;triangle&quot; numbers. A number T is a triangle number</span>
+<span class="sd">if there is an integer n such that T = n * (n + 1) / 2. Solution to Project</span>
+<span class="sd">Euler Problem 42.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">string</span> <span class="k">import</span> <span class="n">ascii_uppercase</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="n">LETTER_SCORE</span> <span class="o">=</span> <span class="p">{</span><span class="n">ascii_uppercase</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">)}</span>
+
+
+<span class="k">def</span> <span class="nf">word_score</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Calculate total letter score for `word` &quot;&quot;&quot;</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="n">LETTER_SCORE</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">score</span>
+
+
+<span class="k">def</span> <span class="nf">is_triangle</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Use definition of triangle number and the quadratic formula to see if</span>
+<span class="sd">    `x` is a triangle number.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">positive_root</span> <span class="o">=</span> <span class="n">_positive_quadratic_root</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">positive_root</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">positive_root</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_positive_quadratic_root</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+
+    <span class="n">positive_root</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">positive_root</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;tmp.txt&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;word_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">word_score</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_triangle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;word_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_triangle</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_triangle&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</td></tr></table></div>
+
+        </div>
+    </section>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="http://www.danielmsullivan.com/images/dms_med.jpg"/>
+        </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/dmsul"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="mailto:sullivan@rff.org"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ" target="_blank">Google Scholar</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://orcid.org/0000-0002-0380-7681" target="_blank">ORCID</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://ideas.repec.org/f/psu490.html" target="_blank">RePEc</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://www.rff.org/people/profile/daniel-m-sullivan" target="_blank">RFF page</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy;  Daniel M. Sullivan
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-88761020-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
