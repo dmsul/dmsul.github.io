@@ -12,13 +12,13 @@
 <link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_workflow_3python.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
-        <meta name="description" content="Writing Code in Econ: Overview Previous: Project Organization Contents 1   No copying and pasting 2   Write self-documenting code 3   Use functions like paragraphs 4   Scripts should only contain functions and an &#34;if-main&#34; block 5   Use the IPython terminal and a text editor 6   Incrementally build your code in a script 7   Use a consistent style 7.1   Lines should be less than 80 characters wide …" />
+        <meta name="description" content="Writing Code in Econ: Overview Previous: Project Organization Contents 1   No copying and pasting 2   Write self-documenting code 3   Use functions like paragraphs 4   Scripts should only contain functions and an &#34;if-main&#34; block 5   Use the IPython terminal and a text editor 6   Build your code incrementally in a script 7   Use a consistent style 7.1   Lines should be less than 80 characters wide …" />
 
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Best Practices when Writing Python"/>
     <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_workflow_3python.html"/>
-    <meta property="og:description" content="Writing Code in Econ: Overview Previous: Project Organization Contents 1   No copying and pasting 2   Write self-documenting code 3   Use functions like paragraphs 4   Scripts should only contain functions and an &#34;if-main&#34; block 5   Use the IPython terminal and a text editor 6   Incrementally build your code in a script 7   Use a consistent style 7.1   Lines should be less than 80 characters wide …" />
+    <meta property="og:description" content="Writing Code in Econ: Overview Previous: Project Organization Contents 1   No copying and pasting 2   Write self-documenting code 3   Use functions like paragraphs 4   Scripts should only contain functions and an &#34;if-main&#34; block 5   Use the IPython terminal and a text editor 6   Build your code incrementally in a script 7   Use a consistent style 7.1   Lines should be less than 80 characters wide …" />
 
 
 
@@ -86,15 +86,16 @@ Daniel M. Sullivan            </a>
 <li><a class="reference internal" href="#use-functions-like-paragraphs" id="id3">3&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></li>
 <li><a class="reference internal" href="#scripts-should-only-contain-functions-and-an-if-main-block" id="id4">4&nbsp;&nbsp;&nbsp;Scripts should only contain functions and an &quot;if-main&quot; block</a></li>
 <li><a class="reference internal" href="#use-the-ipython-terminal-and-a-text-editor" id="id5">5&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></li>
-<li><a class="reference internal" href="#incrementally-build-your-code-in-a-script" id="id6">6&nbsp;&nbsp;&nbsp;Incrementally build your code in a script</a></li>
+<li><a class="reference internal" href="#build-your-code-incrementally-in-a-script" id="id6">6&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></li>
 <li><a class="reference internal" href="#use-a-consistent-style" id="id7">7&nbsp;&nbsp;&nbsp;Use a consistent style</a><ul class="auto-toc">
 <li><a class="reference internal" href="#lines-should-be-less-than-80-characters-wide" id="id8">7.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></li>
 <li><a class="reference internal" href="#indentation" id="id9">7.2&nbsp;&nbsp;&nbsp;Indentation</a></li>
 <li><a class="reference internal" href="#imports" id="id10">7.3&nbsp;&nbsp;&nbsp;Imports</a></li>
-<li><a class="reference internal" href="#other-stuff" id="id11">7.4&nbsp;&nbsp;&nbsp;Other stuff</a></li>
+<li><a class="reference internal" href="#don-t-use-the-same-variable-name-for-different-things" id="id11">7.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></li>
+<li><a class="reference internal" href="#other-stuff" id="id12">7.5&nbsp;&nbsp;&nbsp;Other stuff</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#example-code" id="id12">8&nbsp;&nbsp;&nbsp;Example Code</a></li>
+<li><a class="reference internal" href="#example-code" id="id13">8&nbsp;&nbsp;&nbsp;Example Code</a></li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -104,18 +105,18 @@ Daniel M. Sullivan            </a>
 code. ...[Therefore,] making it easy to read makes it easier to write.</p>
 <p>~ Robert C. Martin, Clean Code: A Handbook of Agile Software Craftsmanship</p>
 </blockquote>
-<p>Writing code clearly is important, especialy when you're working with a team.
+<p>Writing easy-to-read code is important, especialy when you're working with a team.
 Code that's easy to read improves everyone's productivity, even when the
-&quot;other&quot; person reading the code is you two months from now after you've
-forgotten everything you wrote.</p>
+&quot;other&quot; person reading the code is Future You in two months, because Future You
+may rememeber very little everything the code you're writing today.</p>
 <div class="section" id="no-copying-and-pasting">
 <h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;No copying and pasting</a></h2>
 <p>Variables and algorithms should be defined in exactly one place. This is a
 cardinal rule. If you copy and paste code to use it in multiple places, it is
 difficult to make sure any changes you make later also get copied and pasted.
-If a file name is defined in only one place and imported everywhere it's used,
-you can change the file name in a single place and you know for certain and all
-of your code will use the new file name.</p>
+If a file name is defined in only one place and imported elsewhere,
+you can change the file name in that single place know for certain the change
+will propagate through the rest of your code.</p>
 </div>
 <div class="section" id="write-self-documenting-code">
 <h2><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a></h2>
@@ -145,14 +146,14 @@ mix up &quot;latitude&quot; and &quot;longitude&quot;.</li>
 </div>
 <div class="section" id="use-functions-like-paragraphs">
 <h2><a class="toc-backref" href="#id3">3&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></h2>
-<p>The main unit of code should be functions. Even if you think you're only going
+<p>The main unit of code should be functions. Even if you're only going
 to use a function once, breaking the code into functions makes it easier to
-read the code.</p>
+read.</p>
 </div>
 <div class="section" id="scripts-should-only-contain-functions-and-an-if-main-block">
 <h2><a class="toc-backref" href="#id4">4&nbsp;&nbsp;&nbsp;Scripts should only contain functions and an &quot;if-main&quot; block</a></h2>
-<p>When you import something from another Python file, the entire file is executed
-first. Suppose you want to import a function called
+<p>When you import something from another Python file, the entire file is
+executed. Suppose you want to import a function called
 <code>computation_that_takes_forever</code> which is used in script
 <code>cleandata.py</code> that looks like this</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -219,18 +220,18 @@ to use a robust text editor (Atom, Vim, Emacs) alongside a CMDer window running
 the IPython terminal. You can then use the <code>%run</code> command inside IPython
 to run your code.</p>
 </div>
-<div class="section" id="incrementally-build-your-code-in-a-script">
-<h2><a class="toc-backref" href="#id6">6&nbsp;&nbsp;&nbsp;Incrementally build your code in a script</a></h2>
+<div class="section" id="build-your-code-incrementally-in-a-script">
+<h2><a class="toc-backref" href="#id6">6&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></h2>
 <p>It's pretty common for data work in social science to look like this: You open
-STATA, R, Python, etc. and start poking around on the command line, interacting
+STATA, R, Python, etc., and start poking around on the command line, interacting
 with the data until you get where you want. Then you use the command history
 (or your memory) to reconstruct what you did and put it in a script.</p>
 <p>This is a bad way to work. Reconstructing exactly what you did is often
 difficult. At best, you're doing everything twice. Jupyter notebooks were
 designed in part to address this problem. However, as mentioned above, our
 work doesn't always play nice with Jupyter notebooks.</p>
-<p>You can avoid duplicating your work and introducing bugs by incrementally
-writing your script. Start with a script that's empty except for the if-main
+<p>You can avoid these problems by writing your script incrementally.
+Start with a script that's empty except for the if-main
 block. Write the beginnings of your first function in the if-main block:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -260,29 +261,25 @@ regression), then move that code into a function.</p>
 <p>Now you can start work on your next task in the if-main block in the same way.
 This is also a good time to commit your changes in Git if you haven't already
 done so.</p>
-<p>When you're done, there should be a very simple if-main block or no if-main
-block at all.</p>
+<p>When you're done, there should be a very simple (maybe empty) if-main block.</p>
 </div>
 <div class="section" id="use-a-consistent-style">
 <h2><a class="toc-backref" href="#id7">7&nbsp;&nbsp;&nbsp;Use a consistent style</a></h2>
-<p>Just like for writing prose, there are style guides for writing code. Python as
+<p>Just like for writing prose, there are style guides for writing code. Python has
 an official style guide called PEP8 that contains more rules than I'll go over
-here. However, there is a create Python tool called Flake8 that will
-automatically check your code for PEP8 errors and syntax errors. It can be
+here. However, there is a great Python tool called Flake8 that will
+automatically check your code for PEP8 and syntax errors. It can be
 integrated into the Atom editor using the <code>linter-flake8</code> plugin.</p>
 <p>A few examples of important PEP8 rules that we'll follow:</p>
 <div class="section" id="lines-should-be-less-than-80-characters-wide">
 <h3><a class="toc-backref" href="#id8">7.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></h3>
-<dl class="docutils">
-<dt>Lines of code should be less than 80 characters wide. Fortunately in Python</dt>
-<dd>line wrapping is very easy. Anything within parentheses can be broken across
-lines, including function calls:</dd>
-</dl>
-<div class="highlight"><pre><span></span><span class="n">std_dev</span> <span class="o">=</span> <span class="n">find_std_dev</span><span class="p">(</span><span class="n">dataset1</span><span class="p">,</span>
-                       <span class="n">dataset2</span><span class="p">,</span>
-                       <span class="n">dataset3</span><span class="p">)</span>
+<p>Fortunately in Python line wrapping is very easy. Anything within parentheses
+can be broken across lines, including function calls:</p>
+<div class="highlight"><pre><span></span><span class="n">std_devs</span> <span class="o">=</span> <span class="n">find_std_dev</span><span class="p">(</span><span class="n">variable1</span><span class="p">,</span>
+                        <span class="n">variable2</span><span class="p">,</span>
+                        <span class="n">variable3</span><span class="p">)</span>
 </pre></div>
-<p>Even if a line of code won't break 80 characters, it's often easier to break it
+<p>Even if a line of code isn't 80 characters long, it's often better to break it
 into several lines for clarity.</p>
 <div class="highlight"><pre><span></span><span class="n">bad_seconds_per_year</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span>
 
@@ -301,7 +298,7 @@ into several lines for clarity.</p>
                         <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;dumb_var&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
                         <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;state_id&#39;</span><span class="p">))</span>
 </pre></div>
-<p>Long strings can be wrapped in parenthesis as well and will automatically be
+<p>Long strings can be wrapped in parentheses as well and will automatically be
 concatenated. Just don't forget to add spaces where necessary.</p>
 <div class="highlight"><pre><span></span><span class="n">one_long_string</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">&quot;When in the course of human events &quot;</span>
@@ -332,7 +329,7 @@ code to crash.</p>
 for this, so that when you hit the tab key the editor inserts 4 spaces
 instead of a tab code (<code>\t</code>).</li>
 <li>When you break a line using parentheses, the next line should line up with
-the open parenthesis on the line above. If the open parenthesis is the alone
+the open parenthesis on the line above. If the open parenthesis is alone
 on that line, indent once.</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="c1"># This is good</span>
@@ -376,10 +373,32 @@ on that line, indent once.</li>
 <span class="kn">from</span> <span class="nn">util.env</span> <span class="k">import</span> <span class="n">data_path</span>          <span class="c1"># Imports from *this* project</span>
 </pre></div>
 </div>
+<div class="section" id="don-t-use-the-same-variable-name-for-different-things">
+<h3><a class="toc-backref" href="#id11">7.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></h3>
+<p>Python (and Stata and R) are dynamically-typed languages, which means that they
+just figure out what kind of data a variable is, like a string, an integer or a
+decimal float. As a result, it's common to see people re-use variable names for
+different things. For example:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Bad</span>
+<span class="n">to_clean</span> <span class="o">=</span> <span class="s1">&#39;c:/data/raw_data.csv&#39;</span>
+<span class="n">to_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">to_clean</span><span class="p">)</span>
+</pre></div>
+<p>This short example isn't too bad, but on larger scales it can be very confusing
+when a variable you thought was a DataFrame ends up being a string or vice
+versa. This type changing is also computationally slower. (It also screws up
+the <cite>mypy</cite> linter/type-checker.) A better solution is to be more explicit in
+naming your variables:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Good</span>
+<span class="n">raw_data_path</span> <span class="o">=</span> <span class="s1">&#39;c:/data/raw_data.csv&#39;</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">raw_data_path</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="section" id="other-stuff">
-<h3><a class="toc-backref" href="#id11">7.4&nbsp;&nbsp;&nbsp;Other stuff</a></h3>
+<h3><a class="toc-backref" href="#id12">7.5&nbsp;&nbsp;&nbsp;Other stuff</a></h3>
 <ul class="simple">
 <li>Spaces around assignments: <code>x = 7</code> not <code>x=7</code>.</li>
+<li>No spaces around keyword variables: <code>function(arg1=y, arg2=3)</code>.</li>
+<li>Spaces after commas (just like in prose).</li>
 <li>Name functions and variables with lowercase letters and underscores.</li>
 <li>Functions meant to be local (subroutines not meant to be imported by other
 scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</li>
@@ -418,7 +437,7 @@ scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</
 </td></tr></table></div>
 </div>
 <div class="section" id="example-code">
-<h2><a class="toc-backref" href="#id12">8&nbsp;&nbsp;&nbsp;Example Code</a></h2>
+<h2><a class="toc-backref" href="#id13">8&nbsp;&nbsp;&nbsp;Example Code</a></h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
