@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Stata to Python Equivalents - Daniel M. Sullivan</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">
+
+        <meta name="author" content="Daniel M. Sullivan" />
+        <meta name="description" content="Contents 1   Intro/Note on Notation 2   Input/Output 3   Sample Selection 4   Data Info and Summary Statistics 5   Variable Manipulation 6   Panel Data 7   Merging and Joining 8   Reshape 9   Econometrics 10   Plotting 11   Other differences td { padding: 7px; } tr:nth-child(even){background-color: #eeeeee;} Special thanks to John Coglianese for feedback and for supplying the list of &#34;vital&#34; Stata commands. Feedback and requests for …" />
+
+    <meta property="og:site_name" content="Daniel M. Sullivan" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Stata to Python Equivalents"/>
+    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html"/>
+    <meta property="og:description" content="Contents 1   Intro/Note on Notation 2   Input/Output 3   Sample Selection 4   Data Info and Summary Statistics 5   Variable Manipulation 6   Panel Data 7   Merging and Joining 8   Reshape 9   Econometrics 10   Plotting 11   Other differences td { padding: 7px; } tr:nth-child(even){background-color: #eeeeee;} Special thanks to John Coglianese for feedback and for supplying the list of &#34;vital&#34; Stata commands. Feedback and requests for …" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.danielmsullivan.com/" class="navbar-brand">
+Daniel M. Sullivan            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pdf/Sullivan_CV.pdf">CV</a></li>
+                    <li><a href="/pages/research.html">Research</a></li>
+                    <li><a href="/pages/code.html">Code</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content" class="body">
+        <h1 class="entry-title">Stata to Python Equivalents</h1>
+        
+        <div class="entry-content">
+            <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#intro-note-on-notation" id="id1">1&nbsp;&nbsp;&nbsp;Intro/Note on Notation</a></li>
+<li><a class="reference internal" href="#input-output" id="id2">2&nbsp;&nbsp;&nbsp;Input/Output</a></li>
+<li><a class="reference internal" href="#sample-selection" id="id3">3&nbsp;&nbsp;&nbsp;Sample Selection</a></li>
+<li><a class="reference internal" href="#data-info-and-summary-statistics" id="id4">4&nbsp;&nbsp;&nbsp;Data Info and Summary Statistics</a></li>
+<li><a class="reference internal" href="#variable-manipulation" id="id5">5&nbsp;&nbsp;&nbsp;Variable Manipulation</a></li>
+<li><a class="reference internal" href="#panel-data" id="id6">6&nbsp;&nbsp;&nbsp;Panel Data</a></li>
+<li><a class="reference internal" href="#merging-and-joining" id="id7">7&nbsp;&nbsp;&nbsp;Merging and Joining</a></li>
+<li><a class="reference internal" href="#reshape" id="id8">8&nbsp;&nbsp;&nbsp;Reshape</a></li>
+<li><a class="reference internal" href="#econometrics" id="id9">9&nbsp;&nbsp;&nbsp;Econometrics</a></li>
+<li><a class="reference internal" href="#plotting" id="id10">10&nbsp;&nbsp;&nbsp;Plotting</a></li>
+<li><a class="reference internal" href="#other-differences" id="id11">11&nbsp;&nbsp;&nbsp;Other differences</a></li>
+</ul>
+</div>
+<style>     td {       padding: 7px;     }     tr:nth-child(even){background-color: #eeeeee;} </style><p>Special thanks to John Coglianese for feedback and for supplying the list of
+&quot;vital&quot; Stata commands. Feedback and requests for additions to the list are
+always welcome!</p>
+<p>The official Pandas documentation includes a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/comparison_with_stata.html">&quot;Comparison with Stata&quot;</a>
+page which is another great resource.</p>
+<div class="section" id="intro-note-on-notation">
+<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Intro/Note on Notation</a></h2>
+<p>Coding in Python is a little different than coding in Stata.</p>
+<p>In Stata, you have one dataset in memory. The dataset is a matrix where each
+column is a &quot;variable&quot; with a unique name and each row has a number (the
+special variable <code>_n</code>). Everything in Stata is built around this
+paradigm.</p>
+<p>Python is a general purpose programming language where a &quot;variable&quot; is not a
+column of data. Variables can be anything, a single number, a matrix, a list, a
+string, etc. The Pandas package implements a kind of variable called a
+DataFrame that acts a lot like the single dataset in Stata. It is a matrix
+where each column and each row has a name. The key distinction in Python is
+that a DataFrame is itself a variable and you can work with any number of
+DataFrames at one time. You can think of each column in a DataFrame as a
+variable just like in Stata, except that when you reference a column, you also
+have to specify the DataFrame.</p>
+<p>The Stata-to-Python translations below are written assuming that you have a
+single DataFrame called <code>df</code>. Placeholders like <code>&lt;varname&gt;</code> and
+<code>&lt;dtafile&gt;</code> show where user-specified values go in each language. Note
+that in many cases, <code>&lt;varname&gt;</code> will be simple text in Stata (e.g.,
+<code>avg_income</code>) while in Python it will be a string (<code>'avg_income'</code>).
+If you were to write <code>df[avg_income]</code> without quotes, Python would go
+looking for a variable--a list, a number, a string--that's been defined
+somewhere else.</p>
+</div>
+<div class="section" id="input-output">
+<h2><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;Input/Output</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Stata</th>
+<th class="head">Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>log using &lt;file&gt;</code></td>
+<td>Python doesn't display results automatically like Stata. You have to
+explicitly call the <code>print</code> function. Using a Jupyter notebook is
+the closest equivalent.</td>
+</tr>
+<tr><td><code>cd &lt;directory&gt;</code></td>
+<td><div class="first last line-block">
+<div class="line"><code>import os</code></div>
+<div class="line"><code>os.chdir('&lt;directory&gt;')</code></div>
+<div class="line">but this is bad practice. Better practice is to use full pathnames whenever possible.</div>
+</div>
+</td>
+</tr>
+<tr><td><code>use &lt;dtafile&gt;</code></td>
+<td><div class="first last line-block">
+<div class="line"><code>import pandas as pd</code></div>
+<div class="line"><code>df = pd.read_stata('&lt;dtafile&gt;')</code></div>
+</div>
+</td>
+</tr>
+<tr><td><code>import excel using &lt;excelfile&gt;</code></td>
+<td><code>df = pd.read_excel('&lt;excelfile&gt;')</code></td>
+</tr>
+<tr><td><code>import delimited using &lt;csvfile&gt;</code></td>
+<td><code>df = pd.read_csv('&lt;csvfile&gt;')</code></td>
+</tr>
+<tr><td><code>save &lt;filename&gt;, replace</code></td>
+<td><div class="first last line-block">
+<div class="line"><code>df.to_stata('&lt;filename&gt;')</code> OR</div>
+<div class="line"><code>df.to_pickle('&lt;filename&gt;')</code> for Python-native file type.</div>
+</div>
+</td>
+</tr>
+<tr><td><code>outsheet using &lt;csv_name&gt;, comma</code></td>
+<td><code>df.to_csv('&lt;csv_name&gt;')</code></td>
+</tr>
+<tr><td><code>export excel using &lt;excel_name&gt;</code></td>
+<td><code>df.to_excel('&lt;excel_name&gt;')</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sample-selection">
+<h2><a class="toc-backref" href="#id3">3&nbsp;&nbsp;&nbsp;Sample Selection</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Stata</th>
+<th class="head">Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>keep if &lt;condition&gt;</code></td>
+<td><code>df = df[&lt;condition&gt;]</code></td>
+</tr>
+<tr><td><code>drop if &lt;condition&gt;</code></td>
+<td><code>df = df[~(&lt;condition&gt;)]</code></td>
+</tr>
+<tr><td><code>keep &lt;var&gt;</code></td>
+<td><code>df = df['var']</code></td>
+</tr>
+<tr><td><code>keep varstem*</code></td>
+<td><code>df = df.filter(like='varstem*')</code></td>
+</tr>
+<tr><td><code>drop &lt;var&gt;</code></td>
+<td><code>del df[&lt;var&gt;]</code> OR <code>df = df.drop(&lt;var&gt;, axis=1)</code></td>
+</tr>
+<tr><td><code>drop varstem*</code></td>
+<td><code>df = df.drop(df.filter(like='varstem*').columns, axis=1)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="data-info-and-summary-statistics">
+<h2><a class="toc-backref" href="#id4">4&nbsp;&nbsp;&nbsp;Data Info and Summary Statistics</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Stata</th>
+<th class="head">Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>describe</code></td>
+<td><code>df.info()</code> OR <code>df.dtypes</code> just to get data types. Note that
+Python does not have value labels like Stata does.</td>
+</tr>
+<tr><td><code>describe &lt;var&gt;</code></td>
+<td><code>df[&lt;var&gt;].dtype</code></td>
+</tr>
+<tr><td><code>count</code></td>
+<td><code>df.shape[0]</code> OR <code>len(df)</code>. Here <code>df.shape</code> returns a
+tuple with the length and width of the DataFrame.</td>
+</tr>
+<tr><td><code>count if &lt;condition&gt;</code></td>
+<td><code>df[&lt;condition&gt;].shape[0]</code> OR <code>(&lt;condition&gt;).sum()</code> if the
+condition involves a DataFrame, e.g., <code>(df['age'] &gt; 2).sum()</code></td>
+</tr>
+<tr><td><code>summ &lt;var&gt;</code></td>
+<td><code>df['&lt;var&gt;'].describe()</code></td>
+</tr>
+<tr><td><code>summ &lt;var&gt; if &lt;condition&gt;</code></td>
+<td><code>df[&lt;condition&gt;][&lt;var&gt;].describe()</code> OR <code>df.loc[&lt;condition&gt;, &lt;var&gt;].describe()</code></td>
+</tr>
+<tr><td><code>summ &lt;var&gt; [aw = &lt;weight&gt;]</code></td>
+<td>Right now you have to calculate weighted summary stats manually. There
+are also some tools available in the Statsmodels package.</td>
+</tr>
+<tr><td><code>summ &lt;var&gt;, d</code></td>
+<td><code>df[&lt;var&gt;].describe()</code> plus <code>df[&lt;var&gt;].quantile([.1, .25,
+.5, .75, .9])</code> or whatever other statistics you want.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="variable-manipulation">
+<h2><a class="toc-backref" href="#id5">5&nbsp;&nbsp;&nbsp;Variable Manipulation</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Stata</th>
+<th class="head">Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>gen &lt;newvar&gt; = &lt;expression&gt;</code></td>
+<td><code>df[&lt;newvar&gt;] = &lt;expression&gt;</code></td>
+</tr>
+<tr><td><code>gen &lt;newvar&gt; = &lt;expression&gt; if &lt;condition&gt;</code></td>
+<td><code>df.loc[&lt;condition&gt;, &lt;newvar&gt;] = &lt;expression&gt;</code>.  As with Stata,
+the rows of <code>df</code> that don't meet the condition will be missing
+(<code>numpy.nan</code>).</td>
+</tr>
+<tr><td><code>replace &lt;var&gt; = &lt;expression&gt; if &lt;condition&gt;</code></td>
+<td><code>df.loc[&lt;condition&gt;, &lt;var&gt;] = &lt;expression&gt;</code></td>
+</tr>
+<tr><td><code>rename &lt;var&gt; &lt;newvar&gt;</code></td>
+<td><code>df = df.rename(columns={&lt;var&gt;: &lt;newvar&gt;})</code>. You can also directly
+manipulate <code>df.columns</code> like a list: <code>df.columns = ['a',
+'b', 'c']</code>.</td>
+</tr>
+<tr><td><code>inlist(&lt;var&gt;, &lt;val1&gt;, &lt;val2&gt;)</code></td>
+<td><code>df[&lt;var&gt;].isin((&lt;val1&gt;, &lt;val2&gt;))</code></td>
+</tr>
+<tr><td><code>inrange(&lt;var&gt;, &lt;val1&gt;, &lt;val2&gt;)</code></td>
+<td><code>df[&lt;var&gt;].between((&lt;val1&gt;, &lt;val2&gt;))</code></td>
+</tr>
+<tr><td><code>subinstr(&lt;str&gt;, &quot;  &quot;, &quot;_&quot;, .)</code></td>
+<td><code>df[&lt;var&gt;].str.replace(' ', '_')</code></td>
+</tr>
+<tr><td><code>egen &lt;newvar&gt; = count(&lt;var&gt;)</code></td>
+<td><code>&lt;newvar&gt; = df[&lt;var&gt;].notnull().sum()</code>. NOTE: For these
+<code>egen</code> commands, <code>&lt;newvar&gt;</code> is a full (constant) column in
+Stata, while it is a scalar in Python.</td>
+</tr>
+<tr><td><code>egen &lt;newvar&gt; = group(&lt;varlist&gt;)</code></td>
+<td><code>&lt;newvar&gt; = econtools.group_id(df, cols=&lt;varlist&gt;)</code></td>
+</tr>
+<tr><td><code>egen &lt;newvar&gt; = max(&lt;var&gt;)</code></td>
+<td><code>&lt;newvar&gt; = df[&lt;var&gt;].max()</code></td>
+</tr>
+<tr><td><code>egen &lt;newvar&gt; = mean(&lt;var&gt;)</code></td>
+<td><code>&lt;newvar&gt; = df[&lt;var&gt;].mean()</code></td>
+</tr>
+<tr><td><code>egen &lt;newvar&gt; = total(&lt;var&gt;)</code></td>
+<td><code>&lt;newvar&gt; = df[&lt;var&gt;].sum()</code></td>
+</tr>
+<tr><td><code>egen &lt;newvar&gt; = &lt;stat&gt;(&lt;var&gt;), by(&lt;groupvars&gt;)</code></td>
+<td><code>df[&lt;newvar&gt;]  = df.groupby(&lt;groupvars&gt;)[&lt;var&gt;].transform('&lt;stat&gt;')</code>.</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><code>collapse (sd) &lt;var&gt; (median) &lt;var&gt; ///</code></div>
+<div class="line-block">
+<div class="line"><code>(max) &lt;var&gt; (min) &lt;var&gt;, ///</code></div>
+<div class="line"><code>by(&lt;groupvars&gt;)</code></div>
+</div>
+</div>
+</td>
+<td><code>df.groupby(&lt;groupvars&gt;)[&lt;var&gt;].agg(['std', 'median', 'min', 'max', 'sum'])</code></td>
+</tr>
+<tr><td><code>collapse (&lt;stat&gt;) &lt;var&gt; [iw = &lt;weight&gt;]</code></td>
+<td>Manually or maybe through Statsmodels tool.</td>
+</tr>
+<tr><td><code>collapse (&lt;stat&gt;) &lt;stat_vars&gt;, by(&lt;groupvars&gt;)</code></td>
+<td><code>df.groupby(&lt;groupvars&gt;)[&lt;stat_vars&gt;].&lt;stat&gt;()</code></td>
+</tr>
+<tr><td><code>recode &lt;var&gt; (1/5 = 1)</code></td>
+<td>N/A, see note below.</td>
+</tr>
+<tr><td><code>recode &lt;var&gt; (1/5 = 1), gen(&lt;newvar&gt;)</code></td>
+<td>N/A.</td>
+</tr>
+<tr><td><code>label var &lt;var&gt; &lt;label&gt;</code></td>
+<td>N/A.</td>
+</tr>
+<tr><td><code>label define &lt;labelname&gt; 1 &lt;valuelabel&gt;</code></td>
+<td>N/A.</td>
+</tr>
+<tr><td><code>label values &lt;var&gt; &lt;labelname&gt;</code></td>
+<td>N/A.</td>
+</tr>
+<tr><td><code>label list &lt;labelname&gt;</code></td>
+<td>N/A.</td>
+</tr>
+</tbody>
+</table>
+<p>Python doesn't have &quot;labels&quot; built into DataFrames like Stata does. However,
+you can use a dictionary to map data values to labels when necessary.</p>
+<div class="highlight"><pre><span></span><span class="n">variable_labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;First Category&quot;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Second Category&quot;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Last Category&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="panel-data">
+<h2><a class="toc-backref" href="#id6">6&nbsp;&nbsp;&nbsp;Panel Data</a></h2>
+<p>There is no general equivalent to <code>tsset</code> in Python. However, you can
+accomplish most if not all of the same tasks using a DataFrame's index (the
+row's equivalent of columns.) In Stata, the &quot;DataFrame&quot; in memory always has
+the observation row number, denoted by the Stata built-in variable <code>_n</code>.
+In Python and Pandas, a DataFrame index can be anything (though you can also
+refer to rows by the row number; see <code>.loc</code> vs <code>iloc</code>). It can also
+be hierarchical with mutiple levels. It is a much more general tool than
+<code>tsset</code>.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Stata</th>
+<th class="head">Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>tsset &lt;panelvar&gt; &lt;timevar&gt;</code></td>
+<td><code>df = df.set_index([&lt;panelvar&gt;, &lt;timevar&gt;])</code></td>
+</tr>
+<tr><td><code>L.&lt;var&gt;</code></td>
+<td><code>df.shift()</code> NOTE: The index must be correctly sorted for
+<code>shift</code> to work the way you want it to.</td>
+</tr>
+<tr><td><code>L2.&lt;var&gt;</code></td>
+<td><code>df.shift(2)</code></td>
+</tr>
+<tr><td><code>F.&lt;var&gt;</code></td>
+<td><code>df.shift(-1)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="examples">
+<h3>6.1&nbsp;&nbsp;&nbsp;Examples</h3>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">df0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;var1&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+   <span class="o">...</span><span class="p">:</span>                     <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+   <span class="o">...</span><span class="p">:</span>                     <span class="s1">&#39;period&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">})</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">df0</span><span class="p">)</span>
+   <span class="n">var1</span>  <span class="nb">id</span>  <span class="n">period</span>
+<span class="mi">0</span>     <span class="mi">0</span>   <span class="mi">1</span>       <span class="mi">0</span>
+<span class="mi">1</span>     <span class="mi">1</span>   <span class="mi">1</span>       <span class="mi">1</span>
+<span class="mi">2</span>     <span class="mi">2</span>   <span class="mi">2</span>       <span class="mi">0</span>
+<span class="mi">3</span>     <span class="mi">3</span>   <span class="mi">2</span>       <span class="mi">1</span>
+<span class="mi">4</span>     <span class="mi">4</span>   <span class="mi">3</span>       <span class="mi">0</span>
+<span class="mi">5</span>     <span class="mi">5</span>   <span class="mi">3</span>       <span class="mi">1</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df0</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+           <span class="n">var1</span>
+<span class="nb">id</span> <span class="n">period</span>
+<span class="mi">1</span>  <span class="mi">0</span>          <span class="mi">0</span>
+   <span class="mi">1</span>          <span class="mi">1</span>
+<span class="mi">2</span>  <span class="mi">0</span>          <span class="mi">2</span>
+   <span class="mi">1</span>          <span class="mi">3</span>
+<span class="mi">3</span>  <span class="mi">0</span>          <span class="mi">4</span>
+   <span class="mi">1</span>          <span class="mi">5</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;var1_lag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;var1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+           <span class="n">var1</span>  <span class="n">var1_lag</span>
+<span class="nb">id</span> <span class="n">period</span>
+<span class="mi">1</span>  <span class="mi">0</span>          <span class="mi">0</span>       <span class="n">NaN</span>
+   <span class="mi">1</span>          <span class="mi">1</span>       <span class="mf">0.0</span>
+<span class="mi">2</span>  <span class="mi">0</span>          <span class="mi">2</span>       <span class="n">NaN</span>
+   <span class="mi">1</span>          <span class="mi">3</span>       <span class="mf">2.0</span>
+<span class="mi">3</span>  <span class="mi">0</span>          <span class="mi">4</span>       <span class="n">NaN</span>
+   <span class="mi">1</span>          <span class="mi">5</span>       <span class="mf">4.0</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;var1_for&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;var1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+           <span class="n">var1</span>  <span class="n">var1_lag</span>  <span class="n">var1_for</span>
+<span class="nb">id</span> <span class="n">period</span>
+<span class="mi">1</span>  <span class="mi">0</span>          <span class="mi">0</span>       <span class="n">NaN</span>       <span class="mf">1.0</span>
+   <span class="mi">1</span>          <span class="mi">1</span>       <span class="mf">0.0</span>       <span class="n">NaN</span>
+<span class="mi">2</span>  <span class="mi">0</span>          <span class="mi">2</span>       <span class="n">NaN</span>       <span class="mf">3.0</span>
+   <span class="mi">1</span>          <span class="mi">3</span>       <span class="mf">2.0</span>       <span class="n">NaN</span>
+<span class="mi">3</span>  <span class="mi">0</span>          <span class="mi">4</span>       <span class="n">NaN</span>       <span class="mf">5.0</span>
+   <span class="mi">1</span>          <span class="mi">5</span>       <span class="mf">4.0</span>       <span class="n">NaN</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="merging-and-joining">
+<h2><a class="toc-backref" href="#id7">7&nbsp;&nbsp;&nbsp;Merging and Joining</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Stata</th>
+<th class="head">Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>append using &lt;filename&gt;</code></td>
+<td><code>df_joint = df1.append(df2)</code></td>
+</tr>
+<tr><td><code>merge 1:1 &lt;vars&gt; using &lt;filename&gt;</code></td>
+<td><div class="first last line-block">
+<div class="line"><code>df_joint = df1.join(df2)</code> if <code>&lt;vars&gt;</code> are the DataFrames' indexes, or</div>
+<div class="line"><code>df_joint = pd.merge(df1, df2, on=&lt;vars&gt;)</code> otherwise. Beware</div>
+<div class="line">that <code>pd.merge</code> will not keep the index of either DataFrame.</div>
+<div class="line">NOTE: Merging in Python is like R, SQL, etc. Needs more robust</div>
+<div class="line">explanation.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Merging with Pandas DataFrames does not require you to specify &quot;many-to-one&quot; or
+&quot;one-to-many&quot;. Pandas will figure that out based on whether the variables
+you're merging on are unique or not. However, you can specify what sub-sample
+of the merge to keep using the keyword argument <code>how</code>, e.g.,
+<code>df_joint = df1.join(df2, how='left')</code> is the default for <code>join</code>
+while <code>how='inner'</code> is the default for <code>pd.merge</code>.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="27%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Pandas <code>how</code></th>
+<th class="head">Stata <code>, keep()</code></th>
+<th class="head">Intuition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>how='left'</code></td>
+<td><code>keep(1, 3)</code></td>
+<td>Keeps all observations in the &quot;left&quot; DataFrame.</td>
+</tr>
+<tr><td><code>how='right'</code></td>
+<td><code>keep(2, 3)</code></td>
+<td>Keeps all observations in the &quot;right&quot; DataFrame.</td>
+</tr>
+<tr><td><code>how='inner'</code></td>
+<td><code>keep(3)</code></td>
+<td>Keeps observations that are in both DataFrames.</td>
+</tr>
+<tr><td><code>how='outer'</code></td>
+<td><code>keep(1 2 3)</code></td>
+<td>Keeps all observations.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reshape">
+<h2><a class="toc-backref" href="#id8">8&nbsp;&nbsp;&nbsp;Reshape</a></h2>
+<p>Like with merging, reshaping a DataFrame in Python is a bit different because
+of the paradigm shift from the &quot;only data table in memory&quot; model of Stata to &quot;a
+data table is just another object/variable&quot; of Python. But this difference also
+makes reshaping a little easier in Python.</p>
+<p>The most fundamental reshape commands in Python/Pandas are <code>stack</code> and
+<code>unstack</code>:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="nb">long</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+   <span class="o">...</span><span class="p">:</span>                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_variable&#39;</span><span class="p">],</span>
+   <span class="o">...</span><span class="p">:</span>                     <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span>
+   <span class="o">...</span><span class="p">:</span>                         <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+   <span class="o">...</span><span class="p">:</span>                          <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+   <span class="o">...</span><span class="p">:</span>                          <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+   <span class="o">...</span><span class="p">:</span>                          <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]))</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="nb">long</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;unit_id&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="nb">long</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;varname&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="nb">long</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
+<span class="n">varname</span>       <span class="n">some_variable</span>
+<span class="n">unit_id</span> <span class="n">time</span>
+<span class="n">a</span>       <span class="mi">1</span>                 <span class="mi">0</span>
+        <span class="mi">2</span>                 <span class="mi">1</span>
+<span class="n">b</span>       <span class="mi">1</span>                 <span class="mi">2</span>
+        <span class="mi">2</span>                 <span class="mi">3</span>
+<span class="n">c</span>       <span class="mi">1</span>                 <span class="mi">4</span>
+        <span class="mi">2</span>                 <span class="mi">5</span>
+<span class="n">d</span>       <span class="mi">1</span>                 <span class="mi">6</span>
+        <span class="mi">2</span>                 <span class="mi">7</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">wide</span> <span class="o">=</span> <span class="nb">long</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">wide</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span>
+<span class="n">varname</span> <span class="n">some_variable</span>
+<span class="n">time</span>                <span class="mi">1</span>  <span class="mi">2</span>
+<span class="n">unit_id</span>
+<span class="n">a</span>                   <span class="mi">0</span>  <span class="mi">1</span>
+<span class="n">b</span>                   <span class="mi">2</span>  <span class="mi">3</span>
+<span class="n">c</span>                   <span class="mi">4</span>  <span class="mi">5</span>
+<span class="n">d</span>                   <span class="mi">6</span>  <span class="mi">7</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">long2</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">long2</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">10</span><span class="p">]:</span>
+<span class="n">varname</span>       <span class="n">some_variable</span>
+<span class="n">unit_id</span> <span class="n">time</span>
+<span class="n">a</span>       <span class="mi">1</span>                 <span class="mi">0</span>
+        <span class="mi">2</span>                 <span class="mi">1</span>
+<span class="n">b</span>       <span class="mi">1</span>                 <span class="mi">2</span>
+        <span class="mi">2</span>                 <span class="mi">3</span>
+<span class="n">c</span>       <span class="mi">1</span>                 <span class="mi">4</span>
+        <span class="mi">2</span>                 <span class="mi">5</span>
+<span class="n">d</span>       <span class="mi">1</span>                 <span class="mi">6</span>
+        <span class="mi">2</span>                 <span class="mi">7</span>
+</pre></div>
+<p>Here Input 3 creates a DataFrame, Input 4 gives each of the index columns a
+name, and Input 5 names the columns. Coming from Stata, it's a little weird to
+think of the column names themselves having a &quot;name&quot;, but the columns names are
+just an index like the row names are. It starts to make more sense when you
+realize columns don't have to be strings. They can be integers, like years or
+FIPS codes. In those cases, it makes a lot of sense to give the columns a name
+so you know what you're dealing with.</p>
+<p>Input 6 does the reshaping using <code>unstack('time')</code>, which takes the index
+<code>'time'</code> and creates a new column for every unique value it has. Notice
+that the columns now have multiple levels, just like the index previously did.
+This is another good reason to label your index and columns. If you want to
+access either of those columns, you can do so as usual, using a tuple to
+differentiate between the two levels:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">wide</span><span class="p">[(</span><span class="s1">&#39;some_variable&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span>
+<span class="n">unit_id</span>
+<span class="n">a</span>    <span class="mi">0</span>
+<span class="n">b</span>    <span class="mi">2</span>
+<span class="n">c</span>    <span class="mi">4</span>
+<span class="n">d</span>    <span class="mi">6</span>
+<span class="n">Name</span><span class="p">:</span> <span class="p">(</span><span class="n">some_variable</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
+</pre></div>
+<p>If you want to combine the two levels (like Stata defaults to), you can simply
+rename the columns:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">wide_single_level_column</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">wide_single_level_column</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span><span class="p">:</span>        <span class="s1">&#39;{}_{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+    <span class="o">...</span><span class="p">:</span>        <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">wide_single_level_column</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">wide_single_level_column</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span>
+                  <span class="n">some_variable_1</span>  <span class="n">some_variable_2</span>
+         <span class="n">unit_id</span>
+         <span class="n">a</span>                      <span class="mi">0</span>                <span class="mi">1</span>
+         <span class="n">b</span>                      <span class="mi">2</span>                <span class="mi">3</span>
+         <span class="n">c</span>                      <span class="mi">4</span>                <span class="mi">5</span>
+         <span class="n">d</span>                      <span class="mi">6</span>                <span class="mi">7</span>
+</pre></div>
+<p>The <code>pivot</code> command can also be useful, but it's a bit more complicated than <code>stack</code> and
+<code>unstack</code> and is better to revisit <code>pivot</code> after you are
+comfortable working with DataFrame indexes and columns.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Stata</th>
+<th class="head">Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>reshape &lt;wide/long&gt; &lt;stubs&gt;, i(&lt;vars&gt;) j(&lt;var&gt;)</code></td>
+<td><div class="first last line-block">
+<div class="line">wide: <code>df.unstack(&lt;level&gt;)</code></div>
+<div class="line">long: <code>df.stack(&lt;column_level&gt;)</code></div>
+<div class="line">see also <code>df.pivot</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="econometrics">
+<h2><a class="toc-backref" href="#id9">9&nbsp;&nbsp;&nbsp;Econometrics</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Stata</th>
+<th class="head">Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>ttest &lt;var&gt;, by(&lt;var&gt;)</code></td>
+<td><div class="first last line-block">
+<div class="line"><code>from scipy.stats import ttest_ind</code></div>
+<div class="line"><code>ttest_ind(&lt;array1&gt;, &lt;array2&gt;)</code></div>
+</div>
+</td>
+</tr>
+<tr><td><code>xi: i.&lt;var&gt;</code></td>
+<td><code>pd.get_dummies(df[&lt;var&gt;])</code></td>
+</tr>
+<tr><td><code>i.&lt;var2&gt;#c.&lt;var1&gt;</code></td>
+<td><code>df[&lt;var1&gt;] * pd.get_dummies(df[&lt;var2&gt;])</code></td>
+</tr>
+<tr><td><code>reg &lt;yvar&gt; &lt;xvar&gt; if &lt;condition&gt;, r</code></td>
+<td><div class="first last line-block">
+<div class="line"><code>import econtools.metrics as mt</code></div>
+<div class="line"><code>results = mt.reg(df[&lt;condition&gt;], &lt;yvar&gt;, &lt;xvar&gt;, robust=True)</code></div>
+</div>
+</td>
+</tr>
+<tr><td><code>reg &lt;yvar&gt; &lt;xvar&gt; if &lt;condition&gt;,  vce(cluster &lt;clustervar&gt;)</code></td>
+<td><code>results = mt.reg(df[&lt;condition&gt;], &lt;yvar&gt;, &lt;xvar&gt;, cluster=&lt;clustervar&gt;)</code></td>
+</tr>
+<tr><td><code>predict &lt;newvar&gt;, resid</code></td>
+<td><code>&lt;newvar&gt; = results.resid</code></td>
+</tr>
+<tr><td><code>predict &lt;newvar&gt;, xb</code></td>
+<td><code>&lt;newvar&gt; = results.yhat</code></td>
+</tr>
+<tr><td><code>_b[&lt;var&gt;]</code>, <code>_se[&lt;var&gt;]</code></td>
+<td><code>results.beta[&lt;var&gt;]</code>, <code>results.se[&lt;var&gt;]</code></td>
+</tr>
+<tr><td><code>test &lt;varlist&gt;</code></td>
+<td><code>results.Ftest(&lt;varlist&gt;)</code></td>
+</tr>
+<tr><td><code>test &lt;varlist&gt;, equal</code></td>
+<td><code>results.Ftest(&lt;varlist&gt;, equal=True)</code></td>
+</tr>
+<tr><td><code>lincom &lt;var1&gt; + &lt;var2&gt;</code></td>
+<td><code>econtools.metrics.f_test</code> with appropriate parameters.</td>
+</tr>
+<tr><td><code>ivreg2</code></td>
+<td><code>econtools.metrics.ivreg</code></td>
+</tr>
+<tr><td><code>outreg2</code></td>
+<td><code>econtools.outreg</code></td>
+</tr>
+<tr><td><code>reghdfe</code></td>
+<td>None.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="plotting">
+<h2><a class="toc-backref" href="#id10">10&nbsp;&nbsp;&nbsp;Plotting</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Stata</th>
+<th class="head">Python</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>binscatter</code></td>
+<td><code>econtools.binscatter</code></td>
+</tr>
+<tr><td><code>maptile</code></td>
+<td>No quick tool, but easy to do with Cartopy.</td>
+</tr>
+<tr><td><code>coefplot</code></td>
+<td><code>ax.scatter(results.beta.index, results.beta)</code> often works. Depends on context.</td>
+</tr>
+<tr><td><code>twoway scatter &lt;var1&gt; &lt;var2&gt;</code></td>
+<td><code>df.scatter(&lt;var2&gt;, &lt;var1&gt;)</code></td>
+</tr>
+<tr><td><code>twoway scatter &lt;var1&gt; &lt;var2&gt; if &lt;condition&gt;</code></td>
+<td><code>df[&lt;condition&gt;].scatter(&lt;var2&gt;, &lt;var1&gt;)</code></td>
+</tr>
+<tr><td><code>twoway &lt;connected/line/area/bar/rarea&gt;</code></td>
+<td>As above, though <code>ax.plot(&lt;var1&gt;, &lt;var2&gt;)</code> is better. Like merge,
+it's a different paradigm, needs more explanation.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="other-differences">
+<h2><a class="toc-backref" href="#id11">11&nbsp;&nbsp;&nbsp;Other differences</a></h2>
+<div class="section" id="missing-values">
+<h3>11.1&nbsp;&nbsp;&nbsp;Missing values</h3>
+<p>In Python, missing values are represented by a NumPy &quot;not a number&quot; object,
+<code>np.nan</code>. In Stata, missing (<code>.</code>) is larger than every number, so
+<code>10 &lt; .</code> yields True. In Python, <code>np.nan</code> is never equal to
+anything. Any comparison involving <code>np.nan</code> is always False, even
+<code>np.nan == np.nan</code>.</p>
+<p>To look for missing values in DataFrame columns, use any of the following.</p>
+<ul class="simple">
+<li><code>df[&lt;varname&gt;].isnull()</code> returns a vector of True and False values for each
+row of <code>df[&lt;varname&gt;</code>.</li>
+<li><code>df[&lt;varname&gt;].notnull()</code> is the complement of <code>.isnull()</code>.</li>
+<li>The function <code>np.isnan(&lt;arraylike&gt;)</code> takes an array and returns True or
+False for each element of the array (a DataFrame is a special type of array).</li>
+</ul>
+<p>Another important difference is that <code>np.nan</code> is a floating point data
+type, so any column of a DataFrame that contains missing numbers will be
+floats. If a column of integers gets changed so that even one row is
+<code>np.nan</code>, the whole column will be converted to floats.</p>
+</div>
+<div class="section" id="floating-point-equality">
+<h3>11.2&nbsp;&nbsp;&nbsp;Floating point equality</h3>
+<p>In Stata, decimal numbers are never equal to anything, e.g., <code>3.0 == 3</code> is
+False. This is not a problem in Python, the above equality check returns True.</p>
+</div>
+</div>
+
+        </div>
+    </section>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="http://www.danielmsullivan.com/images/dms_med.jpg"/>
+        </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/dmsul"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="mailto:sullivan@rff.org"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ" target="_blank">Google Scholar</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://orcid.org/0000-0002-0380-7681" target="_blank">ORCID</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://ideas.repec.org/f/psu490.html" target="_blank">RePEc</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://www.rff.org/people/profile/daniel-m-sullivan" target="_blank">RFF page</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy;  Daniel M. Sullivan
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-88761020-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
