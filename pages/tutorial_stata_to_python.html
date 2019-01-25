@@ -117,7 +117,8 @@ that in many cases, <code>&lt;varname&gt;</code> will be simple text in Stata (e
 <code>avg_income</code>) while in Python it will be a string (<code>'avg_income'</code>).
 If you were to write <code>df[avg_income]</code> without quotes, Python would go
 looking for a variable--a list, a number, a string--that's been defined
-somewhere else.</p>
+somewhere else. Because of this, <code>&lt;varlist&gt;</code> in Python represents a list
+of variable names: <code>['educ', 'income', 2017]</code>.</p>
 </div>
 <div class="section" id="input-output">
 <h2><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;Input/Output</a></h2>
@@ -137,6 +138,10 @@ somewhere else.</p>
 explicitly call the <code>print</code> function. Using a Jupyter notebook is
 the closest equivalent.</td>
 </tr>
+<tr><td><code>help &lt;command&gt;</code></td>
+<td><code>help(&lt;command&gt;)</code> OR <code>&lt;command&gt;?</code> in IPython (as in
+<code>pd.read_stata?</code>)</td>
+</tr>
 <tr><td><code>cd &lt;directory&gt;</code></td>
 <td><div class="first last line-block">
 <div class="line"><code>import os</code></div>
@@ -151,6 +156,9 @@ the closest equivalent.</td>
 <div class="line"><code>df = pd.read_stata('&lt;dtafile&gt;')</code></div>
 </div>
 </td>
+</tr>
+<tr><td><code>use &lt;varlist&gt; using &lt;dtafile&gt;</code></td>
+<td><code>df = pd.read_stata('&lt;dtafile&gt;', columns=&lt;varlist&gt;)</code></td>
 </tr>
 <tr><td><code>import excel using &lt;excelfile&gt;</code></td>
 <td><code>df = pd.read_excel('&lt;excelfile&gt;')</code></td>
@@ -194,7 +202,7 @@ the closest equivalent.</td>
 <td><code>df = df[~(&lt;condition&gt;)]</code></td>
 </tr>
 <tr><td><code>keep &lt;var&gt;</code></td>
-<td><code>df = df['var']</code></td>
+<td><code>df = df[&lt;var&gt;]</code></td>
 </tr>
 <tr><td><code>keep varstem*</code></td>
 <td><code>df = df.filter(like='varstem*')</code></td>
@@ -667,7 +675,7 @@ comfortable working with DataFrame indexes and columns.</p>
 <td><code>pd.get_dummies(df[&lt;var&gt;])</code></td>
 </tr>
 <tr><td><code>i.&lt;var2&gt;#c.&lt;var1&gt;</code></td>
-<td><code>df[&lt;var1&gt;] * pd.get_dummies(df[&lt;var2&gt;])</code></td>
+<td><code>pd.get_dummies(df[&lt;var2&gt;]).multiply(df[&lt;var1&gt;])</code></td>
 </tr>
 <tr><td><code>reg &lt;yvar&gt; &lt;xvar&gt; if &lt;condition&gt;, r</code></td>
 <td><div class="first last line-block">
@@ -678,6 +686,9 @@ comfortable working with DataFrame indexes and columns.</p>
 </tr>
 <tr><td><code>reg &lt;yvar&gt; &lt;xvar&gt; if &lt;condition&gt;,  vce(cluster &lt;clustervar&gt;)</code></td>
 <td><code>results = mt.reg(df[&lt;condition&gt;], &lt;yvar&gt;, &lt;xvar&gt;, cluster=&lt;clustervar&gt;)</code></td>
+</tr>
+<tr><td><code>areg &lt;yvar&gt; &lt;xvar&gt;, absorb(&lt;fe_var&gt;)</code></td>
+<td><code>results = mt.reg(df, &lt;yvar&gt;, &lt;xvar&gt;, a_name=&lt;fe_var&gt;)</code></td>
 </tr>
 <tr><td><code>predict &lt;newvar&gt;, resid</code></td>
 <td><code>&lt;newvar&gt; = results.resid</code></td>
@@ -704,13 +715,14 @@ comfortable working with DataFrame indexes and columns.</p>
 <td><code>econtools.outreg</code></td>
 </tr>
 <tr><td><code>reghdfe</code></td>
-<td>None.</td>
+<td>None (hoping to add it to Econtools soon).</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="plotting">
 <h2><a class="toc-backref" href="#id10">10&nbsp;&nbsp;&nbsp;Plotting</a></h2>
+<p>Visualizations are best handled by the packages Matplotlib and Seaborn.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
