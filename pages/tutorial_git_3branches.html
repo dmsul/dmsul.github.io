@@ -12,13 +12,13 @@
 <link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_git_3branches.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
-        <meta name="description" content="A Brief Intro to Git: Overview Previous: First Steps: Making commits Next: Remotes: Sharing Code Online Contents 1   Branches 1.1   Create and checkout a new branch 1.2   Work on the new branch 1.3   Checking out a different branch 1.4   Making a second branch 2   Merging 2.1   Resolving conflicts in merges Git has two main functions. We&#39;ve already covered the first …" />
+        <meta name="description" content="A Brief Intro to Git Overview Previous: First Steps: Making commits Next: Remotes: Sharing Code Online Page Contents 1   Branches 1.1   Create and checkout a new branch 1.2   Work on the new branch 1.3   Checking out a different branch 1.4   Making a second branch 2   Merging 2.1   Resolving conflicts in merges Git has two main functions. We&#39;ve already covered the …" />
 
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Branches and Merging"/>
     <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_git_3branches.html"/>
-    <meta property="og:description" content="A Brief Intro to Git: Overview Previous: First Steps: Making commits Next: Remotes: Sharing Code Online Contents 1   Branches 1.1   Create and checkout a new branch 1.2   Work on the new branch 1.3   Checking out a different branch 1.4   Making a second branch 2   Merging 2.1   Resolving conflicts in merges Git has two main functions. We&#39;ve already covered the first …" />
+    <meta property="og:description" content="A Brief Intro to Git Overview Previous: First Steps: Making commits Next: Remotes: Sharing Code Online Page Contents 1   Branches 1.1   Create and checkout a new branch 1.2   Work on the new branch 1.3   Checking out a different branch 1.4   Making a second branch 2   Merging 2.1   Resolving conflicts in merges Git has two main functions. We&#39;ve already covered the …" />
 
 
 
@@ -73,14 +73,14 @@ Daniel M. Sullivan            </a>
         <h1 class="entry-title">Branches and Merging</h1>
         
         <div class="entry-content">
-            <p>A Brief Intro to Git:</p>
+            <p><strong>A Brief Intro to Git</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="tutorial_git_0overview.html">Overview</a></li>
 <li>Previous: <a class="reference external" href="tutorial_git_2commits.html">First Steps: Making commits</a></li>
 <li>Next: <a class="reference external" href="tutorial_git_4remotes.html">Remotes: Sharing Code Online</a></li>
 </ul>
-<div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<div class="contents topic" id="page-contents">
+<p class="topic-title first">Page Contents</p>
 <ul class="auto-toc simple">
 <li><a class="reference internal" href="#branches" id="id1">1&nbsp;&nbsp;&nbsp;Branches</a><ul class="auto-toc">
 <li><a class="reference internal" href="#create-and-checkout-a-new-branch" id="id2">1.1&nbsp;&nbsp;&nbsp;Create and checkout a new branch</a></li>
@@ -223,7 +223,7 @@ any time we want.</p>
 <div class="section" id="checking-out-a-different-branch">
 <h3><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;Checking out a different branch</a></h3>
 <p>Before we do anything, let's run our code to make sure we're using <code>print_thrice</code>:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> python hello.py$ python hello.py
+<div class="highlight"><pre><span></span><span class="gp">$</span> python hello.py
 <span class="go">Hello, world!</span>
 <span class="go">Hello, world!</span>
 <span class="go">Hello, world!</span>
@@ -239,10 +239,11 @@ check that we can.</p>
 <span class="go">* 7d6a299 -  (HEAD -&gt; master) Added a variable to hello.py</span>
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
-<p>Recall that <code>HEAD</code> points to whatever we've checked out.</p>
-<p>By checking out <code>master</code>, Git has reverted our code project to be exactly
-like it was before we did our <code>add-subroutine</code> commits.  The new file
-<code>superprinter.py</code> is gone:</p>
+<p>Recall that <code>HEAD</code> points to whatever we're currently working on (what
+have checked out).</p>
+<p>By checking out <code>master</code>, Git has reverted our code directory to be
+exactly like it was before made our <code>add-subroutine</code> commits. The new
+file <code>superprinter.py</code> is gone:</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> ls
 <span class="go">hello.py</span>
 </pre></div>
@@ -254,12 +255,14 @@ like it was before we did our <code>add-subroutine</code> commits.  The new file
 <span class="gp">$</span> python hello.py
 <span class="go">Hello, world!</span>
 </pre></div>
+<p>Of course, we can recover our <code>add-subroutine</code> commits by checking out
+that branch again.</p>
 </div>
 <div class="section" id="making-a-second-branch">
 <h3><a class="toc-backref" href="#id5">1.4&nbsp;&nbsp;&nbsp;Making a second branch</a></h3>
 <p>Let's pretend that someone else on our team is the one working on
-<code>add-subroutine</code> and that our job is actually to come up with a quote
-more inspiring than &quot;Hello, world!&quot;.</p>
+<code>add-subroutine</code> and that our job is to come up with a quote more
+inspiring than &quot;Hello, world!&quot;.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> git checkout -b new-quote
 <span class="go">Switched to a new branch &#39;new-quote&#39;</span>
 
@@ -294,7 +297,8 @@ more inspiring than &quot;Hello, world!&quot;.</p>
 <span class="go">* 7d6a299 -  (master) Added a variable to hello.py</span>
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
-<p>The branching is even more evident if we use a graphical Git interface:</p>
+<p>The branching is even more evident if we use a graphical Git interface like
+Sourcetree:</p>
 <img alt="Git graph" src="http://www.danielmsullivan.com/images/git_graph.png" />
 <p>We now have three named versions of our code, <code>master</code>,
 <code>add-subroutine</code>, and <code>new-quote</code>. The next step is bringing these
@@ -352,7 +356,8 @@ changed <code>hello.py</code>, Git can't easily merge the changes.</p>
 
 <span class="go">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span>
 </pre></div>
-<p>Git will create a version of the file with the conflicts marked with
+<p>Despite the alarming CONFLICT warning, merge conflicts are nothing to be scared
+of. Git will create a version of the file with the conflicts marked with
 <code>&lt;&lt;&lt;</code>, <code>===</code>, and <code>&gt;&gt;&gt;</code>.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> cat hello.py
 <span class="go">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
@@ -372,7 +377,7 @@ changed <code>hello.py</code>, Git can't easily merge the changes.</p>
 <span class="n">to_print</span> <span class="o">=</span> <span class="s2">&quot;That rug really tied the room together, did it not?&quot;</span>
 <span class="n">print_thrice</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span>
 </pre></div>
-<p>Which implements both major changes we made. Once we're done editing the file,
+<p>This implements both major changes we made. Once we're done editing the file,
 we finish the merge:</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> git add hello.py
 
@@ -417,6 +422,7 @@ branch labels, so we can delete them.</p>
 <span class="go">* 7d6a299 -  Added a variable to hello.py</span>
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
+<p><strong>Next in &quot;A Brief Intro to Git&quot;:</strong> <a class="reference external" href="tutorial_git_4remotes.html">Remotes: Sharing Code Online</a></p>
 </div>
 </div>
 

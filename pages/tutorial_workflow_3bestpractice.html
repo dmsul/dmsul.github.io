@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Best Practices when Writing Python - Daniel M. Sullivan</title>
+    <title>Best Practices when Writing Code - Daniel M. Sullivan</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,16 +9,16 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_workflow_3python.html">
+<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
-        <meta name="description" content="Writing Code in Econ: Overview Previous: Project Organization Contents 1   No copying and pasting 2   Write self-documenting code 3   Use functions like paragraphs 4   Scripts should only contain functions and an &#34;if-main&#34; block 5   Use the IPython terminal and a text editor 6   Build your code incrementally in a script 7   Use a consistent style 7.1   Lines should be less than 80 characters wide …" />
+        <meta name="description" content="&#34;Writing Code in Econ&#34; Series Overview Previous: Project Organization Page Contents 1   &#34;Don&#39;t Repeat Yourself&#34; 1.1   No Copy-and-pasting 1.2   Automate empirical results completely 2   Write self-documenting code 2.1   No &#34;magic&#34; numbers 2.2   Use functions like paragraphs 2.3   Use docstrings 2.4   Scripts should only contain functions, constants, and an &#34;if-main&#34; block 3   Use a consistent style 3.1   Lines should …" />
 
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Best Practices when Writing Python"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_workflow_3python.html"/>
-    <meta property="og:description" content="Writing Code in Econ: Overview Previous: Project Organization Contents 1   No copying and pasting 2   Write self-documenting code 3   Use functions like paragraphs 4   Scripts should only contain functions and an &#34;if-main&#34; block 5   Use the IPython terminal and a text editor 6   Build your code incrementally in a script 7   Use a consistent style 7.1   Lines should be less than 80 characters wide …" />
+    <meta property="og:title" content="Best Practices when Writing Code"/>
+    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html"/>
+    <meta property="og:description" content="&#34;Writing Code in Econ&#34; Series Overview Previous: Project Organization Page Contents 1   &#34;Don&#39;t Repeat Yourself&#34; 1.1   No Copy-and-pasting 1.2   Automate empirical results completely 2   Write self-documenting code 2.1   No &#34;magic&#34; numbers 2.2   Use functions like paragraphs 2.3   Use docstrings 2.4   Scripts should only contain functions, constants, and an &#34;if-main&#34; block 3   Use a consistent style 3.1   Lines should …" />
 
 
 
@@ -70,32 +70,47 @@ Daniel M. Sullivan            </a>
     <div class="row">
         <div class="col-sm-9">
     <section id="content" class="body">
-        <h1 class="entry-title">Best Practices when Writing Python</h1>
+        <h1 class="entry-title">Best Practices when Writing Code</h1>
         
         <div class="entry-content">
-            <p>Writing Code in Econ:</p>
+            <p><strong>&quot;Writing Code in Econ&quot; Series</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="tutorial_workflow_0overview.html">Overview</a></li>
 <li>Previous: <a class="reference external" href="tutorial_workflow_2project_org.html">Project Organization</a></li>
 </ul>
-<div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<div class="contents topic" id="page-contents">
+<p class="topic-title first">Page Contents</p>
 <ul class="auto-toc simple">
-<li><a class="reference internal" href="#no-copying-and-pasting" id="id1">1&nbsp;&nbsp;&nbsp;No copying and pasting</a></li>
-<li><a class="reference internal" href="#write-self-documenting-code" id="id2">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a></li>
-<li><a class="reference internal" href="#use-functions-like-paragraphs" id="id3">3&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></li>
-<li><a class="reference internal" href="#scripts-should-only-contain-functions-and-an-if-main-block" id="id4">4&nbsp;&nbsp;&nbsp;Scripts should only contain functions and an &quot;if-main&quot; block</a></li>
-<li><a class="reference internal" href="#use-the-ipython-terminal-and-a-text-editor" id="id5">5&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></li>
-<li><a class="reference internal" href="#build-your-code-incrementally-in-a-script" id="id6">6&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></li>
-<li><a class="reference internal" href="#use-a-consistent-style" id="id7">7&nbsp;&nbsp;&nbsp;Use a consistent style</a><ul class="auto-toc">
-<li><a class="reference internal" href="#lines-should-be-less-than-80-characters-wide" id="id8">7.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></li>
-<li><a class="reference internal" href="#indentation" id="id9">7.2&nbsp;&nbsp;&nbsp;Indentation</a></li>
-<li><a class="reference internal" href="#imports" id="id10">7.3&nbsp;&nbsp;&nbsp;Imports</a></li>
-<li><a class="reference internal" href="#don-t-use-the-same-variable-name-for-different-things" id="id11">7.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></li>
-<li><a class="reference internal" href="#other-stuff" id="id12">7.5&nbsp;&nbsp;&nbsp;Other stuff</a></li>
+<li><a class="reference internal" href="#don-t-repeat-yourself" id="id1">1&nbsp;&nbsp;&nbsp;&quot;Don't Repeat Yourself&quot;</a><ul class="auto-toc">
+<li><a class="reference internal" href="#no-copy-and-pasting" id="id2">1.1&nbsp;&nbsp;&nbsp;No Copy-and-pasting</a></li>
+<li><a class="reference internal" href="#automate-empirical-results-completely" id="id3">1.2&nbsp;&nbsp;&nbsp;Automate empirical results completely</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#example-code" id="id13">8&nbsp;&nbsp;&nbsp;Example Code</a></li>
+<li><a class="reference internal" href="#write-self-documenting-code" id="id4">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a><ul class="auto-toc">
+<li><a class="reference internal" href="#no-magic-numbers" id="id5">2.1&nbsp;&nbsp;&nbsp;No &quot;magic&quot; numbers</a></li>
+<li><a class="reference internal" href="#use-functions-like-paragraphs" id="id6">2.2&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></li>
+<li><a class="reference internal" href="#use-docstrings" id="id7">2.3&nbsp;&nbsp;&nbsp;Use docstrings</a></li>
+<li><a class="reference internal" href="#scripts-should-only-contain-functions-constants-and-an-if-main-block" id="id8">2.4&nbsp;&nbsp;&nbsp;Scripts should only contain functions, constants, and an &quot;if-main&quot; block</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-a-consistent-style" id="id9">3&nbsp;&nbsp;&nbsp;Use a consistent style</a><ul class="auto-toc">
+<li><a class="reference internal" href="#lines-should-be-less-than-80-characters-wide" id="id10">3.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></li>
+<li><a class="reference internal" href="#indentation" id="id11">3.2&nbsp;&nbsp;&nbsp;Indentation</a></li>
+<li><a class="reference internal" href="#imports" id="id12">3.3&nbsp;&nbsp;&nbsp;Imports</a></li>
+<li><a class="reference internal" href="#don-t-use-the-same-variable-name-for-different-things" id="id13">3.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></li>
+<li><a class="reference internal" href="#make-lowercase-uppercase-meaningful" id="id14">3.5&nbsp;&nbsp;&nbsp;Make lowercase/uppercase meaningful</a></li>
+<li><a class="reference internal" href="#other-stuff" id="id15">3.6&nbsp;&nbsp;&nbsp;Other stuff</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-script" id="id16">4&nbsp;&nbsp;&nbsp;Example Script</a></li>
+<li><a class="reference internal" href="#follow-robust-development-practices" id="id17">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a><ul class="auto-toc">
+<li><a class="reference internal" href="#build-your-code-incrementally-in-a-script" id="id18">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></li>
+<li><a class="reference internal" href="#don-t-run-snippets-of-code-in-isolation" id="id19">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></li>
+<li><a class="reference internal" href="#use-the-ipython-terminal-and-a-text-editor" id="id20">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></li>
+<li><a class="reference internal" href="#manage-your-installed-libraries-using-a-virtual-environment" id="id21">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></li>
+<li><a class="reference internal" href="#use-universal-immutable-identifiers-whenever-possible" id="id22">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -107,20 +122,36 @@ code. ...[Therefore,] making it easy to read makes it easier to write.</p>
 </blockquote>
 <p>Writing easy-to-read code is important, especialy when you're working with a team.
 Code that's easy to read improves everyone's productivity, even when the
-&quot;other&quot; person reading the code is Future You in two months, because Future You
-may rememeber very little of the code Present You is writing today.</p>
-<div class="section" id="no-copying-and-pasting">
-<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;No copying and pasting</a></h2>
+&quot;other&quot; person reading the code is Future You, because Future You
+may not rememeber what Present You is doing today and why.</p>
+<blockquote class="twitter-tweet"> <p lang="en" dir="ltr">     &quot;Any code of your own that you haven&#39;t looked at for six or     more months might as well have been written by someone else.&quot; -     Eagleson&#39;s law</p>&mdash; Programming Wisdom (@CodeWisdom)     <a href="https://twitter.com/CodeWisdom/status/1089880021441933312?ref_src=twsrc%5Etfw">     January 28, 2019     </a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p><em>Note:</em> This guide is written with Python in mind, but very little of it is
+specific to Python. The principles are just as helpful in Stata, R, and other languages.</p>
+<div class="section" id="don-t-repeat-yourself">
+<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;&quot;Don't Repeat Yourself&quot;</a></h2>
+<blockquote class="twitter-tweet"> <p lang="en" dir="ltr"> &quot;DRY - Don’t Repeat Yourself - Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.&quot; - Andy Hunt &amp; Dave Thomas</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/1089155243965861888?ref_src=twsrc%5Etfw">January 26, 2019</a> </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><div class="section" id="no-copy-and-pasting">
+<h3><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;No Copy-and-pasting</a></h3>
 <p>Variables and algorithms should be defined in exactly one place. This is a
 cardinal rule. If you copy and paste code to use it in multiple places, it is
-difficult to make sure any changes you make later also get copied and pasted.
-If a file name is defined in only one place and imported elsewhere,
-you can change the file name in that single place know for certain the change
-will propagate through the rest of your code.</p>
+difficult to make sure any changes you make later also get copied and pasted.</p>
+<p>If a file name (e.g., <code>c:\data\subsample2.csv</code>) is defined in only one
+place and imported elsewhere, you can change the file name in that single place
+know for certain the change will propagate through the rest of your code.</p>
+<p>If you run lots of robustness checks on the same sample of data, do that data
+prep in a single function and import that function in every robustness check
+script. That way you know for a certainty that every regression is using
+exactly the same sample, even if you come in and change something later.</p>
+</div>
+<div class="section" id="automate-empirical-results-completely">
+<h3><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;Automate empirical results completely</a></h3>
+<p>Figures and tables created by your code should be inserted directly into
+presentations or papers without manual editing.
+You don't want to have to tweak tables every time you re-create them.
+You're bound to insert a typo, forget one of the steps in tweaking, etc.</p>
+</div>
 </div>
 <div class="section" id="write-self-documenting-code">
-<h2><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a></h2>
-<p>Give variables, functions, and files descriptive names. Err on the side of
+<h2><a class="toc-backref" href="#id4">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a></h2>
+<blockquote class="twitter-tweet"> <p lang="en" dir="ltr"> “Good code is its own best documentation. As you&#39;re about to add a comment, ask yourself, &#39;How can I improve the code so that this comment isn&#39;t needed?&#39; Improve the code and then document it to make it even clearer.” - Steve McConnell</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/1090308606409478144?ref_src=twsrc%5Etfw"> January 29, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>Give variables, functions, and files descriptive names. Err on the side of
 names being too long and too descriptive. Part of the reason you should be
 using tools like a good text editor and a good console like CMDer is that they
 have lots of predictive text and auto-completion functions to help with long
@@ -143,15 +174,78 @@ provided there is only one variable being looped over.</li>
 respectively. This is not a requirement but we have found that it's easy to
 mix up &quot;latitude&quot; and &quot;longitude&quot;.</li>
 </ul>
+<div class="section" id="no-magic-numbers">
+<h3><a class="toc-backref" href="#id5">2.1&nbsp;&nbsp;&nbsp;No &quot;magic&quot; numbers</a></h3>
+<p>A <a class="reference external" href="https://stackoverflow.com/questions/47882/what-is-a-magic-number-and-why-is-it-bad">&quot;magic number&quot;</a>
+is a number in code that is directly used, usually with no information about
+what the number represents or why that specific number is used.</p>
+<p>Consider the following code fragment which has been adapted from a script
+behind several well-known published papers:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Bad:</span>
+<span class="n">vector_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3109</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vector_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">565</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vector_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3109</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>What do the numbers <code>3109</code> and <code>565</code> represent? Nobody knows.
+You could add a comment</p>
+<div class="highlight"><pre><span></span><span class="c1"># Less bad:</span>
+<span class="c1"># Here 3109 is number of counties in the sample, 565 is time periods</span>
+<span class="n">vector_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3109</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vector_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">565</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vector_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3109</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>But the best way is Don't Repeat Yourself, define these numbers in exactly one
+place (especially if they're used in multiple places like here) and let the
+code be self explanatory.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Good:</span>
+<span class="n">NUM_COUNTIES</span> <span class="o">=</span> <span class="mi">3109</span>
+<span class="n">NUM_TIME_PERIODS</span> <span class="o">=</span> <span class="mi">565</span>
+<span class="n">vector_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NUM_COUNTIES</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vector_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NUM_TIME_PERIODS</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vector_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NUM_COUNTIES</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
 </div>
 <div class="section" id="use-functions-like-paragraphs">
-<h2><a class="toc-backref" href="#id3">3&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></h2>
-<p>The main unit of code should be functions. Even if you're only going
-to use a function once, breaking the code into functions makes it easier to
-read.</p>
+<h3><a class="toc-backref" href="#id6">2.2&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></h3>
+<p>The main unit of code should be functions. Even if you're only going to use a
+function once, breaking your script into functions makes it easier to read.</p>
+<p>Suppose it takes 30 lines of code to create a balanced panel within your data.
+Even if you only do it once, a line like <code>df = create_balanced_panel(df)</code>
+is much easier to digest than the 30 lines themselves.</p>
 </div>
-<div class="section" id="scripts-should-only-contain-functions-and-an-if-main-block">
-<h2><a class="toc-backref" href="#id4">4&nbsp;&nbsp;&nbsp;Scripts should only contain functions and an &quot;if-main&quot; block</a></h2>
+<div class="section" id="use-docstrings">
+<h3><a class="toc-backref" href="#id7">2.3&nbsp;&nbsp;&nbsp;Use docstrings</a></h3>
+<p>Python has a special convention called docstrings. At the beginning of a script
+or the beginning of a function, you can add a multiline string with triple
+quotes <code>&quot;&quot;&quot;</code> that will serve as the documentation for that script or
+function. The special <code>help</code> function will display the docstring of any
+object passed to it, e.g., <code>help(my_function)</code> will print the docstring
+of <code>my_function</code> if it exists.</p>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is the script docstring. It describes the main purpose of a script. It</span>
+<span class="sd">Can be many lines long.</span>
+
+<span class="sd">It will also preserve formatting.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is the docstring for `my_function`. It will be printed on the</span>
+<span class="sd">    console whenever I call `help(my_function)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+<p>Most other languages do not use docstrings, but you can you block comments,
+like <code>/* */</code> in Stata, to achieve the same goal.</p>
+</div>
+<div class="section" id="scripts-should-only-contain-functions-constants-and-an-if-main-block">
+<h3><a class="toc-backref" href="#id8">2.4&nbsp;&nbsp;&nbsp;Scripts should only contain functions, constants, and an &quot;if-main&quot; block</a></h3>
+<p><strong>IMPORTANT:</strong> Most of the guidance on this page is stylistic, aimed at
+making you more productive as a programmer while having litte impact on what
+your code actually does.
+This section is different.
+It has a stylistic element, but not using an &quot;if-main&quot; block can significantly
+impact how your script runs.</p>
 <p>When you import something from another Python file, the entire file is
 executed. Suppose you want to import a function called
 <code>computation_that_takes_forever</code> which is used in script
@@ -165,7 +259,13 @@ executed. Suppose you want to import a function called
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">MAX_ITERATIONS</span> <span class="o">=</span> <span class="mi">1000</span>
+
 
 <span class="k">def</span> <span class="nf">computation_that_takes_forever</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This takes a long time &quot;&quot;&quot;</span>
@@ -192,7 +292,13 @@ process every time we import the function.</p>
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">MAX_ITERATIONS</span> <span class="o">=</span> <span class="mi">1000</span>
+
 
 <span class="k">def</span> <span class="nf">computation_that_takes_forever</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This takes a long time &quot;&quot;&quot;</span>
@@ -211,70 +317,23 @@ script. So in our new version of <code>cleandata.py</code>, lines 10 and 11 only
 executed if we run <code>python cleandata.py</code> from the command line or
 <code>%run cleandata.py</code> inside IPython.</p>
 </div>
-<div class="section" id="use-the-ipython-terminal-and-a-text-editor">
-<h2><a class="toc-backref" href="#id5">5&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></h2>
-<p>Jupyter and Spyder are great tools for analyzing data in Python. However, it
-is hard to keep perfect track of your computing environemnt (which versions of
-packages are loaded, etc.) while using these tools. Our preferred solution is
-to use a robust text editor (Atom, Vim, Emacs) alongside a CMDer window running
-the IPython terminal. You can then use the <code>%run</code> command inside IPython
-to run your code.</p>
-</div>
-<div class="section" id="build-your-code-incrementally-in-a-script">
-<h2><a class="toc-backref" href="#id6">6&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></h2>
-<p>It's pretty common for data work in social science to look like this: You open
-STATA, R, Python, etc., and start poking around on the command line, interacting
-with the data until you get where you want. Then you use the command history
-(or your memory) to reconstruct what you did and put it in a script.</p>
-<p>This is a bad way to work. Reconstructing exactly what you did is often
-difficult. At best, you're doing everything twice. Jupyter notebooks were
-designed in part to address this problem. However, as mentioned above, our
-work doesn't always play nice with Jupyter notebooks.</p>
-<p>You can avoid these problems by writing your script incrementally.
-Start with a script that's empty except for the if-main
-block. Write the beginnings of your first function in the if-main block:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="c1"># Prep data for regression</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TX&#39;</span><span class="p">]</span>    <span class="c1"># Restrict to Texas</span>
-    <span class="c1"># Do other cleaning</span>
-</pre></div>
-<p>Now run your script using <code>%run</code> in IPython. Use some basic interactivity
-to figure out any bugs (e.g., maybe the state variable isn't called &quot;state&quot;).
-After you fix a problem in your script, <code>%run</code> it again. Keep doing this
-until you're done with the given task (e.g., prepping the data for a
-regression), then move that code into a function.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="k">def</span> <span class="nf">prep_data_for_reg</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot; Prep data for regression &quot;&quot;&quot;</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TX&#39;</span><span class="p">]</span>    <span class="c1"># Restrict to Texas</span>
-    <span class="c1"># Do other cleaning...</span>
-    <span class="k">return</span> <span class="n">df</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">prep_data_for_reg</span><span class="p">()</span>
-</pre></div>
-<p>Now you can start work on your next task in the if-main block in the same way.
-This is also a good time to commit your changes in Git if you haven't already
-done so.</p>
-<p>When you're done, there should be a very simple (maybe empty) if-main block.</p>
 </div>
 <div class="section" id="use-a-consistent-style">
-<h2><a class="toc-backref" href="#id7">7&nbsp;&nbsp;&nbsp;Use a consistent style</a></h2>
-<p>Just like for writing prose, there are style guides for writing code. Python has
-an official style guide called PEP8 that contains more rules than I'll go over
-here. However, there is a great Python tool called Flake8 that will
-automatically check your code for PEP8 and syntax errors. It can be
-integrated into the Atom editor using the <code>linter-flake8</code> plugin.</p>
+<h2><a class="toc-backref" href="#id9">3&nbsp;&nbsp;&nbsp;Use a consistent style</a></h2>
+<p>Just like for writing prose, there are style guides for writing code which help
+make your writing easier to read.
+Python has an official style guide called PEP8 that contains more rules than
+I'll go over here.
+However, there is a great Python tool called Flake8 that will automatically
+check your code for PEP8 and syntax errors.
+It can be integrated into the Atom editor using the <code>linter-flake8</code>
+plugin.</p>
 <p>A few examples of important PEP8 rules that we'll follow:</p>
 <div class="section" id="lines-should-be-less-than-80-characters-wide">
-<h3><a class="toc-backref" href="#id8">7.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></h3>
-<p>Fortunately in Python line wrapping is very easy. Anything within parentheses
-can be broken across lines, including function calls:</p>
+<h3><a class="toc-backref" href="#id10">3.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></h3>
+<p>Fortunately line wrapping in Python is very easy.
+Anything within parentheses can be broken across lines, including function
+calls:</p>
 <div class="highlight"><pre><span></span><span class="n">std_devs</span> <span class="o">=</span> <span class="n">find_std_dev</span><span class="p">(</span><span class="n">variable1</span><span class="p">,</span>
                         <span class="n">variable2</span><span class="p">,</span>
                         <span class="n">variable3</span><span class="p">)</span>
@@ -319,10 +378,14 @@ concatenated. Just don't forget to add spaces where necessary.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datasource</span> <span class="k">import</span> <span class="p">(</span><span class="n">load_data_1</span><span class="p">,</span> <span class="n">load_data_2</span><span class="p">,</span> <span class="n">load_data_3</span><span class="p">,</span> <span class="n">load_data_4</span><span class="p">,</span>
                         <span class="n">load_data_5</span><span class="p">)</span>
 </pre></div>
+<p>Most languages have special syntax that allows you to break long commands
+across several lines.
+In Stata, <code>///</code> says &quot;the following line is really part of this one. You
+can also change the delimiter to <code>;</code> using <code>#delimiter ;</code>.</p>
 </div>
 <div class="section" id="indentation">
-<h3><a class="toc-backref" href="#id9">7.2&nbsp;&nbsp;&nbsp;Indentation</a></h3>
-<p>Whitespace is important in Python and screwing up indentation can cause your
+<h3><a class="toc-backref" href="#id11">3.2&nbsp;&nbsp;&nbsp;Indentation</a></h3>
+<p>Whitespace is important in Python and messing up indentation can cause your
 code to crash.</p>
 <ul class="simple">
 <li>Do not use tabs to indent. Use 4 spaces. Your editor should have a setting
@@ -337,7 +400,7 @@ on that line, indent once.</li>
                         <span class="n">load_data_5</span><span class="p">)</span>
 <span class="c1"># This is bad</span>
 <span class="kn">from</span> <span class="nn">datasource</span> <span class="k">import</span> <span class="p">(</span><span class="n">load_data_1</span><span class="p">,</span> <span class="n">load_data_2</span><span class="p">,</span> <span class="n">load_data_3</span><span class="p">,</span> <span class="n">load_data_4</span><span class="p">,</span>
-                            <span class="n">load_data_5</span><span class="p">)</span>
+    <span class="n">load_data_5</span><span class="p">)</span>
 
 <span class="c1"># This is good</span>
 <span class="n">good_seconds_per_year</span> <span class="o">=</span> <span class="p">(</span>
@@ -356,16 +419,16 @@ on that line, indent once.</li>
 </pre></div>
 </div>
 <div class="section" id="imports">
-<h3><a class="toc-backref" href="#id10">7.3&nbsp;&nbsp;&nbsp;Imports</a></h3>
+<h3><a class="toc-backref" href="#id12">3.3&nbsp;&nbsp;&nbsp;Imports</a></h3>
 <ul class="simple">
 <li>Imports go at the top of the file.</li>
 <li><em>NEVER</em> import an entire package like this: <code>from numpy import *</code>.</li>
 <li>Separate and order imports like so</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>               <span class="c1"># Standard library (come with Python)</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                               <span class="c1"># Standard library (come with Python)</span>
+<span class="kn">import</span> <span class="nn">re</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>      <span class="c1"># Third-party packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                      <span class="c1"># Third-party packages</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">from</span> <span class="nn">drillinginfo</span> <span class="k">import</span> <span class="n">clean_wells</span>    <span class="c1"># Packages developed by our team</span>
@@ -374,7 +437,7 @@ on that line, indent once.</li>
 </pre></div>
 </div>
 <div class="section" id="don-t-use-the-same-variable-name-for-different-things">
-<h3><a class="toc-backref" href="#id11">7.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></h3>
+<h3><a class="toc-backref" href="#id13">3.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></h3>
 <p>Python (and Stata and R) are dynamically-typed languages, which means that they
 just figure out what kind of data a variable is, like a string, an integer or a
 decimal float. As a result, it's common to see people re-use variable names for
@@ -385,7 +448,7 @@ different things. For example:</p>
 </pre></div>
 <p>This short example isn't too bad, but on larger scales it can be very confusing
 when a variable you thought was a DataFrame ends up being a string or vice
-versa. This type changing is also computationally slower. (It also screws up
+versa. This type changing is also computationally slower. (It also messes up
 the <cite>mypy</cite> linter/type-checker.) A better solution is to be more explicit in
 naming your variables:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Good</span>
@@ -393,32 +456,43 @@ naming your variables:</p>
 <span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">raw_data_path</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="section" id="make-lowercase-uppercase-meaningful">
+<h3><a class="toc-backref" href="#id14">3.5&nbsp;&nbsp;&nbsp;Make lowercase/uppercase meaningful</a></h3>
+<p>Variable and function names are all lowercase with underscores:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Good</span>
+<span class="n">my_descriptive_name</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span>
+
+<span class="k">def</span> <span class="nf">make_results_significant</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;***&#39;</span>
+
+<span class="c1"># Bad</span>
+<span class="n">NoCamelCase</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+<p>Names of constants, especially project-wide parameters, are written in all
+capitals and almost always placed at the top of the script right after the
+imports:</p>
+<div class="highlight"><pre><span></span><span class="n">MAX_TIME_PERIODS</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ROBUST_ERRORS</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+<p>If you create any custom Python objects (classes), their name should begin with
+a capital and follow &quot;Camel case&quot; or &quot;CapWords&quot; convention:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyDataStorage</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
 <div class="section" id="other-stuff">
-<h3><a class="toc-backref" href="#id12">7.5&nbsp;&nbsp;&nbsp;Other stuff</a></h3>
+<h3><a class="toc-backref" href="#id15">3.6&nbsp;&nbsp;&nbsp;Other stuff</a></h3>
 <ul class="simple">
 <li>Spaces around assignments: <code>x = 7</code> not <code>x=7</code>.</li>
 <li>No spaces around keyword variables: <code>function(arg1=y, arg2=3)</code>.</li>
 <li>Spaces after commas (just like in prose).</li>
-<li>Name functions and variables with lowercase letters and underscores.</li>
 <li>Functions meant to be local (subroutines not meant to be imported by other
 scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</li>
 <li>Two lines between unrelated functions. One line between auxiliary functions:</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">primary_func1</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">primary_func1</span><span class="p">():</span>
     <span class="c1"># Stuff</span>
 
 <span class="k">def</span> <span class="nf">_aux_to_1</span><span class="p">():</span>
@@ -434,65 +508,17 @@ scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</
 <span class="k">def</span> <span class="nf">_aux_to_2</span><span class="p">():</span>
     <span class="c1"># Stuff</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="example-code">
-<h2><a class="toc-backref" href="#id13">8&nbsp;&nbsp;&nbsp;Example Code</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+</div>
+<div class="section" id="example-script">
+<h2><a class="toc-backref" href="#id16">4&nbsp;&nbsp;&nbsp;Example Script</a></h2>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Task: read the words from the file `tmp.txt` and calculate each word&#39;s score</span>
 <span class="sd">based on the &quot;value&quot; of its letters, where A=1, B=2, etc. Then calculate how</span>
 <span class="sd">many words in the file are &quot;triangle&quot; numbers. A number T is a triangle number</span>
-<span class="sd">if there is an integer n such that T = n * (n + 1) / 2. Solution to Project</span>
-<span class="sd">Euler Problem 42.</span>
+<span class="sd">if there is an integer n such that T = n * (n + 1) / 2.</span>
+
+<span class="sd">Solution to Project Euler Problem 42. https://projecteuler.net/problem=42</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">string</span> <span class="k">import</span> <span class="n">ascii_uppercase</span>
 
@@ -529,16 +555,108 @@ scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</
     <span class="k">return</span> <span class="n">positive_root</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">read_and_prep_data</span><span class="p">():</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;tmp.txt&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]</span>
 
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">read_and_prep_data</span><span class="p">()</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;word_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">word_score</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_triangle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;word_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_triangle</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_triangle&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 </pre></div>
-</td></tr></table></div>
+</div>
+<div class="section" id="follow-robust-development-practices">
+<h2><a class="toc-backref" href="#id17">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a></h2>
+<div class="section" id="build-your-code-incrementally-in-a-script">
+<h3><a class="toc-backref" href="#id18">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></h3>
+<p>It's pretty common for data work in social science to look like this: You open
+Stata, R, Python, etc., and start poking around on the command line, interacting
+with the data until you get where you want. Then you use the command history
+(or your memory) to reconstruct what you did and put it in a script.</p>
+<p>This is a bad way to work. Reconstructing exactly what you did is often
+difficult. At best, you're doing everything twice. Jupyter notebooks were
+designed in part to address this problem. However, as mentioned above, our
+work doesn't always play nice with Jupyter notebooks.</p>
+<p>You can avoid these problems by writing your script incrementally.  Start with
+a script that's empty except for the if-main block. Write the beginnings of
+your first function in the if-main block:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># Prep data for regression</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TX&#39;</span><span class="p">]</span>    <span class="c1"># Restrict to Texas</span>
+    <span class="c1"># Do other cleaning</span>
+</pre></div>
+<p>Now run your script using <code>%run</code> in IPython. Use some basic interactivity
+to figure out any bugs (e.g., maybe the state variable isn't called &quot;state&quot;).
+After you fix a problem in your script, <code>%run</code> it again. Keep doing this
+until you're done with the given task (e.g., prepping the data for a
+regression), then move that code into a function.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">prep_data_for_reg</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Prep data for regression &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TX&#39;</span><span class="p">]</span>    <span class="c1"># Restrict to Texas</span>
+    <span class="c1"># Do other cleaning...</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">prep_data_for_reg</span><span class="p">()</span>
+</pre></div>
+<p>Now you can start work on your next task in the if-main block in the same way.
+This is also a good time to commit your changes in Git if you haven't already
+done so.</p>
+<p>When you're done, there should be a very simple (maybe empty) if-main block.</p>
+</div>
+<div class="section" id="don-t-run-snippets-of-code-in-isolation">
+<h3><a class="toc-backref" href="#id19">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></h3>
+<p>Spyder and Stata's do-file editor both have buttons that let you highlight a
+few lines of code and run only those. <em>Don't use them.</em> Run scripts from the
+beginning. It is too easy to spend ages &quot;fixing&quot; a piece of code by running it
+as a snippet only to find that when you run the script as a whole, you never
+actually fixed the problem (or introduced a new one).</p>
+</div>
+<div class="section" id="use-the-ipython-terminal-and-a-text-editor">
+<h3><a class="toc-backref" href="#id20">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></h3>
+<p>Jupyter and Spyder are great tools for analyzing data in Python. However, it is
+hard to keep track of your computing environemnt (which versions of packages
+are loaded, etc.) while using these tools. Our preferred solution is to use a
+robust text editor (Atom, Vim, Emacs) alongside a CMDer window running the
+IPython terminal. You can then use the <code>%run</code> command inside IPython to
+run your code.</p>
+<p>And while Stata has a built-in text editor, it lacks most features you should
+look for in a good editor.</p>
+</div>
+<div class="section" id="manage-your-installed-libraries-using-a-virtual-environment">
+<h3><a class="toc-backref" href="#id21">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></h3>
+<p>Let's say you work on Project A for a while using Pandas 0.18 and Numpy 1.12
+and some other Python packages. You submit Project A and start on Project B.
+Project B requires some features in Pandas 0.22, so you upgrade. While you're
+working on Project B, you get a revise and resubmit on Project A.  (Contrats!)
+But when you try to run your code from Project A, it doesn't work with Pandas
+0.22.</p>
+<p>Virtual Environments were created to solve this problem. A virtual environment
+is a quarantined installation of Python that is independent from any other
+installations, including your default system Python. When you want to run code
+within a given virtual environment, you just activate it. The details of how
+you do that depend on the virtual environment software you use. We will use the
+Anaconda tool <code>conda</code>. There are lots of tutorials for <code>conda</code>
+online, e.g., <a class="reference external" href="https://towardsdatascience.com/getting-started-with-python-environments-using-conda-32e9f2779307">here</a>.</p>
+<p>You can avoid conflicting versions across projects by having a separate virtual
+environment for each one.</p>
+</div>
+<div class="section" id="use-universal-immutable-identifiers-whenever-possible">
+<h3><a class="toc-backref" href="#id22">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></h3>
+<p>For example, use FIPS, not your own made up county ID's. Any time you introduce
+your own arbitrary identifiers, you run the risk of introducing inconsistencies
+between datasets.</p>
+</div>
+</div>
 
         </div>
     </section>

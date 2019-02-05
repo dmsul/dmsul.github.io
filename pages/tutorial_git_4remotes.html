@@ -12,13 +12,13 @@
 <link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_git_4remotes.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
-        <meta name="description" content="A Brief Intro to Git: Overview Previous: Branches and Merging Contents 1   Downloading (Cloning) a Repository 2   Pull 3   Push So far, everything we&#39;ve done has been on your local computer--no one else can see your code or contribute to it. While cloud services like Dropbox and Google Drive are popular for sharing most files within a research team, they are not very well suited …" />
+        <meta name="description" content="A Brief Intro to Git Overview Previous: Branches and Merging Page Contents 1   Downloading (Cloning) a Repository 2   Remote branches 3   Update a remote branch (Fetch and Pull) 4   Upload your changes to the remote server (Push) 5   Checkout a local copy of a remote branch So far, everything we&#39;ve done has been on your local computer--no one else can see your code or contribute …" />
 
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Remotes: Sharing Code Online"/>
     <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_git_4remotes.html"/>
-    <meta property="og:description" content="A Brief Intro to Git: Overview Previous: Branches and Merging Contents 1   Downloading (Cloning) a Repository 2   Pull 3   Push So far, everything we&#39;ve done has been on your local computer--no one else can see your code or contribute to it. While cloud services like Dropbox and Google Drive are popular for sharing most files within a research team, they are not very well suited …" />
+    <meta property="og:description" content="A Brief Intro to Git Overview Previous: Branches and Merging Page Contents 1   Downloading (Cloning) a Repository 2   Remote branches 3   Update a remote branch (Fetch and Pull) 4   Upload your changes to the remote server (Push) 5   Checkout a local copy of a remote branch So far, everything we&#39;ve done has been on your local computer--no one else can see your code or contribute …" />
 
 
 
@@ -73,32 +73,34 @@ Daniel M. Sullivan            </a>
         <h1 class="entry-title">Remotes: Sharing Code Online</h1>
         
         <div class="entry-content">
-            <p>A Brief Intro to Git:</p>
+            <p><strong>A Brief Intro to Git</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="tutorial_git_0overview.html">Overview</a></li>
 <li>Previous: <a class="reference external" href="tutorial_git_3branches.html">Branches and Merging</a></li>
 </ul>
-<div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<div class="contents topic" id="page-contents">
+<p class="topic-title first">Page Contents</p>
 <ul class="auto-toc simple">
 <li><a class="reference internal" href="#downloading-cloning-a-repository" id="id3">1&nbsp;&nbsp;&nbsp;Downloading (Cloning) a Repository</a></li>
-<li><a class="reference internal" href="#pull" id="id4">2&nbsp;&nbsp;&nbsp;Pull</a></li>
-<li><a class="reference internal" href="#push" id="id5">3&nbsp;&nbsp;&nbsp;Push</a></li>
+<li><a class="reference internal" href="#remote-branches" id="id4">2&nbsp;&nbsp;&nbsp;Remote branches</a></li>
+<li><a class="reference internal" href="#update-a-remote-branch-fetch-and-pull" id="id5">3&nbsp;&nbsp;&nbsp;Update a remote branch (Fetch and Pull)</a></li>
+<li><a class="reference internal" href="#upload-your-changes-to-the-remote-server-push" id="id6">4&nbsp;&nbsp;&nbsp;Upload your changes to the remote server (Push)</a></li>
+<li><a class="reference internal" href="#checkout-a-local-copy-of-a-remote-branch" id="id7">5&nbsp;&nbsp;&nbsp;Checkout a local copy of a remote branch</a></li>
 </ul>
 </div>
 <hr class="docutils" />
 <p>So far, everything we've done has been on your local computer--no one else can
 see your code or contribute to it. While cloud services like Dropbox and Google
 Drive are popular for sharing most files within a research team, they are not
-very well suited for Git repos. <a class="footnote-reference" href="#id2" id="id1">[1]</a> Using a service designed specifcally for Git, like GitHub
-or Bitbucket, is a better solution.</p>
+very well suited for Git repos. <a class="footnote-reference" href="#id2" id="id1">[1]</a> Using a service designed specifcally for
+Git, like GitHub or Bitbucket, is a better solution.</p>
 <p>Any of the projects we work on will be hosted on one of the PI's GitHub or
 Bitbucket accounts, so in the context of our work you won't need to worry about
 creating a repo online. However, you can follow <a class="reference external" href="https://help.github.com/articles/creating-a-new-repository/">these</a> instructions
 if you want to practice that on your own.</p>
 <div class="section" id="downloading-cloning-a-repository">
 <h2><a class="toc-backref" href="#id3">1&nbsp;&nbsp;&nbsp;Downloading (Cloning) a Repository</a></h2>
-<p>To copy a repository hosted online to your computer, use the <code>clone</code>
+<p>To copy a repository from the Internet to your computer, use the <code>clone</code>
 command and the URL of the online repo.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/dmsul/econtools.git
 </pre></div>
@@ -110,11 +112,100 @@ contains all the info about the Git repository hosted at the given URL.</p>
 <p>This will clone the <code>econtools</code> Git repo into a folder called
 <code>different-folder-name/</code> instead of <code>econtools/</code>.</p>
 </div>
-<div class="section" id="pull">
-<h2><a class="toc-backref" href="#id4">2&nbsp;&nbsp;&nbsp;Pull</a></h2>
+<div class="section" id="remote-branches">
+<h2><a class="toc-backref" href="#id4">2&nbsp;&nbsp;&nbsp;Remote branches</a></h2>
+<p>After you've cloned a repo, you'll have a copy of it on your hard drive.
+Suppose that your <code>shortlog</code> looks like this:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git shortlog
+<span class="go">* 2f40bfd -  (HEAD -&gt; master, origin/master) Merge branch &#39;new-quote&#39;</span>
+<span class="go">* 7d6a299 -  Added a variable to hello.py</span>
+<span class="go">* 823459f -  Add hello.py</span>
+</pre></div>
+<p>By default, you have the <code>master</code> branch checked out after a clone.
+You'll notice that there's another branch label, <code>origin/master</code>.
+When you clone a repo, Git remembers the website where the repo originated and
+calls it <code>origin</code> for short. Git also creates special branches in your
+local copy of the repo that mirror the branches in the original online repo.
+These are <strong>remote branches</strong> and follow the naming convention
+<code>&lt;remote_name&gt;/&lt;branch_name&gt;</code>.</p>
 </div>
-<div class="section" id="push">
-<h2><a class="toc-backref" href="#id5">3&nbsp;&nbsp;&nbsp;Push</a></h2>
+<div class="section" id="update-a-remote-branch-fetch-and-pull">
+<h2><a class="toc-backref" href="#id5">3&nbsp;&nbsp;&nbsp;Update a remote branch (Fetch and Pull)</a></h2>
+<p>What if the online repo gets updated, how do you get the updates to your computer?
+You use the <code>fetch</code> command:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git fetch origin
+<span class="go">remote: Enumerating objects: 4, done.</span>
+<span class="go">remote: Counting objects: 100% (4/4), done.</span>
+<span class="go">remote: Total 5 (delta 4), reused 4 (delta 4), pack-reused 1</span>
+<span class="go">Unpacking objects: 100% (5/5), done.</span>
+<span class="go">From github.com:dmsul/econtools</span>
+<span class="go">   073517e..906b941  master     -&gt; origin/master</span>
+
+<span class="gp">$</span> git shortlog
+<span class="go">* 4b93ceq -  (origin/master) A new commit on the website</span>
+<span class="go">* 2f40bfd -  (HEAD -&gt; master) Merge branch &#39;new-quote&#39;</span>
+<span class="go">* 7d6a299 -  Added a variable to hello.py</span>
+<span class="go">* 823459f -  Add hello.py</span>
+</pre></div>
+<p>Now <code>origin/master</code> is one commit ahead of our local <code>master</code>
+branch. We can merge the two using <code>git merge origin/master</code> just like we
+did before. Because this process of fetching and merging is so common, there's
+a shortcut command, <code>pull</code>, which does a fetch, then a merge.</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git pull origin master
+<span class="go">From github.com:dmsul/econtools</span>
+<span class="go"> * branch            master     -&gt; FETCH_HEAD</span>
+<span class="go">Updating 073517e..906b941</span>
+<span class="go">Fast-forward</span>
+<span class="go"> econtools/util/reference.py | 5 +++++</span>
+<span class="go"> 1 file changed, 5 insertions(+)</span>
+
+<span class="gp">$</span> git shortlog
+<span class="go">* 4b93ceq -  (HEAD -&gt; master, origin/master) A new commit on the website</span>
+<span class="go">* 2f40bfd -  Merge branch &#39;new-quote&#39;</span>
+<span class="go">* 7d6a299 -  Added a variable to hello.py</span>
+<span class="go">* 823459f -  Add hello.py</span>
+</pre></div>
+<p>Now our local code is updated to match the code on the website.</p>
+</div>
+<div class="section" id="upload-your-changes-to-the-remote-server-push">
+<h2><a class="toc-backref" href="#id6">4&nbsp;&nbsp;&nbsp;Upload your changes to the remote server (Push)</a></h2>
+<p>If you add a commit to your local <code>master</code> branch, the remote branch
+<code>origin/master</code> is unaffected. After adding a commit, your shortlog looks
+like this:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git shortlog
+<span class="go">* 4b93ceq -  (HEAD -&gt; master) A new local commit</span>
+<span class="go">* 4b93ceq -  (origin/master) A new commit on the website</span>
+<span class="go">* 2f40bfd -  Merge branch &#39;new-quote&#39;</span>
+<span class="go">* 7d6a299 -  Added a variable to hello.py</span>
+<span class="go">* 823459f -  Add hello.py</span>
+</pre></div>
+<p>Now <code>master</code> is one commit ahead of <code>origin/master</code>. To get our new
+commit uploaded to <code>origin</code> (e.g., Github) and to update
+<code>origin/master</code>, we use the <code>push</code> command:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git push origin master
+<span class="go">Counting objects: 12, done.</span>
+<span class="go">Delta compression using up to 8 threads.</span>
+<span class="go">Compressing objects: 100% (12/12), done.</span>
+<span class="go">Writing objects: 100% (12/12), 2.09 KiB | 1.05 MiB/s, done.</span>
+<span class="go">Total 12 (delta 10), reused 0 (delta 0)</span>
+<span class="go">remote: Resolving deltas: 100% (10/10), completed with 6 local objects.</span>
+<span class="go">To github.com:dmsul/econtools</span>
+<span class="go">   de8fb4e..2e49c46  master -&gt; master</span>
+
+<span class="gp">$</span> git shortlog
+<span class="go">* 4b93ceq -  (HEAD -&gt; master, origin/master) A new local commit</span>
+<span class="go">* 4b93ceq -  A new commit on the website</span>
+<span class="go">* 2f40bfd -  Merge branch &#39;new-quote&#39;</span>
+<span class="go">* 7d6a299 -  Added a variable to hello.py</span>
+<span class="go">* 823459f -  Add hello.py</span>
+</pre></div>
+</div>
+<div class="section" id="checkout-a-local-copy-of-a-remote-branch">
+<h2><a class="toc-backref" href="#id7">5&nbsp;&nbsp;&nbsp;Checkout a local copy of a remote branch</a></h2>
+<p>[In Progress]</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout -b branch-name origin/branch-name
+</pre></div>
+<hr class="docutils" />
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
