@@ -167,10 +167,9 @@ kept in <code>src/</code>. The rule is that raw data goes from the BLS website o
 where ever it came from straight into <code>src/</code> and the raw files are never
 touched again. <em>Never manually edit the raw CSV files.</em> All cleaning is
 programmatic, which means that you should be able to download the data fresh
-from the source and immediately run the code.  files from <code>src/</code> and save
-them to <code>data-project-name-data/</code>. That way you know that anything not in
-<code>src/</code> was created by you and can be deleted as long as you still have the
-code that created the file in the first place.</p>
+from the source and immediately run the code.
+That way you know that anything not in <code>src/</code> was created by you and can
+be recreated as long as you have the code and the source data.</p>
 </div>
 <div class="section" id="define-data-locations-once-and-only-once">
 <h3><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;Define data locations once (and only once)</a></h3>
@@ -178,8 +177,8 @@ code that created the file in the first place.</p>
 cleaning itself but not by any other Python code or projects. In fact,
 <code>util/</code> will often just contain a single file, <code>env.py</code>. The
 <code>util/env.py</code> file contains environmental variables for the project,
-hence the name. These are variables like where on the hard drive the raw data
-are stored.  A basic <code>util/env.py</code> file looks like this:</p>
+hence the name. These variables define where on the hard drive the raw data
+are stored, etc. A basic <code>util/env.py</code> file looks like this:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">data_root</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;d:/&#39;</span>
