@@ -102,13 +102,16 @@ Daniel M. Sullivan            </a>
 <li><a class="reference internal" href="#other-stuff" id="id15">3.6&nbsp;&nbsp;&nbsp;Other stuff</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#example-script" id="id16">4&nbsp;&nbsp;&nbsp;Example Script</a></li>
-<li><a class="reference internal" href="#follow-robust-development-practices" id="id17">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a><ul class="auto-toc">
-<li><a class="reference internal" href="#build-your-code-incrementally-in-a-script" id="id18">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></li>
-<li><a class="reference internal" href="#don-t-run-snippets-of-code-in-isolation" id="id19">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></li>
-<li><a class="reference internal" href="#use-the-ipython-terminal-and-a-text-editor" id="id20">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></li>
-<li><a class="reference internal" href="#manage-your-installed-libraries-using-a-virtual-environment" id="id21">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></li>
-<li><a class="reference internal" href="#use-universal-immutable-identifiers-whenever-possible" id="id22">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></li>
+<li><a class="reference internal" href="#example-script" id="id16">4&nbsp;&nbsp;&nbsp;Example Script</a><ul class="auto-toc">
+<li><a class="reference internal" href="#example-bad-script" id="id17">4.1&nbsp;&nbsp;&nbsp;Example Bad Script</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#follow-robust-development-practices" id="id18">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a><ul class="auto-toc">
+<li><a class="reference internal" href="#build-your-code-incrementally-in-a-script" id="id19">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></li>
+<li><a class="reference internal" href="#don-t-run-snippets-of-code-in-isolation" id="id20">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></li>
+<li><a class="reference internal" href="#use-the-ipython-terminal-and-a-text-editor" id="id21">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></li>
+<li><a class="reference internal" href="#manage-your-installed-libraries-using-a-virtual-environment" id="id22">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></li>
+<li><a class="reference internal" href="#use-universal-immutable-identifiers-whenever-possible" id="id23">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></li>
 </ul>
 </li>
 </ul>
@@ -135,7 +138,7 @@ cardinal rule. If you copy and paste code to use it in multiple places, it is
 difficult to make sure any changes you make later also get copied and pasted.</p>
 <p>If a file name (e.g., <code>c:\data\subsample2.csv</code>) is defined in only one
 place and imported elsewhere, you can change the file name in that single place
-know for certain the change will propagate through the rest of your code.</p>
+and know for certain the change will propagate through the rest of your code.</p>
 <p>If you run lots of robustness checks on the same sample of data, do that data
 prep in a single function and import that function in every robustness check
 script. That way you know for a certainty that every regression is using
@@ -146,17 +149,21 @@ exactly the same sample, even if you come in and change something later.</p>
 <p>Figures and tables created by your code should be inserted directly into
 presentations or papers without manual editing.
 You don't want to have to tweak tables every time you re-create them.
-You're bound to insert a typo, forget one of the steps in tweaking, etc.</p>
+You're bound to insert a typo, forget one of the steps in tweaking, etc.
+Don't repeat yourself!</p>
 </div>
 </div>
 <div class="section" id="write-self-documenting-code">
 <h2><a class="toc-backref" href="#id4">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a></h2>
-<blockquote class="twitter-tweet"> <p lang="en" dir="ltr"> “Good code is its own best documentation. As you&#39;re about to add a comment, ask yourself, &#39;How can I improve the code so that this comment isn&#39;t needed?&#39; Improve the code and then document it to make it even clearer.” - Steve McConnell</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/1090308606409478144?ref_src=twsrc%5Etfw"> January 29, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>Give variables, functions, and files descriptive names. Err on the side of
-names being too long and too descriptive. Part of the reason you should be
-using tools like a good text editor and a good console like CMDer is that they
-have lots of predictive text and auto-completion functions to help with long
-variable and file names. Use comments to clarify why a particular coding
-choice was made. A few examples:</p>
+<blockquote class="twitter-tweet"> <p lang="en" dir="ltr"> “Good code is its own best documentation. As you&#39;re about to add a comment, ask yourself, &#39;How can I improve the code so that this comment isn&#39;t needed?&#39; Improve the code and then document it to make it even clearer.” - Steve McConnell</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/1090308606409478144?ref_src=twsrc%5Etfw"> January 29, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>Give descriptive names to variables, functions, and files.
+Err on the side of names being too long and descriptive.
+It takes longer to type these names but the added information will be worth it
+in the long run.
+(Part of the reason you should be using tools like a good text editor and a good
+console like CMDer is that they have predictive text completion and
+other tools to help with long variable and file names.)
+Use comments to clarify why a particular coding choice was made.
+A few examples:</p>
 <ul class="simple">
 <li>The filename <code>reg_sale_price.py</code> is beter than <code>reg.py</code>.
 A name like <code>table1.py</code> is completely forbidden.</li>
@@ -194,8 +201,8 @@ You could add a comment</p>
 <span class="n">vector_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">565</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">vector_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3109</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
-<p>But the best way is Don't Repeat Yourself, define these numbers in exactly one
-place (especially if they're used in multiple places like here) and let the
+<p>But the best way is Don't Repeat Yourself: Define these numbers in exactly one
+place--especially if they're used in multiple places like here--and let the
 code be self explanatory.</p>
 <div class="highlight"><pre><span></span><span class="c1"># Good:</span>
 <span class="n">NUM_COUNTIES</span> <span class="o">=</span> <span class="mi">3109</span>
@@ -244,7 +251,7 @@ like <code>/* */</code> in Stata, to achieve the same goal.</p>
 making you more productive as a programmer while having litte impact on what
 your code actually does.
 This section is different.
-It has a stylistic element, but not using an &quot;if-main&quot; block can significantly
+It does have a stylistic element, but not using an &quot;if-main&quot; block can significantly
 impact how your script runs.</p>
 <p>When you import something from another Python file, the entire file is
 executed. Suppose you want to import a function called
@@ -390,7 +397,9 @@ code to crash.</p>
 <ul class="simple">
 <li>Do not use tabs to indent. Use 4 spaces. Your editor should have a setting
 for this, so that when you hit the tab key the editor inserts 4 spaces
-instead of a tab code (<code>\t</code>).</li>
+instead of a tab code (<code>\t</code>). (We do this because each editor
+displays <code>\t</code> tabs in different ways, but all editors display spaces
+the same.)</li>
 <li>When you break a line using parentheses, the next line should line up with
 the open parenthesis on the line above. If the open parenthesis is alone
 on that line, indent once.</li>
@@ -449,7 +458,7 @@ different things. For example:</p>
 <p>This short example isn't too bad, but on larger scales it can be very confusing
 when a variable you thought was a DataFrame ends up being a string or vice
 versa. This type changing is also computationally slower. (It also messes up
-the <cite>mypy</cite> linter/type-checker.) A better solution is to be more explicit in
+the <code>mypy</code> linter/type-checker.) A better solution is to be more explicit in
 naming your variables:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Good</span>
 <span class="n">raw_data_path</span> <span class="o">=</span> <span class="s1">&#39;c:/data/raw_data.csv&#39;</span>
@@ -558,6 +567,7 @@ scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</
 <span class="k">def</span> <span class="nf">read_and_prep_data</span><span class="p">():</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;tmp.txt&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">df</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -567,11 +577,33 @@ scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</
 
     <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_triangle&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 </pre></div>
+<div class="section" id="example-bad-script">
+<h3><a class="toc-backref" href="#id17">4.1&nbsp;&nbsp;&nbsp;Example Bad Script</a></h3>
+<p>Each of the functions in the above script is referenced only once, so why write
+re-usable functions at all?
+Below is the same script re-written without functions or an if-main block.
+Is it easier or harder to follow what's going on in the code?</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">string</span> <span class="k">import</span> <span class="n">ascii_uppercase</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;tmp.txt&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;word_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">LETTER_SCORE</span> <span class="o">=</span> <span class="p">{</span><span class="n">ascii_uppercase</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">)}</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;word_score&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">LETTER_SCORE</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;positive_root&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;word_score&#39;</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_triangle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;positive_root&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;positive_root&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_triangle&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="follow-robust-development-practices">
-<h2><a class="toc-backref" href="#id17">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a></h2>
+<h2><a class="toc-backref" href="#id18">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a></h2>
 <div class="section" id="build-your-code-incrementally-in-a-script">
-<h3><a class="toc-backref" href="#id18">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></h3>
+<h3><a class="toc-backref" href="#id19">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></h3>
 <p>It's pretty common for data work in social science to look like this: You open
 Stata, R, Python, etc., and start poking around on the command line, interacting
 with the data until you get where you want. Then you use the command history
@@ -614,7 +646,7 @@ done so.</p>
 <p>When you're done, there should be a very simple (maybe empty) if-main block.</p>
 </div>
 <div class="section" id="don-t-run-snippets-of-code-in-isolation">
-<h3><a class="toc-backref" href="#id19">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></h3>
+<h3><a class="toc-backref" href="#id20">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></h3>
 <p>Spyder and Stata's do-file editor both have buttons that let you highlight a
 few lines of code and run only those. <em>Don't use them.</em> Run scripts from the
 beginning. It is too easy to spend ages &quot;fixing&quot; a piece of code by running it
@@ -622,7 +654,7 @@ as a snippet only to find that when you run the script as a whole, you never
 actually fixed the problem (or introduced a new one).</p>
 </div>
 <div class="section" id="use-the-ipython-terminal-and-a-text-editor">
-<h3><a class="toc-backref" href="#id20">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></h3>
+<h3><a class="toc-backref" href="#id21">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></h3>
 <p>Jupyter and Spyder are great tools for analyzing data in Python. However, it is
 hard to keep track of your computing environemnt (which versions of packages
 are loaded, etc.) while using these tools. Our preferred solution is to use a
@@ -633,7 +665,7 @@ run your code.</p>
 look for in a good editor.</p>
 </div>
 <div class="section" id="manage-your-installed-libraries-using-a-virtual-environment">
-<h3><a class="toc-backref" href="#id21">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></h3>
+<h3><a class="toc-backref" href="#id22">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></h3>
 <p>Let's say you work on Project A for a while using Pandas 0.18 and Numpy 1.12
 and some other Python packages. You submit Project A and start on Project B.
 Project B requires some features in Pandas 0.22, so you upgrade. While you're
@@ -651,10 +683,15 @@ online, e.g., <a class="reference external" href="https://towardsdatascience.com
 environment for each one.</p>
 </div>
 <div class="section" id="use-universal-immutable-identifiers-whenever-possible">
-<h3><a class="toc-backref" href="#id22">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></h3>
+<h3><a class="toc-backref" href="#id23">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></h3>
 <p>For example, use FIPS, not your own made up county ID's. Any time you introduce
 your own arbitrary identifiers, you run the risk of introducing inconsistencies
 between datasets.</p>
+<p>For example, Stata's <code>egen group()</code> command is not guaranteed to be
+consistent across different scripts.
+You can use <code>group()</code> in two different scripts to create IDs, and the IDs
+will merge with each other such that <code>assert _merge == 3</code>, but there's no
+guarantee that the merge is correct.</p>
 </div>
 </div>
 
