@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Using Satellite Data to Fill the Gaps in the US Air Pollution
+Monitoring Network - Daniel M. Sullivan</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://www.danielmsullivan.com/pages/research_summary_satellites_fill_monitor_gaps.html">
+
+        <meta name="author" content="Daniel M. Sullivan" />
+        <meta name="description" content="caption { font-weight: bold; } th { padding: 7px; text-align: right; } th:first-child { text-align: left; } td { padding: 7px; text-align: right; } td:first-child { text-align: left; } tr:last-child { font-weight: bold; } tr:nth-child(odd){background-color: #eeeeee;} by Daniel M. Sullivan and Alan Krupnick January 2019 Download Paper Abstract From Paper Compliance with the Clean Air Act’s National Ambient Air Quality Standards (NAAQS) is determined using local pollution monitors. However, most …" />
+
+    <meta property="og:site_name" content="Daniel M. Sullivan" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Using Satellite Data to Fill the Gaps in the US Air Pollution Monitoring Network"/>
+    <meta property="og:url" content="http://www.danielmsullivan.com/pages/research_summary_satellites_fill_monitor_gaps.html"/>
+    <meta property="og:description" content="caption { font-weight: bold; } th { padding: 7px; text-align: right; } th:first-child { text-align: left; } td { padding: 7px; text-align: right; } td:first-child { text-align: left; } tr:last-child { font-weight: bold; } tr:nth-child(odd){background-color: #eeeeee;} by Daniel M. Sullivan and Alan Krupnick January 2019 Download Paper Abstract From Paper Compliance with the Clean Air Act’s National Ambient Air Quality Standards (NAAQS) is determined using local pollution monitors. However, most …" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.danielmsullivan.com/" class="navbar-brand">
+Daniel M. Sullivan            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pdf/Sullivan_CV.pdf">CV</a></li>
+                    <li><a href="/pages/research.html">Research</a></li>
+                    <li><a href="/pages/code.html">Code</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content" class="body">
+        <h1 class="entry-title">Using Satellite Data to Fill the Gaps in the US Air Pollution
+Monitoring Network</h1>
+        
+        <div class="entry-content">
+            <style>     caption {       font-weight: bold;     }     th {       padding: 7px;       text-align: right;     }     th:first-child {         text-align: left;     }     td {       padding: 7px;       text-align: right;     }     td:first-child {       text-align: left;     }     tr:last-child {       font-weight: bold;     }     tr:nth-child(odd){background-color: #eeeeee;} </style><p>by Daniel M. Sullivan and Alan Krupnick <br />
+January 2019</p>
+<p><strong>Download Paper</strong> <a class="reference external" href="http://www.danielmsullivan.com/pdf/Sullivan_Krupnick_Filling_monitor_gaps_with_satellites.pdf"><img alt="moncoverage" src="http://www.danielmsullivan.com/images/pdf.png" /></a></p>
+<p><strong>Abstract From Paper</strong></p>
+<p>Compliance with the Clean Air Act’s National Ambient Air Quality Standards
+(NAAQS) is determined using local pollution monitors. However, most counties
+have zero or one monitor, and monitors may not represent exposure across wide
+areas. We use satellite-derived data on fine particulate matter (PM2.5) to
+revisit the compliance determinations for the PM2.5 annual NAAQS made in 2015.
+Mirroring current regulatory practice, we flag counties as “nonattainment” if
+they contain areas that exceed the NAAQS. Comparing the satellite-based list of
+nonattainment areas to the official determinations, we estimate that 24.4
+million people live in attainment areas that the satellite data suggest should
+be nonattainment. We then estimate how air quality changes in areas targeted by
+regulators for improvement, as occurs around ground-based monitors that are
+designated nonattainment. The estimates suggest that proper classification
+would have prevented 5,652 premature deaths between 2016 and 2017, a welfare
+gain of $51 billion.</p>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h2>Summary</h2>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#epa-relies-on-a-limited-network-of-monitors" id="id1">EPA relies on a limited network of monitors</a></li>
+<li><a class="reference internal" href="#satellite-data-can-fill-gaps-in-the-monitor-network" id="id2">Satellite data can fill gaps in the monitor network</a></li>
+<li><a class="reference internal" href="#monitors-miss-half-the-people-living-in-naaqs-exceeding-areas" id="id3">Monitors miss half the people living in NAAQS-exceeding areas</a></li>
+<li><a class="reference internal" href="#misclassification-costs-billions-in-increased-mortality" id="id4">Misclassification costs billions in increased mortality</a></li>
+</ul>
+</div>
+<div class="section" id="epa-relies-on-a-limited-network-of-monitors">
+<h3><a class="toc-backref" href="#id1">EPA relies on a limited network of monitors</a></h3>
+<p>The Clean Air Act (CAA) establishes National Ambient Air Quality Standards
+(NAAQS). Jurisdictions (e.g., counties) whose air pollution levels exceed the
+NAAQS can be classified as &quot;nonattainment&quot; with the CAA which increases the
+regulatory scrutiny on polluters in the area. Abundant research has shown that
+giving a county nonattainment status subsequently improves air quality and
+associated health outcomes.</p>
+<p>A county's attainment with the NAAQS is assessed using stationary air pollution
+monitors located within the county.
+Counties that are not monitored are very unlikely to ever receive a
+nonattainment designation.</p>
+<p>However, these monitors are expensive to produce and operate, and roughly 80%
+of counties in the U.S. (comprising 37% of the population) do not have a
+monitor for Fine Particulate Matter (PM2.5). PM2.5 has been shown to contribute
+to a number of health problems, including dementia and Alzheimer's.</p>
+<p><em>Is is possible that many areas have pollution exceeding the national standards
+that is undetected because of a lack of monitors?</em></p>
+</div>
+<div class="section" id="satellite-data-can-fill-gaps-in-the-monitor-network">
+<h3><a class="toc-backref" href="#id2">Satellite data can fill gaps in the monitor network</a></h3>
+<p>Satellite-based instruments can measure ground-level particulates across the
+entire United States.
+The map below compares the NAAQS to the three-year annual average of
+satellite-based PM2.5 readings for 2012-2014 for every square kilometer of the
+continental US.
+(The three-average for this period is the &quot;design value&quot;, or relevant statistic,
+used to assess compliance with the most recent revision to the NAAQS
+implemented in 2015.)</p>
+<p><img alt="I'm a map" src="http://www.danielmsullivan.com/images/map_msatna3_conus_2014.png" /></p>
+<p>Areas in red exceed the NAAQS, areas in white are on the cusp of exceeding, and
+areas in blue are in compliance.</p>
+<p>Zooming in on the mid-west shows how many pollution hotspots lack monitors, how
+monitors are often placed outside local hot spots, and that there are many
+areas over the NAAQS not covered by nonattainment areas. We refer to these
+areas as &quot;misclassified&quot; because EPA rules suggest the areas should be classed
+nonattainment but they are officially classed attainment.</p>
+<p><img alt="I'm a map" src="http://www.danielmsullivan.com/images/map_msatna3_hotspot_pm25_12_2014.png" /></p>
+</div>
+<div class="section" id="monitors-miss-half-the-people-living-in-naaqs-exceeding-areas">
+<h3><a class="toc-backref" href="#id3">Monitors miss half the people living in NAAQS-exceeding areas</a></h3>
+<p><strong>Misclassified Counties vs Nonattainment Counties</strong></p>
+<p><img alt="I'm a map" src="http://www.danielmsullivan.com/images/map_misclassed_pm25_12_msatna_2014.png" /></p>
+<p><strong>Misclassified Population by State</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="30%" />
+<col width="40%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">State</th>
+<th class="head">Counties with no Monitor</th>
+<th class="head">Counties with at least 1 monitor</th>
+<th class="head">Total</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>West Virginia</td>
+<td>0</td>
+<td>24,069</td>
+<td>24,069</td>
+</tr>
+<tr><td>Tennessee</td>
+<td>0</td>
+<td>54,181</td>
+<td>54,181</td>
+</tr>
+<tr><td>Arizona</td>
+<td>0</td>
+<td>195,751</td>
+<td>195,751</td>
+</tr>
+<tr><td>Missouri</td>
+<td>0</td>
+<td>319,294</td>
+<td>319,294</td>
+</tr>
+<tr><td>Kentucky</td>
+<td>975,135</td>
+<td>233,242</td>
+<td>1,208,377</td>
+</tr>
+<tr><td>Pennsylvania</td>
+<td>633,269</td>
+<td>1,081,820</td>
+<td>1,715,089</td>
+</tr>
+<tr><td>Ohio</td>
+<td>945,497</td>
+<td>1,240,213</td>
+<td>2,185,710</td>
+</tr>
+<tr><td>Indiana</td>
+<td>616,795</td>
+<td>2,229,834</td>
+<td>2,846,629</td>
+</tr>
+<tr><td>Texas</td>
+<td>418,007</td>
+<td>4,092,459</td>
+<td>4,510,466</td>
+</tr>
+<tr><td>California</td>
+<td>844,427</td>
+<td>4,059,633</td>
+<td>4,904,060</td>
+</tr>
+<tr><td>Illinois</td>
+<td>6,437,475</td>
+<td>0</td>
+<td>6,437,475</td>
+</tr>
+<tr><td>Total</td>
+<td>10,870,605</td>
+<td>13,530,496</td>
+<td>24,401,101</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="misclassification-costs-billions-in-increased-mortality">
+<h3><a class="toc-backref" href="#id4">Misclassification costs billions in increased mortality</a></h3>
+<p>Nonattainment status brings cleaner air and attending health benefits.
+The last time nonattainment designations were made for the PM2.5 annual NAAQS
+was 2015.
+What if all misclassified counties had been made nonattainment?
+We estimate the improvement in air pollution that would have hypothetically
+occurred in a number of ways.
+We then use the value of decreased mortality risk (or <a class="reference external" href="https://en.wikipedia.org/wiki/Value_of_life">value of statistical
+life</a> to
+counties benefited?</p>
+<p>Our most realistic estimate of air quality improvement would have been worth
+about $51 billion during 2016-2017, while our most conservative estimate yields
+a worth of $5 billion for the same period.
+These values only account for the benefit of decreased mortality and not
+morbidity effects like asthma, COPD, and other lung diseases, or decreased
+productivity and missed days of work.</p>
+</div>
+</div>
+
+        </div>
+    </section>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="http://www.danielmsullivan.com/images/dms_med.jpg"/>
+        </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/Dan_M_Sullivan"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="mailto:sullivan@rff.org"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ" target="_blank">Google Scholar</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://orcid.org/0000-0002-0380-7681" target="_blank">ORCID</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://ideas.repec.org/f/psu490.html" target="_blank">RePEc</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://www.rff.org/people/profile/daniel-m-sullivan" target="_blank">RFF page</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy;  Daniel M. Sullivan
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-88761020-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
