@@ -53,6 +53,7 @@ Daniel M. Sullivan            </a>
                     <li><a href="/pdf/Sullivan_CV.pdf">CV</a></li>
                     <li><a href="/pages/research.html">Research</a></li>
                     <li><a href="/pages/code.html">Code</a></li>
+                    <li><a href="/pages/tutorials.html">Tutorials</a></li>
                     <li><a href="/pages/contact.html">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -202,8 +203,10 @@ to our new commit and that <code>master</code> does not.</p>
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
 <p>Let's make one more change so that <code>hello.py</code> uses our subroutine:</p>
-<div class="highlight"><pre><span></span>to_print = &quot;Hello, world!&quot;
-print_thrice(to_print)
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">superprinter</span> <span class="k">import</span> <span class="n">print_thrice</span>
+
+<span class="n">to_print</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
+<span class="n">print_thrice</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span>
 </pre></div>
 <p>Commit the change:</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> git add hello.py
@@ -218,16 +221,18 @@ print_thrice(to_print)
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
 <p>Our two branches have diverged further. But, we can go back to <code>master</code>
-any time we want.</p>
+any time we want by using <code>$ git checkout master</code> as you'll see below.</p>
 </div>
 <div class="section" id="checking-out-a-different-branch">
 <h3><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;Checking out a different branch</a></h3>
-<p>Before we do anything, let's run our code to make sure we're using <code>print_thrice</code>:</p>
+<p>Before moving on, let's double check that <code>hello.py</code> looks like it
+should, either by running it:</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> python hello.py
 <span class="go">Hello, world!</span>
 <span class="go">Hello, world!</span>
 <span class="go">Hello, world!</span>
 </pre></div>
+<p>or checking in our editor or git bash via <code>$ cat hello.py</code>.</p>
 <p>Looks good. Now let's go back to the <code>master</code> branch for a bit, just to
 check that we can.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> git checkout master
@@ -239,8 +244,8 @@ check that we can.</p>
 <span class="go">* 7d6a299 -  (HEAD -&gt; master) Added a variable to hello.py</span>
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
-<p>Recall that <code>HEAD</code> points to whatever we're currently working on (what
-have checked out).</p>
+<p>Recall that <code>HEAD</code> points to whatever we're currently working on--what
+have checked out.</p>
 <p>By checking out <code>master</code>, Git has reverted our code directory to be
 exactly like it was before made our <code>add-subroutine</code> commits. The new
 file <code>superprinter.py</code> is gone:</p>
@@ -256,13 +261,16 @@ file <code>superprinter.py</code> is gone:</p>
 <span class="go">Hello, world!</span>
 </pre></div>
 <p>Of course, we can recover our <code>add-subroutine</code> commits by checking out
-that branch again.</p>
+that branch again via <code>$ git checkout add-subroutine</code>, but don't do that
+just yet.</p>
 </div>
 <div class="section" id="making-a-second-branch">
 <h3><a class="toc-backref" href="#id5">1.4&nbsp;&nbsp;&nbsp;Making a second branch</a></h3>
-<p>Let's pretend that someone else on our team is the one working on
+<p>Let's pretend that someone else on our team is working on
 <code>add-subroutine</code> and that our job is to come up with a quote more
 inspiring than &quot;Hello, world!&quot;.</p>
+<p>We currently have <code>master</code> checked out, so any new branches we make will
+use <code>master</code> as their jumping off point.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> git checkout -b new-quote
 <span class="go">Switched to a new branch &#39;new-quote&#39;</span>
 
@@ -334,10 +342,16 @@ Let's merge <code>add-subroutine</code> first.</p>
 <span class="go">* 7d6a299 -  Added a variable to hello.py</span>
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
+<p>The changes made to the code in <code>add-subroutine</code> now also exist in
+<code>master</code>. Git does this by simply &quot;re-playing&quot; the changes made in the
+commits that are merged. That is, Git looks at what changes where made in
+<code>eb198f3</code> and replicates them in the <code>master</code> branch. Then it does
+the same for <code>fed0858</code>.</p>
 <div class="section" id="resolving-conflicts-in-merges">
 <h3><a class="toc-backref" href="#id7">2.1&nbsp;&nbsp;&nbsp;Resolving conflicts in merges</a></h3>
 <p>Now merge <code>new-quote</code> to <code>master</code>. Because our two branches both
-changed <code>hello.py</code>, Git can't easily merge the changes.</p>
+changed <code>hello.py</code>, Git can't easily merge the changes. (It tries to
+re-play the changes, but can't find the place to start.)</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> git merge --no-ff new-quote
 <span class="go">Auto-merging hello.py</span>
 <span class="go">CONFLICT (content): Merge conflict in hello.py</span>
