@@ -442,8 +442,8 @@ manipulate <code>df.columns</code> like a list: <code>df.columns = ['a',
 <tr><td><code>collapse (&lt;stat&gt;) var [iw = &lt;weight&gt;]</code></td>
 <td>Manually or maybe Statsmodels has a tool.</td>
 </tr>
-<tr><td><code>collapse (&lt;stat&gt;) var1, var2, by(&lt;groupvars&gt;)</code></td>
-<td><code>df.groupby(&lt;groupvars&gt;)[['var1', 'var2']].&lt;stat&gt;()</code></td>
+<tr><td><code>collapse (mean) var1, var2, by(groupvar1 groupvar2)</code></td>
+<td><code>df.groupby(['groupvar1', 'groupvar2'])[['var1', 'var2']].mean()</code></td>
 </tr>
 <tr><td><code>recode var (1/5 = 1)</code></td>
 <td>N/A, see note below.</td>
@@ -509,7 +509,7 @@ you can use a dictionary to map data values to labels when necessary.</p>
     <span class="n">df</span>
     <span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;group_var1&#39;</span><span class="p">,</span> <span class="s1">&#39;group_var2&#39;</span><span class="p">,</span> <span class="s1">&#39;sort_var1&#39;</span><span class="p">])</span>
     <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
+    <span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div></li>
@@ -522,17 +522,17 @@ you can use a dictionary to map data values to labels when necessary.</p>
     <span class="n">df</span>
     <span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;group_var1&#39;</span><span class="p">,</span> <span class="s1">&#39;group_var2&#39;</span><span class="p">,</span> <span class="s1">&#39;sort_var1&#39;</span><span class="p">])</span>
     <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:])</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:])</span>
 <span class="p">)</span>
 </pre></div>
 </div></td>
 </tr>
 <tr><td><code>bys group_var1 group_var2 (sort_var): gen jth_val = var[j]</code> where
 <code>j</code> is some arbitrary number</td>
-<td><div class="first last"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group_sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+<td><div class="first last"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;jth_val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df</span>
     <span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;group_var1&#39;</span><span class="p">,</span> <span class="s1">&#39;group_var2&#39;</span><span class="p">,</span> <span class="s1">&#39;sort_var1&#39;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">])[</span><span class="s1">&#39;var]</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">])[</span><span class="s1">&#39;var&#39;</span><span class="p">]</span>
     <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
 <span class="p">)</span>
 </pre></div>
@@ -584,10 +584,10 @@ correctly sorted for <code>shift</code> to work the way you want it to. You
 will also probably need to use a <code>groupby</code>; see below.</td>
 </tr>
 <tr><td><code>L2.var</code></td>
-<td><code>df.groupby('panelvar').shift(2)</code></td>
+<td><code>df['var'].shift(2)</code></td>
 </tr>
 <tr><td><code>F.var</code></td>
-<td><code>df.groupby('panelvar').shift(-1)</code></td>
+<td><code>df['var'].shift(-1)</code></td>
 </tr>
 </tbody>
 </table>
