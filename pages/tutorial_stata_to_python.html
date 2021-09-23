@@ -21,7 +21,6 @@
     <meta property="og:description" content="Contents 1   Intro/Note on Notation 2   Note on composability 3   Input/Output 4   Sample Selection 5   Data Info and Summary Statistics 6   Variable Manipulation 7   Bysort 8   Panel Data 9   Merging and Joining 10   Reshape 11   Econometrics 12   Plotting 13   Other differences td { padding: 7px; } tr:nth-child(even){background-color: #eeeeee;} Special thanks to John Coglianese for feedback and for supplying the list of &#34;vital …" />
 
 
-
     <!-- Bootstrap -->
         <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
@@ -36,6 +35,8 @@
 </head>
 <body>
 
+<!-- Navbar -->
+
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -45,28 +46,37 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://www.danielmsullivan.com/" class="navbar-brand">
-Daniel M. Sullivan            </a>
+                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="/pdf/Sullivan_CV.pdf">CV</a></li>
-                    <li><a href="/pages/research.html">Research</a></li>
-                    <li><a href="/pages/code.html">Code</a></li>
-                    <li><a href="/pages/tutorials.html">Tutorials</a></li>
-                    <li><a href="/pages/contact.html">Contact</a></li>
+
+                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                          </ul>
+                        </li>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
-</div> <!-- /.navbar -->
+</div> <!-- /.navbar --><!-- End Navbar -->
 
 <!-- Banner -->
 <!-- End Banner -->
-
-<!-- Content Container -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -75,7 +85,7 @@ Daniel M. Sullivan            </a>
         
         <div class="entry-content">
             <div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<p class="topic-title">Contents</p>
 <ul class="auto-toc simple">
 <li><a class="reference internal" href="#intro-note-on-notation" id="id1">1&nbsp;&nbsp;&nbsp;Intro/Note on Notation</a></li>
 <li><a class="reference internal" href="#note-on-composability" id="id2">2&nbsp;&nbsp;&nbsp;Note on composability</a></li>
@@ -593,58 +603,58 @@ will also probably need to use a <code>groupby</code>; see below.</td>
 </table>
 <div class="section" id="examples">
 <h3>8.1&nbsp;&nbsp;&nbsp;Examples</h3>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span>In [1]: import numpy as np
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+In [2]: import pandas as pd
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">df0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;var1&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
-   <span class="o">...</span><span class="p">:</span>                     <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-   <span class="o">...</span><span class="p">:</span>                     <span class="s1">&#39;period&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">})</span>
+In [3]: df0 = pd.DataFrame({&#39;var1&#39;: np.arange(6),
+   ...:                     &#39;id&#39;: [1, 1, 2, 2, 3, 3],
+   ...:                     &#39;period&#39;: [0, 1] * 3})
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">df0</span><span class="p">)</span>
-   <span class="n">var1</span>  <span class="nb">id</span>  <span class="n">period</span>
-<span class="mi">0</span>     <span class="mi">0</span>   <span class="mi">1</span>       <span class="mi">0</span>
-<span class="mi">1</span>     <span class="mi">1</span>   <span class="mi">1</span>       <span class="mi">1</span>
-<span class="mi">2</span>     <span class="mi">2</span>   <span class="mi">2</span>       <span class="mi">0</span>
-<span class="mi">3</span>     <span class="mi">3</span>   <span class="mi">2</span>       <span class="mi">1</span>
-<span class="mi">4</span>     <span class="mi">4</span>   <span class="mi">3</span>       <span class="mi">0</span>
-<span class="mi">5</span>     <span class="mi">5</span>   <span class="mi">3</span>       <span class="mi">1</span>
+In [4]: print(df0)
+   var1  id  period
+0     0   1       0
+1     1   1       1
+2     2   2       0
+3     3   2       1
+4     4   3       0
+5     5   3       1
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df0</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+In [5]: df = df0.set_index([&#39;id&#39;, &#39;period&#39;]).sort_index()
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-           <span class="n">var1</span>
-<span class="nb">id</span> <span class="n">period</span>
-<span class="mi">1</span>  <span class="mi">0</span>          <span class="mi">0</span>
-   <span class="mi">1</span>          <span class="mi">1</span>
-<span class="mi">2</span>  <span class="mi">0</span>          <span class="mi">2</span>
-   <span class="mi">1</span>          <span class="mi">3</span>
-<span class="mi">3</span>  <span class="mi">0</span>          <span class="mi">4</span>
-   <span class="mi">1</span>          <span class="mi">5</span>
+In [6]: print(df)
+           var1
+id period
+1  0          0
+   1          1
+2  0          2
+   1          3
+3  0          4
+   1          5
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;var1_lag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;var1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
+In [7]: df[&#39;var1_lag&#39;] = df.groupby(level=&#39;id&#39;)[&#39;var1&#39;].shift()
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-           <span class="n">var1</span>  <span class="n">var1_lag</span>
-<span class="nb">id</span> <span class="n">period</span>
-<span class="mi">1</span>  <span class="mi">0</span>          <span class="mi">0</span>       <span class="n">NaN</span>
-   <span class="mi">1</span>          <span class="mi">1</span>       <span class="mf">0.0</span>
-<span class="mi">2</span>  <span class="mi">0</span>          <span class="mi">2</span>       <span class="n">NaN</span>
-   <span class="mi">1</span>          <span class="mi">3</span>       <span class="mf">2.0</span>
-<span class="mi">3</span>  <span class="mi">0</span>          <span class="mi">4</span>       <span class="n">NaN</span>
-   <span class="mi">1</span>          <span class="mi">5</span>       <span class="mf">4.0</span>
+In [8]: print(df)
+           var1  var1_lag
+id period
+1  0          0       NaN
+   1          1       0.0
+2  0          2       NaN
+   1          3       2.0
+3  0          4       NaN
+   1          5       4.0
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;var1_for&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;var1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+In [9]: df[&#39;var1_for&#39;] = df.groupby(level=&#39;id&#39;)[&#39;var1&#39;].shift(-1)
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-           <span class="n">var1</span>  <span class="n">var1_lag</span>  <span class="n">var1_for</span>
-<span class="nb">id</span> <span class="n">period</span>
-<span class="mi">1</span>  <span class="mi">0</span>          <span class="mi">0</span>       <span class="n">NaN</span>       <span class="mf">1.0</span>
-   <span class="mi">1</span>          <span class="mi">1</span>       <span class="mf">0.0</span>       <span class="n">NaN</span>
-<span class="mi">2</span>  <span class="mi">0</span>          <span class="mi">2</span>       <span class="n">NaN</span>       <span class="mf">3.0</span>
-   <span class="mi">1</span>          <span class="mi">3</span>       <span class="mf">2.0</span>       <span class="n">NaN</span>
-<span class="mi">3</span>  <span class="mi">0</span>          <span class="mi">4</span>       <span class="n">NaN</span>       <span class="mf">5.0</span>
-   <span class="mi">1</span>          <span class="mi">5</span>       <span class="mf">4.0</span>       <span class="n">NaN</span>
+In [10]: print(df)
+           var1  var1_lag  var1_for
+id period
+1  0          0       NaN       1.0
+   1          1       0.0       NaN
+2  0          2       NaN       3.0
+   1          3       2.0       NaN
+3  0          4       NaN       5.0
+   1          5       4.0       NaN
 </pre></div>
 </div>
 </div>
@@ -720,61 +730,61 @@ to &quot;a data table is just another object/variable&quot; of Python. But this
 difference also makes reshaping a little easier in Python.</p>
 <p>The most fundamental reshape commands in Python/pandas are <code>stack</code> and
 <code>unstack</code>:</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span>In [1]: import pandas as pd
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+In [2]: import numpy as np
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="nb">long</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-   <span class="o">...</span><span class="p">:</span>                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_variable&#39;</span><span class="p">],</span>
-   <span class="o">...</span><span class="p">:</span>                     <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span>
-   <span class="o">...</span><span class="p">:</span>                         <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-   <span class="o">...</span><span class="p">:</span>                          <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-   <span class="o">...</span><span class="p">:</span>                          <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-   <span class="o">...</span><span class="p">:</span>                          <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]))</span>
+In [3]: long = pd.DataFrame(np.arange(8),
+   ...:                     columns=[&#39;some_variable&#39;],
+   ...:                     index=pd.MultiIndex.from_tuples(
+   ...:                         [(&#39;a&#39;, 1), (&#39;a&#39;, 2),
+   ...:                          (&#39;b&#39;, 1), (&#39;b&#39;, 2),
+   ...:                          (&#39;c&#39;, 1), (&#39;c&#39;, 2),
+   ...:                          (&#39;d&#39;, 1), (&#39;d&#39;, 2)]))
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="nb">long</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;unit_id&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span>
+In [4]: long.index.names=[&#39;unit_id&#39;, &#39;time&#39;]
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="nb">long</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;varname&#39;</span>
+In [5]: long.columns.name = &#39;varname&#39;
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="nb">long</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
-<span class="n">varname</span>       <span class="n">some_variable</span>
-<span class="n">unit_id</span> <span class="n">time</span>
-<span class="n">a</span>       <span class="mi">1</span>                 <span class="mi">0</span>
-        <span class="mi">2</span>                 <span class="mi">1</span>
-<span class="n">b</span>       <span class="mi">1</span>                 <span class="mi">2</span>
-        <span class="mi">2</span>                 <span class="mi">3</span>
-<span class="n">c</span>       <span class="mi">1</span>                 <span class="mi">4</span>
-        <span class="mi">2</span>                 <span class="mi">5</span>
-<span class="n">d</span>       <span class="mi">1</span>                 <span class="mi">6</span>
-        <span class="mi">2</span>                 <span class="mi">7</span>
+In [6]: long
+Out[6]:
+varname       some_variable
+unit_id time
+a       1                 0
+        2                 1
+b       1                 2
+        2                 3
+c       1                 4
+        2                 5
+d       1                 6
+        2                 7
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">wide</span> <span class="o">=</span> <span class="nb">long</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+In [7]: wide = long.unstack(&#39;time&#39;)
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">wide</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span>
-<span class="n">varname</span> <span class="n">some_variable</span>
-<span class="n">time</span>                <span class="mi">1</span>  <span class="mi">2</span>
-<span class="n">unit_id</span>
-<span class="n">a</span>                   <span class="mi">0</span>  <span class="mi">1</span>
-<span class="n">b</span>                   <span class="mi">2</span>  <span class="mi">3</span>
-<span class="n">c</span>                   <span class="mi">4</span>  <span class="mi">5</span>
-<span class="n">d</span>                   <span class="mi">6</span>  <span class="mi">7</span>
+In [8]: wide
+Out[8]:
+varname some_variable
+time                1  2
+unit_id
+a                   0  1
+b                   2  3
+c                   4  5
+d                   6  7
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">long2</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+In [9]: long2 = wide.stack(&#39;time&#39;)
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">long2</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">10</span><span class="p">]:</span>
-<span class="n">varname</span>       <span class="n">some_variable</span>
-<span class="n">unit_id</span> <span class="n">time</span>
-<span class="n">a</span>       <span class="mi">1</span>                 <span class="mi">0</span>
-        <span class="mi">2</span>                 <span class="mi">1</span>
-<span class="n">b</span>       <span class="mi">1</span>                 <span class="mi">2</span>
-        <span class="mi">2</span>                 <span class="mi">3</span>
-<span class="n">c</span>       <span class="mi">1</span>                 <span class="mi">4</span>
-        <span class="mi">2</span>                 <span class="mi">5</span>
-<span class="n">d</span>       <span class="mi">1</span>                 <span class="mi">6</span>
-        <span class="mi">2</span>                 <span class="mi">7</span>
+In [10]: long2
+Out[10]:
+varname       some_variable
+unit_id time
+a       1                 0
+        2                 1
+b       1                 2
+        2                 3
+c       1                 4
+        2                 5
+d       1                 6
+        2                 7
 </pre></div>
 <p>Here Input 3 creates a DataFrame, Input 4 gives each of the index columns a
 name, and Input 5 names the columns. Coming from Stata, it's a little weird to
@@ -789,31 +799,31 @@ that the columns now have multiple levels, just like the index previously did.
 This is another good reason to label your index and columns. If you want to
 access either of those columns, you can do so as usual, using a tuple to
 differentiate between the two levels:</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">wide</span><span class="p">[(</span><span class="s1">&#39;some_variable&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span>
-<span class="n">unit_id</span>
-<span class="n">a</span>    <span class="mi">0</span>
-<span class="n">b</span>    <span class="mi">2</span>
-<span class="n">c</span>    <span class="mi">4</span>
-<span class="n">d</span>    <span class="mi">6</span>
-<span class="n">Name</span><span class="p">:</span> <span class="p">(</span><span class="n">some_variable</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
+<div class="highlight"><pre><span></span>In [11]: wide[(&#39;some_variable&#39;, 1)]
+Out[11]:
+unit_id
+a    0
+b    2
+c    4
+d    6
+Name: (some_variable, 1), dtype: int32
 </pre></div>
 <p>If you want to combine the two levels (like Stata defaults to), you can simply
 rename the columns:</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">wide_single_level_column</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight"><pre><span></span>In [13]: wide_single_level_column = wide.copy()
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">wide_single_level_column</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="o">...</span><span class="p">:</span>        <span class="s1">&#39;{}_{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
-    <span class="o">...</span><span class="p">:</span>        <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">wide_single_level_column</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+In [14]: wide_single_level_column.columns = [
+    ...:        &#39;{}_{}&#39;.format(var, time)
+    ...:        for var, time in wide_single_level_column.columns]
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">wide_single_level_column</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span>
-                  <span class="n">some_variable_1</span>  <span class="n">some_variable_2</span>
-         <span class="n">unit_id</span>
-         <span class="n">a</span>                      <span class="mi">0</span>                <span class="mi">1</span>
-         <span class="n">b</span>                      <span class="mi">2</span>                <span class="mi">3</span>
-         <span class="n">c</span>                      <span class="mi">4</span>                <span class="mi">5</span>
-         <span class="n">d</span>                      <span class="mi">6</span>                <span class="mi">7</span>
+In [15]: wide_single_level_column
+Out[15]:
+                  some_variable_1  some_variable_2
+         unit_id
+         a                      0                1
+         b                      2                3
+         c                      4                5
+         d                      6                7
 </pre></div>
 <p>The <code>pivot</code> command can also be useful, but it's a bit more complicated than <code>stack</code> and
 <code>unstack</code> and is better to revisit <code>pivot</code> after you are
@@ -986,60 +996,36 @@ is tricky.)</p>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-<div id="aboutme">
-        <p>
-            <img width="100%" class="img-thumbnail" src="http://www.danielmsullivan.com/images/dms_med.jpg"/>
-        </p>
-</div><!-- Sidebar -->
+
 <section class="well well-sm">
-  <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Contact</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github fa-lg"></i> Github</a></li>
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/daniel-sullivan-42134687"><i class="fa fa-linkedin fa-lg"></i> LinkedIn</a></li>
+                <li class="list-group-item"><a href="https://twitter.com/Dan_M_Sullivan"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
+                <li class="list-group-item"><a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ"><i class="fa fa-graduation-cap fa-lg"></i> Google Scholar</a></li>
+                <li class="list-group-item"><a href="mailto:sullivan.dm3@gmail.com"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
+                <li class="list-group-item"><a href="mailto:daniel.m.sullivan@jpmchase.com"><i class="fa fa-inbox fa-lg"></i> Work Email</a></li>
+              </ul>
+            </li>
 
-<!-- Sidebar/Social -->
-<li class="list-group-item">
-  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-  <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://twitter.com/Dan_M_Sullivan"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
-    <li class="list-group-item"><a href="mailto:sullivan@rff.org"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
-  </ul>
-</li>
-<!-- End Sidebar/Social -->
 
-<!-- Sidebar/Links -->
-<li class="list-group-item">
-  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
-  <ul class="list-group" id="links">
-    <li class="list-group-item">
-      <a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ" target="_blank">Google Scholar</a>
-    </li>
-    <li class="list-group-item">
-      <a href="http://orcid.org/0000-0002-0380-7681" target="_blank">ORCID</a>
-    </li>
-    <li class="list-group-item">
-      <a href="https://ideas.repec.org/f/psu490.html" target="_blank">RePEc</a>
-    </li>
-    <li class="list-group-item">
-      <a href="http://www.rff.org/people/profile/daniel-m-sullivan" target="_blank">RFF page</a>
-    </li>
-  </ul>
-</li>
-<!-- End Sidebar/Links -->
-  </ul>
+
+
+
+    </ul>
 </section>
-<!-- End Sidebar -->            </aside>
+            </aside>
         </div>
     </div>
 </div>
-<!-- End Content Container -->
-
 <footer>
    <div class="container">
       <hr>
       <div class="row">
          <div class="col-xs-10">&copy;  Daniel M. Sullivan
-            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
-            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+            &middot; Powered by <a href="http://docs.getpelican.com/" target="_blank">Pelican</a> which takes great advantage of <a href="https://www.python.org/" target="_blank">Python</a>         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
@@ -1051,7 +1037,6 @@ is tricky.)</p>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
-
 
     <!-- Google Analytics -->
     <script type="text/javascript">
@@ -1070,7 +1055,6 @@ is tricky.)</p>
         })();
     </script>
     <!-- End Google Analytics Code -->
-
 
 </body>
 </html>

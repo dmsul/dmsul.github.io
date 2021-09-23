@@ -21,7 +21,6 @@
     <meta property="og:description" content="Contents 1   Main Resources 2   Secondary Resource (for reference) 3   Reading 4   Exercises 1   Main Resources “Introduction to Python for Econometrics, Statistics, and Data Analysis” by Kevin Sheppard “Learn Python3 the Hard Way” 2   Secondary Resource (for reference) “Learn Python in X Minutes” 3   Reading Sheppard Chapter 1: Set up Anaconda (Python 3.6). Don’t worry about Jupyter notebooks or Spyder. Our workflow will …" />
 
 
-
     <!-- Bootstrap -->
         <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
@@ -36,6 +35,8 @@
 </head>
 <body>
 
+<!-- Navbar -->
+
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -45,28 +46,37 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://www.danielmsullivan.com/" class="navbar-brand">
-Daniel M. Sullivan            </a>
+                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="/pdf/Sullivan_CV.pdf">CV</a></li>
-                    <li><a href="/pages/research.html">Research</a></li>
-                    <li><a href="/pages/code.html">Code</a></li>
-                    <li><a href="/pages/tutorials.html">Tutorials</a></li>
-                    <li><a href="/pages/contact.html">Contact</a></li>
+
+                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                          </ul>
+                        </li>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
-</div> <!-- /.navbar -->
+</div> <!-- /.navbar --><!-- End Navbar -->
 
 <!-- Banner -->
 <!-- End Banner -->
-
-<!-- Content Container -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -75,7 +85,7 @@ Daniel M. Sullivan            </a>
         
         <div class="entry-content">
             <div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<p class="topic-title">Contents</p>
 <ul class="auto-toc simple">
 <li><a class="reference internal" href="#main-resources" id="id1">1&nbsp;&nbsp;&nbsp;Main Resources</a></li>
 <li><a class="reference internal" href="#secondary-resource-for-reference" id="id2">2&nbsp;&nbsp;&nbsp;Secondary Resource (for reference)</a></li>
@@ -171,60 +181,36 @@ file and create a DataFrame with three columns: “word”, “word_score”,
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-<div id="aboutme">
-        <p>
-            <img width="100%" class="img-thumbnail" src="http://www.danielmsullivan.com/images/dms_med.jpg"/>
-        </p>
-</div><!-- Sidebar -->
+
 <section class="well well-sm">
-  <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Contact</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github fa-lg"></i> Github</a></li>
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/daniel-sullivan-42134687"><i class="fa fa-linkedin fa-lg"></i> LinkedIn</a></li>
+                <li class="list-group-item"><a href="https://twitter.com/Dan_M_Sullivan"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
+                <li class="list-group-item"><a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ"><i class="fa fa-graduation-cap fa-lg"></i> Google Scholar</a></li>
+                <li class="list-group-item"><a href="mailto:sullivan.dm3@gmail.com"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
+                <li class="list-group-item"><a href="mailto:daniel.m.sullivan@jpmchase.com"><i class="fa fa-inbox fa-lg"></i> Work Email</a></li>
+              </ul>
+            </li>
 
-<!-- Sidebar/Social -->
-<li class="list-group-item">
-  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-  <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://twitter.com/Dan_M_Sullivan"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
-    <li class="list-group-item"><a href="mailto:sullivan@rff.org"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
-  </ul>
-</li>
-<!-- End Sidebar/Social -->
 
-<!-- Sidebar/Links -->
-<li class="list-group-item">
-  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
-  <ul class="list-group" id="links">
-    <li class="list-group-item">
-      <a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ" target="_blank">Google Scholar</a>
-    </li>
-    <li class="list-group-item">
-      <a href="http://orcid.org/0000-0002-0380-7681" target="_blank">ORCID</a>
-    </li>
-    <li class="list-group-item">
-      <a href="https://ideas.repec.org/f/psu490.html" target="_blank">RePEc</a>
-    </li>
-    <li class="list-group-item">
-      <a href="http://www.rff.org/people/profile/daniel-m-sullivan" target="_blank">RFF page</a>
-    </li>
-  </ul>
-</li>
-<!-- End Sidebar/Links -->
-  </ul>
+
+
+
+    </ul>
 </section>
-<!-- End Sidebar -->            </aside>
+            </aside>
         </div>
     </div>
 </div>
-<!-- End Content Container -->
-
 <footer>
    <div class="container">
       <hr>
       <div class="row">
          <div class="col-xs-10">&copy;  Daniel M. Sullivan
-            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
-            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+            &middot; Powered by <a href="http://docs.getpelican.com/" target="_blank">Pelican</a> which takes great advantage of <a href="https://www.python.org/" target="_blank">Python</a>         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
@@ -236,7 +222,6 @@ file and create a DataFrame with three columns: “word”, “word_score”,
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
-
 
     <!-- Google Analytics -->
     <script type="text/javascript">
@@ -255,7 +240,6 @@ file and create a DataFrame with three columns: “word”, “word_score”,
         })();
     </script>
     <!-- End Google Analytics Code -->
-
 
 </body>
 </html>

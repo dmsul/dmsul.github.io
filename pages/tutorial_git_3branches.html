@@ -21,7 +21,6 @@
     <meta property="og:description" content="A Brief Intro to Git Overview Previous: First Steps: Making commits Next: Remotes: Sharing Code Online Page Contents 1   Branches 1.1   Create and checkout a new branch 1.2   Work on the new branch 1.3   Checking out a different branch 1.4   Making a second branch 2   Merging 2.1   Resolving conflicts in merges Git has two main functions. We&#39;ve already covered the …" />
 
 
-
     <!-- Bootstrap -->
         <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
@@ -36,6 +35,8 @@
 </head>
 <body>
 
+<!-- Navbar -->
+
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -45,28 +46,37 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://www.danielmsullivan.com/" class="navbar-brand">
-Daniel M. Sullivan            </a>
+                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="/pdf/Sullivan_CV.pdf">CV</a></li>
-                    <li><a href="/pages/research.html">Research</a></li>
-                    <li><a href="/pages/code.html">Code</a></li>
-                    <li><a href="/pages/tutorials.html">Tutorials</a></li>
-                    <li><a href="/pages/contact.html">Contact</a></li>
+
+                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                          </ul>
+                        </li>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
-</div> <!-- /.navbar -->
+</div> <!-- /.navbar --><!-- End Navbar -->
 
 <!-- Banner -->
 <!-- End Banner -->
-
-<!-- Content Container -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -81,7 +91,7 @@ Daniel M. Sullivan            </a>
 <li>Next: <a class="reference external" href="tutorial_git_4remotes.html">Remotes: Sharing Code Online</a></li>
 </ul>
 <div class="contents topic" id="page-contents">
-<p class="topic-title first">Page Contents</p>
+<p class="topic-title">Page Contents</p>
 <ul class="auto-toc simple">
 <li><a class="reference internal" href="#branches" id="id1">1&nbsp;&nbsp;&nbsp;Branches</a><ul class="auto-toc">
 <li><a class="reference internal" href="#create-and-checkout-a-new-branch" id="id2">1.1&nbsp;&nbsp;&nbsp;Create and checkout a new branch</a></li>
@@ -106,7 +116,7 @@ other's way. Branches let us do that.</p>
 <p>A <strong>branch</strong> is a special label that points to a commit.</p>
 <p>Let's use our special <code>git shortlog</code> command to remind ourselves what our
 repository history looks like.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git shortlog
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git shortlog
 <span class="go">* 7d6a299 -  (HEAD -&gt; master) Added a variable to hello.py</span>
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
@@ -125,34 +135,34 @@ on our new feature.</p>
 <div class="section" id="create-and-checkout-a-new-branch">
 <h3><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;Create and checkout a new branch</a></h3>
 <p>First, list all the branches in the repo:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git branch
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git branch
 <span class="go">* master</span>
 </pre></div>
 <p>Just one, <code>master</code>. The asterisk marks the currently active branch (the
 one that's checked out).</p>
 <p>Now, create a new branch called <code>add-subroutine</code>.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git branch add-subroutine
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git branch add-subroutine
 </pre></div>
 <p>and list all the branches again.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git branch
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git branch
 <span class="go">  add-subroutine</span>
 <span class="go">* master</span>
 </pre></div>
 <p>So now we have our new branch. Next, check it out so it's the active branch.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout add-subroutine
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git checkout add-subroutine
 </pre></div>
 <p>And now we see that Git says we're on the <code>add-subroutine</code> branch.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git branch
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git branch
 <span class="go">* add-subroutine</span>
 <span class="go">  master</span>
 
-<span class="gp">$</span> git status
+<span class="gp">$ </span>git status
 <span class="go">On branch add-subroutine</span>
 <span class="go">nothing to commit, working tree clean</span>
 </pre></div>
 <p>If we check <code>shortlog</code>, we see that <code>HEAD</code> is pointing to
 <code>add-subroutine</code>.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git shortlog
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git shortlog
 <span class="go">* 7d6a299 -  (HEAD -&gt; add-subroutine, master) Added a variable to hello.py</span>
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
@@ -172,7 +182,7 @@ alone. Let's use this branch to add a subroutine to our code.</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
 </pre></div>
 <p>Add <code>superprinter.py</code> to the repo and commit it:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git status
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git status
 <span class="go">On branch add-subroutine</span>
 <span class="go">Untracked files:</span>
 <span class="go">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span>
@@ -181,40 +191,40 @@ alone. Let's use this branch to add a subroutine to our code.</p>
 
 <span class="go">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span>
 
-<span class="gp">$</span> git add superprinter.py
+<span class="gp">$ </span>git add superprinter.py
 
-<span class="gp">$</span> git status
+<span class="gp">$ </span>git status
 <span class="go">On branch add-subroutine</span>
 <span class="go">Changes to be committed:</span>
 <span class="go">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
 
 <span class="go">        new file:   superprinter.py</span>
 
-<span class="gp">$</span> git commit -m <span class="s2">&quot;Add superprinter&quot;</span>
+<span class="gp">$ </span>git commit -m <span class="s2">&quot;Add superprinter&quot;</span>
 <span class="go">[add-subroutine eb198f3] Add superprinter</span>
 <span class="go"> 1 file changed, 5 insertions(+)</span>
 <span class="go"> create mode 100644 superprinter.py</span>
 </pre></div>
 <p>If you look at the log, you can see that branch <code>add-subroutine</code> points
 to our new commit and that <code>master</code> does not.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git shortlog
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git shortlog
 <span class="go">* eb198f3 -  (HEAD -&gt; add-subroutine) Add superprinter</span>
 <span class="go">* 7d6a299 -  (master) Added a variable to hello.py</span>
 <span class="go">* 823459f -  Add hello.py</span>
 </pre></div>
 <p>Let's make one more change so that <code>hello.py</code> uses our subroutine:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">superprinter</span> <span class="k">import</span> <span class="n">print_thrice</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">superprinter</span> <span class="kn">import</span> <span class="n">print_thrice</span>
 
 <span class="n">to_print</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
 <span class="n">print_thrice</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span>
 </pre></div>
 <p>Commit the change:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git add hello.py
-<span class="gp">$</span> git commit -m <span class="s2">&quot;Use print_thrice&quot;</span>
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git add hello.py
+<span class="gp">$ </span>git commit -m <span class="s2">&quot;Use print_thrice&quot;</span>
 <span class="go">[add-subroutine fed0858] Use print_thrice</span>
 <span class="go"> 1 file changed, 3 insertions(+), 1 deletion(-)</span>
 
-<span class="gp">$</span> git shortlog
+<span class="gp">$ </span>git shortlog
 <span class="go">* fed0858 -  (HEAD -&gt; add-subroutine) Use print_thrice</span>
 <span class="go">* eb198f3 -  Add superprinter</span>
 <span class="go">* 7d6a299 -  (master) Added a variable to hello.py</span>
@@ -227,7 +237,7 @@ any time we want by using <code>$ git checkout master</code> as you'll see below
 <h3><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;Checking out a different branch</a></h3>
 <p>Before moving on, let's double check that <code>hello.py</code> looks like it
 should, either by running it:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> python hello.py
+<div class="highlight"><pre><span></span><span class="gp">$ </span>python hello.py
 <span class="go">Hello, world!</span>
 <span class="go">Hello, world!</span>
 <span class="go">Hello, world!</span>
@@ -235,10 +245,10 @@ should, either by running it:</p>
 <p>or checking in our editor or git bash via <code>$ cat hello.py</code>.</p>
 <p>Looks good. Now let's go back to the <code>master</code> branch for a bit, just to
 check that we can.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout master
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git checkout master
 <span class="go">Switched to branch &#39;master&#39;</span>
 
-<span class="gp">$</span> git shortlog
+<span class="gp">$ </span>git shortlog
 <span class="go">* fed0858 -  (add-subroutine) Use print_thrice</span>
 <span class="go">* eb198f3 -  Add superprinter</span>
 <span class="go">* 7d6a299 -  (HEAD -&gt; master) Added a variable to hello.py</span>
@@ -249,15 +259,15 @@ have checked out.</p>
 <p>By checking out <code>master</code>, Git has reverted our code directory to be
 exactly like it was before made our <code>add-subroutine</code> commits. The new
 file <code>superprinter.py</code> is gone:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> ls
+<div class="highlight"><pre><span></span><span class="gp">$ </span>ls
 <span class="go">hello.py</span>
 </pre></div>
 <p>and <code>hello.py</code> looks like it did before:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> cat hello.py
+<div class="highlight"><pre><span></span><span class="gp">$ </span>cat hello.py
 <span class="go">to_print = &quot;Hello, world!&quot;</span>
 <span class="go">print(to_print)</span>
 
-<span class="gp">$</span> python hello.py
+<span class="gp">$ </span>python hello.py
 <span class="go">Hello, world!</span>
 </pre></div>
 <p>Of course, we can recover our <code>add-subroutine</code> commits by checking out
@@ -271,15 +281,15 @@ just yet.</p>
 inspiring than &quot;Hello, world!&quot;.</p>
 <p>We currently have <code>master</code> checked out, so any new branches we make will
 use <code>master</code> as their jumping off point.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout -b new-quote
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git checkout -b new-quote
 <span class="go">Switched to a new branch &#39;new-quote&#39;</span>
 
-<span class="gp">$</span> git branch
+<span class="gp">$ </span>git branch
 <span class="go">  add-subroutine</span>
 <span class="go">  master</span>
 <span class="go">* new-quote</span>
 
-<span class="gp">$</span> git shortlog
+<span class="gp">$ </span>git shortlog
 <span class="go">* fed0858 -  (add-subroutine) Use print_thrice</span>
 <span class="go">* eb198f3 -  Add superprinter</span>
 <span class="go">* 7d6a299 -  (HEAD -&gt; new-quote, master) Added a variable to hello.py</span>
@@ -290,14 +300,14 @@ use <code>master</code> as their jumping off point.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span>
 </pre></div>
 <p>and commit the changes:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git add hello.py
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git add hello.py
 
-<span class="gp">$</span> git commit -m <span class="s2">&quot;Change to_print string&quot;</span>
+<span class="gp">$ </span>git commit -m <span class="s2">&quot;Change to_print string&quot;</span>
 <span class="go">[new-quote 44425b9] Change to_print string</span>
 <span class="go"> 1 file changed, 1 insertion(+), 1 deletion(-)</span>
 </pre></div>
 <p>Now, if we look at our log, we can see why branches are called &quot;branches&quot;:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git lg
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git lg
 <span class="go">* 44425b9 -  (HEAD -&gt; new-quote) Change to_print string</span>
 <span class="go">| * fed0858 -  (add-subroutine) Use print_thrice</span>
 <span class="go">| * eb198f3 -  Add superprinter</span>
@@ -319,19 +329,19 @@ branches back together.</p>
 can't reconcile the multiple versions and combine them somehow. Git handles
 this with the <code>merge</code> command.</p>
 <p>First, check out the &quot;older&quot; branch that needs to be updated.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout master
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git checkout master
 </pre></div>
 <p>Then merge the branch you want to keep. In our research group, we will also use
 the &quot;no fast forward&quot; option to make it more apparent where merges occur.
 Let's merge <code>add-subroutine</code> first.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git merge --no-ff add-subroutine
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git merge --no-ff add-subroutine
 <span class="go">Merge made by the &#39;recursive&#39; strategy.</span>
 <span class="go"> hello.py        | 4 +++-</span>
 <span class="go"> superprinter.py | 5 +++++</span>
 <span class="go"> 2 files changed, 8 insertions(+), 1 deletion(-)</span>
 <span class="go"> create mode 100644 superprinter.py</span>
 
-<span class="gp">$</span> git subroutine
+<span class="gp">$ </span>git subroutine
 <span class="go">*   fdebe3f -  (HEAD -&gt; master) Merge branch &#39;add-subroutine&#39;</span>
 <span class="go">|\</span>
 <span class="go">| * fed0858 -  (add-subroutine) Use print_thrice</span>
@@ -352,12 +362,12 @@ the same for <code>fed0858</code>.</p>
 <p>Now merge <code>new-quote</code> to <code>master</code>. Because our two branches both
 changed <code>hello.py</code>, Git can't easily merge the changes. (It tries to
 re-play the changes, but can't find the place to start.)</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git merge --no-ff new-quote
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git merge --no-ff new-quote
 <span class="go">Auto-merging hello.py</span>
 <span class="go">CONFLICT (content): Merge conflict in hello.py</span>
 <span class="go">Automatic merge failed; fix conflicts and then commit the result.</span>
 
-<span class="gp">$</span> git status
+<span class="gp">$ </span>git status
 <span class="go">On branch master</span>
 <span class="go">You have unmerged paths.</span>
 <span class="go">  (fix conflicts and run &quot;git commit&quot;)</span>
@@ -373,7 +383,7 @@ re-play the changes, but can't find the place to start.)</p>
 <p>Despite the alarming CONFLICT warning, merge conflicts are nothing to be scared
 of. Git will create a version of the file with the conflicts marked with
 <code>&lt;&lt;&lt;</code>, <code>===</code>, and <code>&gt;&gt;&gt;</code>.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> cat hello.py
+<div class="highlight"><pre><span></span><span class="gp">$ </span>cat hello.py
 <span class="go">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
 <span class="go">from superprinter import print_thrice</span>
 
@@ -382,25 +392,25 @@ of. Git will create a version of the file with the conflicts marked with
 <span class="go">=======</span>
 <span class="go">to_print = &quot;That rug really tied the room together, did it not?&quot;</span>
 <span class="go">print(to_print)</span>
-<span class="gp">&gt;</span>&gt;&gt;&gt;&gt;&gt;&gt; new-quote
+<span class="go">&gt;&gt;&gt;&gt;&gt;&gt;&gt; new-quote</span>
 </pre></div>
 <p>Now you can pick and choose which parts of each version you want.</p>
 <p>Combine them so that <code>hello.py</code> looks like this</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">superprinter</span> <span class="k">import</span> <span class="n">print_thrice</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">superprinter</span> <span class="kn">import</span> <span class="n">print_thrice</span>
 
 <span class="n">to_print</span> <span class="o">=</span> <span class="s2">&quot;That rug really tied the room together, did it not?&quot;</span>
 <span class="n">print_thrice</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span>
 </pre></div>
 <p>This implements both major changes we made. Once we're done editing the file,
 we finish the merge:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git add hello.py
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git add hello.py
 
-<span class="gp">$</span> git merge --continue
+<span class="gp">$ </span>git merge --continue
 <span class="go">[master 2f40bfd] Merge branch &#39;new-quote&#39;</span>
 </pre></div>
 <p>Looking at the log, we can see that all of our changes have been incorporated
 into <code>master</code>.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git shortlog
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git shortlog
 <span class="go">*   2f40bfd -  (HEAD -&gt; master) Merge branch &#39;new-quote&#39;</span>
 <span class="go">|\</span>
 <span class="go">| * 44425b9 -  (new-quote) Change to_print string</span>
@@ -416,13 +426,13 @@ into <code>master</code>.</p>
 </pre></div>
 <p>At this point, we don't need the <code>add-subroutine</code> and <code>new-quote</code>
 branch labels, so we can delete them.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git branch -d add-subroutine
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git branch -d add-subroutine
 <span class="go">Deleted branch add-subroutine (was fed0858).</span>
 
-<span class="gp">$</span> git branch -d new-quote
+<span class="gp">$ </span>git branch -d new-quote
 <span class="go">Deleted branch new-quote (was 44425b9).</span>
 
-<span class="gp">$</span> git shortlog
+<span class="gp">$ </span>git shortlog
 <span class="go">*   2f40bfd -  (HEAD -&gt; master) Merge branch &#39;new-quote&#39;</span>
 <span class="go">|\</span>
 <span class="go">| * 44425b9 -  Change to_print string</span>
@@ -445,60 +455,36 @@ branch labels, so we can delete them.</p>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-<div id="aboutme">
-        <p>
-            <img width="100%" class="img-thumbnail" src="http://www.danielmsullivan.com/images/dms_med.jpg"/>
-        </p>
-</div><!-- Sidebar -->
+
 <section class="well well-sm">
-  <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Contact</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github fa-lg"></i> Github</a></li>
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/daniel-sullivan-42134687"><i class="fa fa-linkedin fa-lg"></i> LinkedIn</a></li>
+                <li class="list-group-item"><a href="https://twitter.com/Dan_M_Sullivan"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
+                <li class="list-group-item"><a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ"><i class="fa fa-graduation-cap fa-lg"></i> Google Scholar</a></li>
+                <li class="list-group-item"><a href="mailto:sullivan.dm3@gmail.com"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
+                <li class="list-group-item"><a href="mailto:daniel.m.sullivan@jpmchase.com"><i class="fa fa-inbox fa-lg"></i> Work Email</a></li>
+              </ul>
+            </li>
 
-<!-- Sidebar/Social -->
-<li class="list-group-item">
-  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-  <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="http://github.com/dmsul"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://twitter.com/Dan_M_Sullivan"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
-    <li class="list-group-item"><a href="mailto:sullivan@rff.org"><i class="fa fa-envelope fa-lg"></i> Email</a></li>
-  </ul>
-</li>
-<!-- End Sidebar/Social -->
 
-<!-- Sidebar/Links -->
-<li class="list-group-item">
-  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
-  <ul class="list-group" id="links">
-    <li class="list-group-item">
-      <a href="https://scholar.google.com/citations?user=naLX3CIAAAAJ" target="_blank">Google Scholar</a>
-    </li>
-    <li class="list-group-item">
-      <a href="http://orcid.org/0000-0002-0380-7681" target="_blank">ORCID</a>
-    </li>
-    <li class="list-group-item">
-      <a href="https://ideas.repec.org/f/psu490.html" target="_blank">RePEc</a>
-    </li>
-    <li class="list-group-item">
-      <a href="http://www.rff.org/people/profile/daniel-m-sullivan" target="_blank">RFF page</a>
-    </li>
-  </ul>
-</li>
-<!-- End Sidebar/Links -->
-  </ul>
+
+
+
+    </ul>
 </section>
-<!-- End Sidebar -->            </aside>
+            </aside>
         </div>
     </div>
 </div>
-<!-- End Content Container -->
-
 <footer>
    <div class="container">
       <hr>
       <div class="row">
          <div class="col-xs-10">&copy;  Daniel M. Sullivan
-            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
-            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+            &middot; Powered by <a href="http://docs.getpelican.com/" target="_blank">Pelican</a> which takes great advantage of <a href="https://www.python.org/" target="_blank">Python</a>         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
@@ -510,7 +496,6 @@ branch labels, so we can delete them.</p>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
-
 
     <!-- Google Analytics -->
     <script type="text/javascript">
@@ -529,7 +514,6 @@ branch labels, so we can delete them.</p>
         })();
     </script>
     <!-- End Google Analytics Code -->
-
 
 </body>
 </html>
