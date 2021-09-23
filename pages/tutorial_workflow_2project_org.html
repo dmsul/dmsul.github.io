@@ -205,10 +205,10 @@ are stored, etc. A basic <code>util/env.py</code> file looks like this:</p>
 string and appends all the folder information to it, so all you need to worry
 about is the name of the actual file, not all the folders. The basic use of the
 functions looks like this.</p>
-<div class="highlight"><pre><span></span>In [1]: from util.env import data_path
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">util.env</span> <span class="kn">import</span> <span class="n">data_path</span>
 
-In [2]: print(data_path(&#39;main_file.dta&#39;))
-Out[2]: &#39;d:\\Data\\data-project-name\\main_file.dta&#39;
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">data_path</span><span class="p">(</span><span class="s1">&#39;main_file.dta&#39;</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="s1">&#39;d:</span><span class="se">\\</span><span class="s1">Data</span><span class="se">\\</span><span class="s1">data-project-name</span><span class="se">\\</span><span class="s1">main_file.dta&#39;</span>
 </pre></div>
 <p>These functions are <em>the</em> canonical definitions of where the data files are
 found on the computer.  All other scripts will refer to these definitions by
