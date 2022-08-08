@@ -9,7 +9,7 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">
+<link rel="canonical" href="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
         <meta name="description" content="Contents 1   Intro/Note on Notation 2   Note on composability 3   Input/Output 4   Sample Selection 5   Data Info and Summary Statistics 6   Variable Manipulation 7   Bysort 8   Panel Data 9   Merging and Joining 10   Reshape 11   Econometrics 12   Plotting 13   Other differences td { padding: 7px; } tr:nth-child(even){background-color: #eeeeee;} Special thanks to John Coglianese for feedback and for supplying the list of &#34;vital …" />
@@ -17,16 +17,16 @@
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Stata to Python Equivalents"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html"/>
+    <meta property="og:url" content="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html"/>
     <meta property="og:description" content="Contents 1   Intro/Note on Notation 2   Note on composability 3   Input/Output 4   Sample Selection 5   Data Info and Summary Statistics 6   Variable Manipulation 7   Bysort 8   Panel Data 9   Merging and Joining 10   Reshape 11   Econometrics 12   Plotting 13   Other differences td { padding: 7px; } tr:nth-child(even){background-color: #eeeeee;} Special thanks to John Coglianese for feedback and for supplying the list of &#34;vital …" />
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
 
 
 
@@ -46,24 +46,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+                <a href="https://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
 
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/code.html">Code</a></li>
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
                           <ul class="dropdown-menu">
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
                           </ul>
                         </li>
             </ul>
@@ -87,19 +87,19 @@
             <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="auto-toc simple">
-<li><a class="reference internal" href="#intro-note-on-notation" id="id1">1&nbsp;&nbsp;&nbsp;Intro/Note on Notation</a></li>
-<li><a class="reference internal" href="#note-on-composability" id="id2">2&nbsp;&nbsp;&nbsp;Note on composability</a></li>
-<li><a class="reference internal" href="#input-output" id="id3">3&nbsp;&nbsp;&nbsp;Input/Output</a></li>
-<li><a class="reference internal" href="#sample-selection" id="id4">4&nbsp;&nbsp;&nbsp;Sample Selection</a></li>
-<li><a class="reference internal" href="#data-info-and-summary-statistics" id="id5">5&nbsp;&nbsp;&nbsp;Data Info and Summary Statistics</a></li>
-<li><a class="reference internal" href="#variable-manipulation" id="id6">6&nbsp;&nbsp;&nbsp;Variable Manipulation</a></li>
-<li><a class="reference internal" href="#bysort" id="id7">7&nbsp;&nbsp;&nbsp;Bysort</a></li>
-<li><a class="reference internal" href="#panel-data" id="id8">8&nbsp;&nbsp;&nbsp;Panel Data</a></li>
-<li><a class="reference internal" href="#merging-and-joining" id="id9">9&nbsp;&nbsp;&nbsp;Merging and Joining</a></li>
-<li><a class="reference internal" href="#reshape" id="id10">10&nbsp;&nbsp;&nbsp;Reshape</a></li>
-<li><a class="reference internal" href="#econometrics" id="id11">11&nbsp;&nbsp;&nbsp;Econometrics</a></li>
-<li><a class="reference internal" href="#plotting" id="id12">12&nbsp;&nbsp;&nbsp;Plotting</a></li>
-<li><a class="reference internal" href="#other-differences" id="id13">13&nbsp;&nbsp;&nbsp;Other differences</a></li>
+<li><a class="reference internal" href="#intro-note-on-notation" id="toc-entry-1">1&nbsp;&nbsp;&nbsp;Intro/Note on Notation</a></li>
+<li><a class="reference internal" href="#note-on-composability" id="toc-entry-2">2&nbsp;&nbsp;&nbsp;Note on composability</a></li>
+<li><a class="reference internal" href="#input-output" id="toc-entry-3">3&nbsp;&nbsp;&nbsp;Input/Output</a></li>
+<li><a class="reference internal" href="#sample-selection" id="toc-entry-4">4&nbsp;&nbsp;&nbsp;Sample Selection</a></li>
+<li><a class="reference internal" href="#data-info-and-summary-statistics" id="toc-entry-5">5&nbsp;&nbsp;&nbsp;Data Info and Summary Statistics</a></li>
+<li><a class="reference internal" href="#variable-manipulation" id="toc-entry-6">6&nbsp;&nbsp;&nbsp;Variable Manipulation</a></li>
+<li><a class="reference internal" href="#bysort" id="toc-entry-7">7&nbsp;&nbsp;&nbsp;Bysort</a></li>
+<li><a class="reference internal" href="#panel-data" id="toc-entry-8">8&nbsp;&nbsp;&nbsp;Panel Data</a></li>
+<li><a class="reference internal" href="#merging-and-joining" id="toc-entry-9">9&nbsp;&nbsp;&nbsp;Merging and Joining</a></li>
+<li><a class="reference internal" href="#reshape" id="toc-entry-10">10&nbsp;&nbsp;&nbsp;Reshape</a></li>
+<li><a class="reference internal" href="#econometrics" id="toc-entry-11">11&nbsp;&nbsp;&nbsp;Econometrics</a></li>
+<li><a class="reference internal" href="#plotting" id="toc-entry-12">12&nbsp;&nbsp;&nbsp;Plotting</a></li>
+<li><a class="reference internal" href="#other-differences" id="toc-entry-13">13&nbsp;&nbsp;&nbsp;Other differences</a></li>
 </ul>
 </div>
 <style>     td {       padding: 7px;     }     tr:nth-child(even){background-color: #eeeeee;} </style><p>Special thanks to John Coglianese for feedback and for supplying the list of
@@ -108,7 +108,7 @@ always welcome!</p>
 <p>The official Pandas documentation includes a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/comparison_with_stata.html">&quot;Comparison with Stata&quot;</a>
 page which is another great resource.</p>
 <div class="section" id="intro-note-on-notation">
-<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Intro/Note on Notation</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">1&nbsp;&nbsp;&nbsp;Intro/Note on Notation</a></h2>
 <p>Coding in Python is a little different than coding in Stata.</p>
 <p>In Stata, you have one dataset in memory. The dataset is a matrix where each
 column is a &quot;variable&quot; with a unique name and each row has a number (the
@@ -134,7 +134,7 @@ somewhere else. Because of this, <code>&lt;varlist&gt;</code> in Python represen
 of variable names: <code>['educ', 'income', 2017]</code>.</p>
 </div>
 <div class="section" id="note-on-composability">
-<h2><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;Note on composability</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">2&nbsp;&nbsp;&nbsp;Note on composability</a></h2>
 <p>One concept that will push your Python skills forward quickly is
 &quot;composability.&quot; That is, you can combine base-level commands to &quot;create&quot; whole
 new commands. This is a little more difficult in Stata where each line of code
@@ -166,8 +166,8 @@ in large Groupby operations <code>.shift(fillna=0)</code> is much, much slower t
 <code>shift().fillna(0)</code> even though the end result is the same.</p>
 </div>
 <div class="section" id="input-output">
-<h2><a class="toc-backref" href="#id3">3&nbsp;&nbsp;&nbsp;Input/Output</a></h2>
-<table border="1" class="colwidths-given docutils">
+<h2><a class="toc-backref" href="#toc-entry-3">3&nbsp;&nbsp;&nbsp;Input/Output</a></h2>
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -231,8 +231,8 @@ the closest equivalent.</td>
 </table>
 </div>
 <div class="section" id="sample-selection">
-<h2><a class="toc-backref" href="#id4">4&nbsp;&nbsp;&nbsp;Sample Selection</a></h2>
-<table border="1" class="colwidths-given docutils">
+<h2><a class="toc-backref" href="#toc-entry-4">4&nbsp;&nbsp;&nbsp;Sample Selection</a></h2>
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -300,8 +300,8 @@ generally).</td>
 </table>
 </div>
 <div class="section" id="data-info-and-summary-statistics">
-<h2><a class="toc-backref" href="#id5">5&nbsp;&nbsp;&nbsp;Data Info and Summary Statistics</a></h2>
-<table border="1" class="colwidths-given docutils">
+<h2><a class="toc-backref" href="#toc-entry-5">5&nbsp;&nbsp;&nbsp;Data Info and Summary Statistics</a></h2>
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -380,8 +380,8 @@ are usually presented.</p>
 </table>
 </div>
 <div class="section" id="variable-manipulation">
-<h2><a class="toc-backref" href="#id6">6&nbsp;&nbsp;&nbsp;Variable Manipulation</a></h2>
-<table border="1" class="colwidths-given docutils">
+<h2><a class="toc-backref" href="#toc-entry-6">6&nbsp;&nbsp;&nbsp;Variable Manipulation</a></h2>
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -485,10 +485,10 @@ you can use a dictionary to map data values to labels when necessary.</p>
 </pre></div>
 </div>
 <div class="section" id="bysort">
-<h2><a class="toc-backref" href="#id7">7&nbsp;&nbsp;&nbsp;Bysort</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-7">7&nbsp;&nbsp;&nbsp;Bysort</a></h2>
 <p>All <code>bysort</code> and <code>egen</code> commands will be compositions using
 <code>groupby.agg</code> or <code>groupby.transform</code></p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -565,7 +565,7 @@ also re-join the collapsed data back onto your original data set:</p>
 </pre></div>
 </div>
 <div class="section" id="panel-data">
-<h2><a class="toc-backref" href="#id8">8&nbsp;&nbsp;&nbsp;Panel Data</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-8">8&nbsp;&nbsp;&nbsp;Panel Data</a></h2>
 <p>There is no general equivalent to <code>tsset</code> in Python. However, you can
 accomplish most if not all of the same tasks using a DataFrame's index (the
 row's equivalent of columns.) In Stata, the &quot;DataFrame&quot; in memory always has
@@ -574,7 +574,7 @@ In Python and Pandas, a DataFrame index can be anything (though you can also
 refer to rows by the row number; see <code>.loc</code> vs <code>iloc</code>). It can also
 be hierarchical with mutiple levels. It is a much more general tool than
 <code>tsset</code>.</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -659,9 +659,9 @@ will also probably need to use a <code>groupby</code>; see below.</td>
 </div>
 </div>
 <div class="section" id="merging-and-joining">
-<h2><a class="toc-backref" href="#id9">9&nbsp;&nbsp;&nbsp;Merging and Joining</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-9">9&nbsp;&nbsp;&nbsp;Merging and Joining</a></h2>
 <p>NOTE: Merging in Python is like R, SQL, etc. See additional explanation below.</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -690,7 +690,7 @@ you're merging on are unique or not. However, you can specify what sub-sample
 of the merge to keep using the keyword argument <code>how</code>, e.g.,
 <code>df_joint = df1.join(df2, how='left')</code> is the default for <code>join</code>
 while <code>how='inner'</code> is the default for <code>pd.merge</code>.</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="27%" />
 <col width="27%" />
@@ -723,68 +723,68 @@ while <code>how='inner'</code> is the default for <code>pd.merge</code>.</p>
 </table>
 </div>
 <div class="section" id="reshape">
-<h2><a class="toc-backref" href="#id10">10&nbsp;&nbsp;&nbsp;Reshape</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-10">10&nbsp;&nbsp;&nbsp;Reshape</a></h2>
 <p>Like with merging, reshaping a DataFrame in Python is a bit different because
 of the paradigm shift from the &quot;only one data table in memory&quot; model of Stata
 to &quot;a data table is just another object/variable&quot; of Python. But this
 difference also makes reshaping a little easier in Python.</p>
 <p>The most fundamental reshape commands in Python/pandas are <code>stack</code> and
 <code>unstack</code>:</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">long</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-   <span class="o">...</span><span class="p">:</span>                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_variable&#39;</span><span class="p">],</span>
-   <span class="o">...</span><span class="p">:</span>                     <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span>
-   <span class="o">...</span><span class="p">:</span>                         <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-   <span class="o">...</span><span class="p">:</span>                          <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-   <span class="o">...</span><span class="p">:</span>                          <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-   <span class="o">...</span><span class="p">:</span>                          <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]))</span>
+<span class="gp">In [3]: </span><span class="n">long</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+<span class="gp">   ...: </span>                    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_variable&#39;</span><span class="p">],</span>
+<span class="gp">   ...: </span>                    <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span>
+<span class="gp">   ...: </span>                        <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="gp">   ...: </span>                         <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="gp">   ...: </span>                         <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="gp">   ...: </span>                         <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]))</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">long</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;unit_id&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span>
+<span class="gp">In [4]: </span><span class="n">long</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;unit_id&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">long</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;varname&#39;</span>
+<span class="gp">In [5]: </span><span class="n">long</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;varname&#39;</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">long</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
-<span class="n">varname</span>       <span class="n">some_variable</span>
-<span class="n">unit_id</span> <span class="n">time</span>
-<span class="n">a</span>       <span class="mi">1</span>                 <span class="mi">0</span>
-        <span class="mi">2</span>                 <span class="mi">1</span>
-<span class="n">b</span>       <span class="mi">1</span>                 <span class="mi">2</span>
-        <span class="mi">2</span>                 <span class="mi">3</span>
-<span class="n">c</span>       <span class="mi">1</span>                 <span class="mi">4</span>
-        <span class="mi">2</span>                 <span class="mi">5</span>
-<span class="n">d</span>       <span class="mi">1</span>                 <span class="mi">6</span>
-        <span class="mi">2</span>                 <span class="mi">7</span>
+<span class="gp">In [6]: </span><span class="n">long</span>
+<span class="gh">Out[6]:</span>
+<span class="go">varname       some_variable</span>
+<span class="go">unit_id time</span>
+<span class="go">a       1                 0</span>
+<span class="go">        2                 1</span>
+<span class="go">b       1                 2</span>
+<span class="go">        2                 3</span>
+<span class="go">c       1                 4</span>
+<span class="go">        2                 5</span>
+<span class="go">d       1                 6</span>
+<span class="go">        2                 7</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">wide</span> <span class="o">=</span> <span class="n">long</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="gp">In [7]: </span><span class="n">wide</span> <span class="o">=</span> <span class="n">long</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">wide</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span>
-<span class="n">varname</span> <span class="n">some_variable</span>
-<span class="n">time</span>                <span class="mi">1</span>  <span class="mi">2</span>
-<span class="n">unit_id</span>
-<span class="n">a</span>                   <span class="mi">0</span>  <span class="mi">1</span>
-<span class="n">b</span>                   <span class="mi">2</span>  <span class="mi">3</span>
-<span class="n">c</span>                   <span class="mi">4</span>  <span class="mi">5</span>
-<span class="n">d</span>                   <span class="mi">6</span>  <span class="mi">7</span>
+<span class="gp">In [8]: </span><span class="n">wide</span>
+<span class="gh">Out[8]:</span>
+<span class="go">varname some_variable</span>
+<span class="go">time                1  2</span>
+<span class="go">unit_id</span>
+<span class="go">a                   0  1</span>
+<span class="go">b                   2  3</span>
+<span class="go">c                   4  5</span>
+<span class="go">d                   6  7</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">long2</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="gp">In [9]: </span><span class="n">long2</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">long2</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">10</span><span class="p">]:</span>
-<span class="n">varname</span>       <span class="n">some_variable</span>
-<span class="n">unit_id</span> <span class="n">time</span>
-<span class="n">a</span>       <span class="mi">1</span>                 <span class="mi">0</span>
-        <span class="mi">2</span>                 <span class="mi">1</span>
-<span class="n">b</span>       <span class="mi">1</span>                 <span class="mi">2</span>
-        <span class="mi">2</span>                 <span class="mi">3</span>
-<span class="n">c</span>       <span class="mi">1</span>                 <span class="mi">4</span>
-        <span class="mi">2</span>                 <span class="mi">5</span>
-<span class="n">d</span>       <span class="mi">1</span>                 <span class="mi">6</span>
-        <span class="mi">2</span>                 <span class="mi">7</span>
+<span class="gp">In [10]: </span><span class="n">long2</span>
+<span class="gh">Out[10]:</span>
+<span class="go">varname       some_variable</span>
+<span class="go">unit_id time</span>
+<span class="go">a       1                 0</span>
+<span class="go">        2                 1</span>
+<span class="go">b       1                 2</span>
+<span class="go">        2                 3</span>
+<span class="go">c       1                 4</span>
+<span class="go">        2                 5</span>
+<span class="go">d       1                 6</span>
+<span class="go">        2                 7</span>
 </pre></div>
 <p>Here Input 3 creates a DataFrame, Input 4 gives each of the index columns a
 name, and Input 5 names the columns. Coming from Stata, it's a little weird to
@@ -799,36 +799,36 @@ that the columns now have multiple levels, just like the index previously did.
 This is another good reason to label your index and columns. If you want to
 access either of those columns, you can do so as usual, using a tuple to
 differentiate between the two levels:</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">wide</span><span class="p">[(</span><span class="s1">&#39;some_variable&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span>
-<span class="n">unit_id</span>
-<span class="n">a</span>    <span class="mi">0</span>
-<span class="n">b</span>    <span class="mi">2</span>
-<span class="n">c</span>    <span class="mi">4</span>
-<span class="n">d</span>    <span class="mi">6</span>
-<span class="n">Name</span><span class="p">:</span> <span class="p">(</span><span class="n">some_variable</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
+<div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">wide</span><span class="p">[(</span><span class="s1">&#39;some_variable&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="gh">Out[11]:</span>
+<span class="go">unit_id</span>
+<span class="go">a    0</span>
+<span class="go">b    2</span>
+<span class="go">c    4</span>
+<span class="go">d    6</span>
+<span class="go">Name: (some_variable, 1), dtype: int32</span>
 </pre></div>
 <p>If you want to combine the two levels (like Stata defaults to), you can simply
 rename the columns:</p>
-<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">wide_single_level_column</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">wide_single_level_column</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">wide_single_level_column</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="o">...</span><span class="p">:</span>        <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
-    <span class="o">...</span><span class="p">:</span>        <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">wide_single_level_column</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="gp">In [14]: </span><span class="n">wide_single_level_column</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+<span class="go">    ...:        &#39;{}_{}&#39;.format(var, time)</span>
+<span class="go">    ...:        for var, time in wide_single_level_column.columns]</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">wide_single_level_column</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span>
-                  <span class="n">some_variable_1</span>  <span class="n">some_variable_2</span>
-         <span class="n">unit_id</span>
-         <span class="n">a</span>                      <span class="mi">0</span>                <span class="mi">1</span>
-         <span class="n">b</span>                      <span class="mi">2</span>                <span class="mi">3</span>
-         <span class="n">c</span>                      <span class="mi">4</span>                <span class="mi">5</span>
-         <span class="n">d</span>                      <span class="mi">6</span>                <span class="mi">7</span>
+<span class="gp">In [15]: </span><span class="n">wide_single_level_column</span>
+<span class="gh">Out[15]:</span>
+<span class="go">                  some_variable_1  some_variable_2</span>
+<span class="go">         unit_id</span>
+<span class="go">         a                      0                1</span>
+<span class="go">         b                      2                3</span>
+<span class="go">         c                      4                5</span>
+<span class="go">         d                      6                7</span>
 </pre></div>
 <p>The <code>pivot</code> command can also be useful, but it's a bit more complicated than <code>stack</code> and
 <code>unstack</code> and is better to revisit <code>pivot</code> after you are
 comfortable working with DataFrame indexes and columns.</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -851,8 +851,8 @@ comfortable working with DataFrame indexes and columns.</p>
 </table>
 </div>
 <div class="section" id="econometrics">
-<h2><a class="toc-backref" href="#id11">11&nbsp;&nbsp;&nbsp;Econometrics</a></h2>
-<table border="1" class="colwidths-given docutils">
+<h2><a class="toc-backref" href="#toc-entry-11">11&nbsp;&nbsp;&nbsp;Econometrics</a></h2>
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -920,9 +920,9 @@ comfortable working with DataFrame indexes and columns.</p>
 </table>
 </div>
 <div class="section" id="plotting">
-<h2><a class="toc-backref" href="#id12">12&nbsp;&nbsp;&nbsp;Plotting</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-12">12&nbsp;&nbsp;&nbsp;Plotting</a></h2>
 <p>Visualizations are best handled by the packages Matplotlib and Seaborn.</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -958,7 +958,7 @@ directly and call <code>ax.plot(df['var1'], df['var2'])</code>. Like with
 </table>
 </div>
 <div class="section" id="other-differences">
-<h2><a class="toc-backref" href="#id13">13&nbsp;&nbsp;&nbsp;Other differences</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-13">13&nbsp;&nbsp;&nbsp;Other differences</a></h2>
 <div class="section" id="missing-values">
 <h3>13.1&nbsp;&nbsp;&nbsp;Missing values</h3>
 <p>In Python, missing values are represented by a NumPy &quot;not a number&quot; object,
@@ -1030,13 +1030,13 @@ is tricky.)</p>
       </div>
    </div>
 </footer>
-<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/respond.min.js"></script>
 
     <!-- Google Analytics -->
     <script type="text/javascript">

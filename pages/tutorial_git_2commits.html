@@ -9,7 +9,7 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_git_2commits.html">
+<link rel="canonical" href="https://www.danielmsullivan.com/pages/tutorial_git_2commits.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
         <meta name="description" content="A Brief Intro to Git Overview Previous: Setup Next: Branches and Merging Page Contents 1   Set up a new code project 2   Tell git to watch a directory 3   Ask git what our workspace looks like 4   Tell git to track a file 5   Commit a new file to the repository 6   Commit a change to a file 7   Look at the list of commits …" />
@@ -17,16 +17,16 @@
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="First steps: Making commits"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_git_2commits.html"/>
+    <meta property="og:url" content="https://www.danielmsullivan.com/pages/tutorial_git_2commits.html"/>
     <meta property="og:description" content="A Brief Intro to Git Overview Previous: Setup Next: Branches and Merging Page Contents 1   Set up a new code project 2   Tell git to watch a directory 3   Ask git what our workspace looks like 4   Tell git to track a file 5   Commit a new file to the repository 6   Commit a change to a file 7   Look at the list of commits …" />
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
 
 
 
@@ -46,24 +46,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+                <a href="https://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
 
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/code.html">Code</a></li>
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
                           <ul class="dropdown-menu">
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
                           </ul>
                         </li>
             </ul>
@@ -93,17 +93,17 @@
 <div class="contents topic" id="page-contents">
 <p class="topic-title">Page Contents</p>
 <ul class="auto-toc simple">
-<li><a class="reference internal" href="#set-up-a-new-code-project" id="id1">1&nbsp;&nbsp;&nbsp;Set up a new code project</a></li>
-<li><a class="reference internal" href="#tell-git-to-watch-a-directory" id="id2">2&nbsp;&nbsp;&nbsp;Tell git to watch a directory</a></li>
-<li><a class="reference internal" href="#ask-git-what-our-workspace-looks-like" id="id3">3&nbsp;&nbsp;&nbsp;Ask git what our workspace looks like</a></li>
-<li><a class="reference internal" href="#tell-git-to-track-a-file" id="id4">4&nbsp;&nbsp;&nbsp;Tell git to track a file</a></li>
-<li><a class="reference internal" href="#commit-a-new-file-to-the-repository" id="id5">5&nbsp;&nbsp;&nbsp;Commit a new file to the repository</a></li>
-<li><a class="reference internal" href="#commit-a-change-to-a-file" id="id6">6&nbsp;&nbsp;&nbsp;Commit a change to a file</a></li>
-<li><a class="reference internal" href="#look-at-the-list-of-commits" id="id7">7&nbsp;&nbsp;&nbsp;Look at the list of commits</a></li>
+<li><a class="reference internal" href="#set-up-a-new-code-project" id="toc-entry-1">1&nbsp;&nbsp;&nbsp;Set up a new code project</a></li>
+<li><a class="reference internal" href="#tell-git-to-watch-a-directory" id="toc-entry-2">2&nbsp;&nbsp;&nbsp;Tell git to watch a directory</a></li>
+<li><a class="reference internal" href="#ask-git-what-our-workspace-looks-like" id="toc-entry-3">3&nbsp;&nbsp;&nbsp;Ask git what our workspace looks like</a></li>
+<li><a class="reference internal" href="#tell-git-to-track-a-file" id="toc-entry-4">4&nbsp;&nbsp;&nbsp;Tell git to track a file</a></li>
+<li><a class="reference internal" href="#commit-a-new-file-to-the-repository" id="toc-entry-5">5&nbsp;&nbsp;&nbsp;Commit a new file to the repository</a></li>
+<li><a class="reference internal" href="#commit-a-change-to-a-file" id="toc-entry-6">6&nbsp;&nbsp;&nbsp;Commit a change to a file</a></li>
+<li><a class="reference internal" href="#look-at-the-list-of-commits" id="toc-entry-7">7&nbsp;&nbsp;&nbsp;Look at the list of commits</a></li>
 </ul>
 </div>
 <div class="section" id="set-up-a-new-code-project">
-<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Set up a new code project</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">1&nbsp;&nbsp;&nbsp;Set up a new code project</a></h2>
 <p>Git is version control software used for keeping track of the changes in coding
 projects. A folder containing files being tracked by git is called a
 <strong>repository</strong>.  After you've created a repository (that is, after you've told
@@ -125,7 +125,7 @@ with <code>$</code> are meant to be entered into the git bash command line.</p>
 </pre></div>
 </div>
 <div class="section" id="tell-git-to-watch-a-directory">
-<h2><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;Tell git to watch a directory</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">2&nbsp;&nbsp;&nbsp;Tell git to watch a directory</a></h2>
 <p>To tell git that you want to the current directory to be a repository (that is,
 you want git to watch this directory), you use the following command:</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git init
@@ -133,7 +133,7 @@ you want git to watch this directory), you use the following command:</p>
 <p>That's it!</p>
 </div>
 <div class="section" id="ask-git-what-our-workspace-looks-like">
-<h2><a class="toc-backref" href="#id3">3&nbsp;&nbsp;&nbsp;Ask git what our workspace looks like</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">3&nbsp;&nbsp;&nbsp;Ask git what our workspace looks like</a></h2>
 <p>Now that you've run <code>git init</code>, we can use git commands in our directory.
 Let's start with <code>git status</code>, which tells us what's going on in our working
 directory.</p>
@@ -154,7 +154,7 @@ only tells git that we want to use this directory. To track individual files,
 we need to tell git which files to watch or &quot;track&quot;.</p>
 </div>
 <div class="section" id="tell-git-to-track-a-file">
-<h2><a class="toc-backref" href="#id4">4&nbsp;&nbsp;&nbsp;Tell git to track a file</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-4">4&nbsp;&nbsp;&nbsp;Tell git to track a file</a></h2>
 <p>You can use <code>git add &lt;filename&gt;</code> to have git start tracking a file</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git add hello.py
 </pre></div>
@@ -172,7 +172,7 @@ we need to tell git which files to watch or &quot;track&quot;.</p>
 <p>Now git is specifically watching our <code>hello.py</code> file.</p>
 </div>
 <div class="section" id="commit-a-new-file-to-the-repository">
-<h2><a class="toc-backref" href="#id5">5&nbsp;&nbsp;&nbsp;Commit a new file to the repository</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-5">5&nbsp;&nbsp;&nbsp;Commit a new file to the repository</a></h2>
 <p>You probably noticed that the last <code>git status</code> listed our file under
 &quot;Changes to be committed&quot;.  That's because adding a new file (or a change to an
 existing file) to the permanent record of the repository is a two-step process.</p>
@@ -206,7 +206,7 @@ running <code>git status</code>:</p>
 </pre></div>
 </div>
 <div class="section" id="commit-a-change-to-a-file">
-<h2><a class="toc-backref" href="#id6">6&nbsp;&nbsp;&nbsp;Commit a change to a file</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-6">6&nbsp;&nbsp;&nbsp;Commit a change to a file</a></h2>
 <p>Now that git is tracking <code>hello.py</code>, it will alert us when the file changes.</p>
 <p>First, change <code>hello.py</code> so it looks like this:</p>
 <div class="highlight"><pre><span></span><span class="n">to_print</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
@@ -250,7 +250,7 @@ the repository record is a two step process:</p>
 </pre></div>
 </div>
 <div class="section" id="look-at-the-list-of-commits">
-<h2><a class="toc-backref" href="#id7">7&nbsp;&nbsp;&nbsp;Look at the list of commits</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-7">7&nbsp;&nbsp;&nbsp;Look at the list of commits</a></h2>
 <p>The whole point of commits is to keep track of the incremental changes we make
 to our code. So we need a way to look back at the list of commits we've made.
 This is done with the <code>git log</code> command. However, the standard <code>git log</code>
@@ -310,13 +310,13 @@ the most recent commit is. Don't worry about this just yet, we'll get to it.</p>
       </div>
    </div>
 </footer>
-<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/respond.min.js"></script>
 
     <!-- Google Analytics -->
     <script type="text/javascript">

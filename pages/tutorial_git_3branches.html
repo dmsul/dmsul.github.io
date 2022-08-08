@@ -9,7 +9,7 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_git_3branches.html">
+<link rel="canonical" href="https://www.danielmsullivan.com/pages/tutorial_git_3branches.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
         <meta name="description" content="A Brief Intro to Git Overview Previous: First Steps: Making commits Next: Remotes: Sharing Code Online Page Contents 1   Branches 1.1   Create and checkout a new branch 1.2   Work on the new branch 1.3   Checking out a different branch 1.4   Making a second branch 2   Merging 2.1   Resolving conflicts in merges Git has two main functions. We&#39;ve already covered the …" />
@@ -17,16 +17,16 @@
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Branches and Merging"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_git_3branches.html"/>
+    <meta property="og:url" content="https://www.danielmsullivan.com/pages/tutorial_git_3branches.html"/>
     <meta property="og:description" content="A Brief Intro to Git Overview Previous: First Steps: Making commits Next: Remotes: Sharing Code Online Page Contents 1   Branches 1.1   Create and checkout a new branch 1.2   Work on the new branch 1.3   Checking out a different branch 1.4   Making a second branch 2   Merging 2.1   Resolving conflicts in merges Git has two main functions. We&#39;ve already covered the …" />
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
 
 
 
@@ -46,24 +46,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+                <a href="https://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
 
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/code.html">Code</a></li>
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
                           <ul class="dropdown-menu">
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
                           </ul>
                         </li>
             </ul>
@@ -93,15 +93,15 @@
 <div class="contents topic" id="page-contents">
 <p class="topic-title">Page Contents</p>
 <ul class="auto-toc simple">
-<li><a class="reference internal" href="#branches" id="id1">1&nbsp;&nbsp;&nbsp;Branches</a><ul class="auto-toc">
-<li><a class="reference internal" href="#create-and-checkout-a-new-branch" id="id2">1.1&nbsp;&nbsp;&nbsp;Create and checkout a new branch</a></li>
-<li><a class="reference internal" href="#work-on-the-new-branch" id="id3">1.2&nbsp;&nbsp;&nbsp;Work on the new branch</a></li>
-<li><a class="reference internal" href="#checking-out-a-different-branch" id="id4">1.3&nbsp;&nbsp;&nbsp;Checking out a different branch</a></li>
-<li><a class="reference internal" href="#making-a-second-branch" id="id5">1.4&nbsp;&nbsp;&nbsp;Making a second branch</a></li>
+<li><a class="reference internal" href="#branches" id="toc-entry-1">1&nbsp;&nbsp;&nbsp;Branches</a><ul class="auto-toc">
+<li><a class="reference internal" href="#create-and-checkout-a-new-branch" id="toc-entry-2">1.1&nbsp;&nbsp;&nbsp;Create and checkout a new branch</a></li>
+<li><a class="reference internal" href="#work-on-the-new-branch" id="toc-entry-3">1.2&nbsp;&nbsp;&nbsp;Work on the new branch</a></li>
+<li><a class="reference internal" href="#checking-out-a-different-branch" id="toc-entry-4">1.3&nbsp;&nbsp;&nbsp;Checking out a different branch</a></li>
+<li><a class="reference internal" href="#making-a-second-branch" id="toc-entry-5">1.4&nbsp;&nbsp;&nbsp;Making a second branch</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#merging" id="id6">2&nbsp;&nbsp;&nbsp;Merging</a><ul class="auto-toc">
-<li><a class="reference internal" href="#resolving-conflicts-in-merges" id="id7">2.1&nbsp;&nbsp;&nbsp;Resolving conflicts in merges</a></li>
+<li><a class="reference internal" href="#merging" id="toc-entry-6">2&nbsp;&nbsp;&nbsp;Merging</a><ul class="auto-toc">
+<li><a class="reference internal" href="#resolving-conflicts-in-merges" id="toc-entry-7">2.1&nbsp;&nbsp;&nbsp;Resolving conflicts in merges</a></li>
 </ul>
 </li>
 </ul>
@@ -112,7 +112,7 @@ a record of all the changes we make to our code. Git's second function is
 allowing several people to work on the code at once without getting in each
 other's way. Branches let us do that.</p>
 <div class="section" id="branches">
-<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Branches</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">1&nbsp;&nbsp;&nbsp;Branches</a></h2>
 <p>A <strong>branch</strong> is a special label that points to a commit.</p>
 <p>Let's use our special <code>git shortlog</code> command to remind ourselves what our
 repository history looks like.</p>
@@ -133,7 +133,7 @@ keep the <code>master</code> branch safe, we create a new branch where we can wo
 on our new feature.</p>
 <p>Let's add a subroutine to <code>hello.py</code> on a new branch.</p>
 <div class="section" id="create-and-checkout-a-new-branch">
-<h3><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;Create and checkout a new branch</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-2">1.1&nbsp;&nbsp;&nbsp;Create and checkout a new branch</a></h3>
 <p>First, list all the branches in the repo:</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git branch
 <span class="go">* master</span>
@@ -170,7 +170,7 @@ one that's checked out).</p>
 one command: <code>git checkout -b &lt;name-of-branch&gt;</code>.</p>
 </div>
 <div class="section" id="work-on-the-new-branch">
-<h3><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;Work on the new branch</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-3">1.2&nbsp;&nbsp;&nbsp;Work on the new branch</a></h3>
 <p>Adding to the branch is nothing we haven't already done. After you've checked
 out a branch, any commits you make are added to that branch and that branch
 alone. Let's use this branch to add a subroutine to our code.</p>
@@ -234,7 +234,7 @@ to our new commit and that <code>master</code> does not.</p>
 any time we want by using <code>$ git checkout master</code> as you'll see below.</p>
 </div>
 <div class="section" id="checking-out-a-different-branch">
-<h3><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;Checking out a different branch</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-4">1.3&nbsp;&nbsp;&nbsp;Checking out a different branch</a></h3>
 <p>Before moving on, let's double check that <code>hello.py</code> looks like it
 should, either by running it:</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>python hello.py
@@ -275,7 +275,7 @@ that branch again via <code>$ git checkout add-subroutine</code>, but don't do t
 just yet.</p>
 </div>
 <div class="section" id="making-a-second-branch">
-<h3><a class="toc-backref" href="#id5">1.4&nbsp;&nbsp;&nbsp;Making a second branch</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-5">1.4&nbsp;&nbsp;&nbsp;Making a second branch</a></h3>
 <p>Let's pretend that someone else on our team is working on
 <code>add-subroutine</code> and that our job is to come up with a quote more
 inspiring than &quot;Hello, world!&quot;.</p>
@@ -317,14 +317,14 @@ use <code>master</code> as their jumping off point.</p>
 </pre></div>
 <p>The branching is even more evident if we use a graphical Git interface like
 Sourcetree:</p>
-<img alt="Git graph" src="http://www.danielmsullivan.com/images/git_graph.png" />
+<img alt="Git graph" src="https://www.danielmsullivan.com/images/git_graph.png" />
 <p>We now have three named versions of our code, <code>master</code>,
 <code>add-subroutine</code>, and <code>new-quote</code>. The next step is bringing these
 branches back together.</p>
 </div>
 </div>
 <div class="section" id="merging">
-<h2><a class="toc-backref" href="#id6">2&nbsp;&nbsp;&nbsp;Merging</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-6">2&nbsp;&nbsp;&nbsp;Merging</a></h2>
 <p>Being able to create multiple versions of our code is not very helpful if we
 can't reconcile the multiple versions and combine them somehow. Git handles
 this with the <code>merge</code> command.</p>
@@ -358,7 +358,7 @@ commits that are merged. That is, Git looks at what changes where made in
 <code>eb198f3</code> and replicates them in the <code>master</code> branch. Then it does
 the same for <code>fed0858</code>.</p>
 <div class="section" id="resolving-conflicts-in-merges">
-<h3><a class="toc-backref" href="#id7">2.1&nbsp;&nbsp;&nbsp;Resolving conflicts in merges</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-7">2.1&nbsp;&nbsp;&nbsp;Resolving conflicts in merges</a></h3>
 <p>Now merge <code>new-quote</code> to <code>master</code>. Because our two branches both
 changed <code>hello.py</code>, Git can't easily merge the changes. (It tries to
 re-play the changes, but can't find the place to start.)</p>
@@ -489,13 +489,13 @@ branch labels, so we can delete them.</p>
       </div>
    </div>
 </footer>
-<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/respond.min.js"></script>
 
     <!-- Google Analytics -->
     <script type="text/javascript">

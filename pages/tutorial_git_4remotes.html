@@ -9,7 +9,7 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_git_4remotes.html">
+<link rel="canonical" href="https://www.danielmsullivan.com/pages/tutorial_git_4remotes.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
         <meta name="description" content="A Brief Intro to Git Overview Previous: Branches and Merging Page Contents 1   Downloading (Cloning) a Repository 2   Remote branches 3   Update a remote branch (Fetch and Pull) 4   Upload your changes to the remote server (Push) 5   Checkout a local copy of a remote branch So far, everything we&#39;ve done has been on your local computer--no one else can see your code or contribute …" />
@@ -17,16 +17,16 @@
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Remotes: Sharing Code Online"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_git_4remotes.html"/>
+    <meta property="og:url" content="https://www.danielmsullivan.com/pages/tutorial_git_4remotes.html"/>
     <meta property="og:description" content="A Brief Intro to Git Overview Previous: Branches and Merging Page Contents 1   Downloading (Cloning) a Repository 2   Remote branches 3   Update a remote branch (Fetch and Pull) 4   Upload your changes to the remote server (Push) 5   Checkout a local copy of a remote branch So far, everything we&#39;ve done has been on your local computer--no one else can see your code or contribute …" />
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
 
 
 
@@ -46,24 +46,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+                <a href="https://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
 
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/code.html">Code</a></li>
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
                           <ul class="dropdown-menu">
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
                           </ul>
                         </li>
             </ul>
@@ -92,25 +92,25 @@
 <div class="contents topic" id="page-contents">
 <p class="topic-title">Page Contents</p>
 <ul class="auto-toc simple">
-<li><a class="reference internal" href="#downloading-cloning-a-repository" id="id3">1&nbsp;&nbsp;&nbsp;Downloading (Cloning) a Repository</a></li>
-<li><a class="reference internal" href="#remote-branches" id="id4">2&nbsp;&nbsp;&nbsp;Remote branches</a></li>
-<li><a class="reference internal" href="#update-a-remote-branch-fetch-and-pull" id="id5">3&nbsp;&nbsp;&nbsp;Update a remote branch (Fetch and Pull)</a></li>
-<li><a class="reference internal" href="#upload-your-changes-to-the-remote-server-push" id="id6">4&nbsp;&nbsp;&nbsp;Upload your changes to the remote server (Push)</a></li>
-<li><a class="reference internal" href="#checkout-a-local-copy-of-a-remote-branch" id="id7">5&nbsp;&nbsp;&nbsp;Checkout a local copy of a remote branch</a></li>
+<li><a class="reference internal" href="#downloading-cloning-a-repository" id="toc-entry-1">1&nbsp;&nbsp;&nbsp;Downloading (Cloning) a Repository</a></li>
+<li><a class="reference internal" href="#remote-branches" id="toc-entry-2">2&nbsp;&nbsp;&nbsp;Remote branches</a></li>
+<li><a class="reference internal" href="#update-a-remote-branch-fetch-and-pull" id="toc-entry-3">3&nbsp;&nbsp;&nbsp;Update a remote branch (Fetch and Pull)</a></li>
+<li><a class="reference internal" href="#upload-your-changes-to-the-remote-server-push" id="toc-entry-4">4&nbsp;&nbsp;&nbsp;Upload your changes to the remote server (Push)</a></li>
+<li><a class="reference internal" href="#checkout-a-local-copy-of-a-remote-branch" id="toc-entry-5">5&nbsp;&nbsp;&nbsp;Checkout a local copy of a remote branch</a></li>
 </ul>
 </div>
 <hr class="docutils" />
 <p>So far, everything we've done has been on your local computer--no one else can
 see your code or contribute to it. While cloud services like Dropbox and Google
 Drive are popular for sharing most files within a research team, they are not
-very well suited for Git repos. <a class="footnote-reference" href="#id2" id="id1">[1]</a> Using a service designed specifcally for
+very well suited for Git repos. <a class="footnote-reference" href="#footnote-1" id="footnote-reference-1">[1]</a> Using a service designed specifcally for
 Git, like GitHub or Bitbucket, is a better solution.</p>
 <p>Any of the projects we work on will be hosted on one of the PI's GitHub or
 Bitbucket accounts, so in the context of our work you won't need to worry about
 creating a repo online. However, you can follow <a class="reference external" href="https://help.github.com/articles/creating-a-new-repository/">these</a> instructions
 if you want to practice that on your own.</p>
 <div class="section" id="downloading-cloning-a-repository">
-<h2><a class="toc-backref" href="#id3">1&nbsp;&nbsp;&nbsp;Downloading (Cloning) a Repository</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">1&nbsp;&nbsp;&nbsp;Downloading (Cloning) a Repository</a></h2>
 <p>To copy a repository from the Internet to your computer, use the <code>clone</code>
 command and the URL of the online repo.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/dmsul/econtools.git
@@ -124,7 +124,7 @@ contains all the info about the Git repository hosted at the given URL.</p>
 <code>different-folder-name/</code> instead of <code>econtools/</code>.</p>
 </div>
 <div class="section" id="remote-branches">
-<h2><a class="toc-backref" href="#id4">2&nbsp;&nbsp;&nbsp;Remote branches</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">2&nbsp;&nbsp;&nbsp;Remote branches</a></h2>
 <p>After you've cloned a repo, you'll have a copy of it on your hard drive.
 Suppose that your <code>shortlog</code> looks like this:</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git shortlog
@@ -141,7 +141,7 @@ These are <strong>remote branches</strong> and follow the naming convention
 <code>&lt;remote_name&gt;/&lt;branch_name&gt;</code>.</p>
 </div>
 <div class="section" id="update-a-remote-branch-fetch-and-pull">
-<h2><a class="toc-backref" href="#id5">3&nbsp;&nbsp;&nbsp;Update a remote branch (Fetch and Pull)</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">3&nbsp;&nbsp;&nbsp;Update a remote branch (Fetch and Pull)</a></h2>
 <p>What if the online repo gets updated, how do you get the updates to your computer?
 You use the <code>fetch</code> command:</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git fetch origin
@@ -179,7 +179,7 @@ a shortcut command, <code>pull</code>, which does a fetch, then a merge.</p>
 <p>Now our local code is updated to match the code on the website.</p>
 </div>
 <div class="section" id="upload-your-changes-to-the-remote-server-push">
-<h2><a class="toc-backref" href="#id6">4&nbsp;&nbsp;&nbsp;Upload your changes to the remote server (Push)</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-4">4&nbsp;&nbsp;&nbsp;Upload your changes to the remote server (Push)</a></h2>
 <p>If you add a commit to your local <code>master</code> branch, the remote branch
 <code>origin/master</code> is unaffected. After adding a commit, your shortlog looks
 like this:</p>
@@ -212,15 +212,15 @@ commit uploaded to <code>origin</code> (e.g., Github) and to update
 </pre></div>
 </div>
 <div class="section" id="checkout-a-local-copy-of-a-remote-branch">
-<h2><a class="toc-backref" href="#id7">5&nbsp;&nbsp;&nbsp;Checkout a local copy of a remote branch</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-5">5&nbsp;&nbsp;&nbsp;Checkout a local copy of a remote branch</a></h2>
 <p>[In Progress]</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git checkout -b branch-name origin/branch-name
 </pre></div>
 <hr class="docutils" />
-<table class="docutils footnote" frame="void" id="id2" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The problem is that all information about the Git repository is stored
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td>The problem is that all information about the Git repository is stored
 in a hidden folder called <code>.git/</code>. During certain operations, Git the
 software makes lots of changes to files in <code>.git/</code> the folder very
 quickly. Dropbox et al. can sometimes have trouble keeping up and will try to
@@ -269,13 +269,13 @@ that happens, you have to scrap your repo and re-clone it.</td></tr>
       </div>
    </div>
 </footer>
-<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/respond.min.js"></script>
 
     <!-- Google Analytics -->
     <script type="text/javascript">

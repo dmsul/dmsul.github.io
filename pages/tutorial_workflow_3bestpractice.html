@@ -9,7 +9,7 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html">
+<link rel="canonical" href="https://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
         <meta name="description" content="&#34;Writing Code in Econ&#34; Series Overview Previous: Project Organization Page Contents 1   &#34;Don&#39;t Repeat Yourself&#34; 1.1   No Copy-and-pasting 1.2   Automate empirical results completely 2   Write self-documenting code 2.1   No &#34;magic&#34; numbers 2.2   Use functions like paragraphs 2.3   Use docstrings 2.4   Scripts should only contain functions, constants, and an &#34;if-main&#34; block 3   Use a consistent style 3.1   Lines should …" />
@@ -17,16 +17,16 @@
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Best Practices when Writing Code"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html"/>
+    <meta property="og:url" content="https://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html"/>
     <meta property="og:description" content="&#34;Writing Code in Econ&#34; Series Overview Previous: Project Organization Page Contents 1   &#34;Don&#39;t Repeat Yourself&#34; 1.1   No Copy-and-pasting 1.2   Automate empirical results completely 2   Write self-documenting code 2.1   No &#34;magic&#34; numbers 2.2   Use functions like paragraphs 2.3   Use docstrings 2.4   Scripts should only contain functions, constants, and an &#34;if-main&#34; block 3   Use a consistent style 3.1   Lines should …" />
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
 
 
 
@@ -46,24 +46,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+                <a href="https://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
 
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/code.html">Code</a></li>
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
                           <ul class="dropdown-menu">
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
                           </ul>
                         </li>
             </ul>
@@ -92,37 +92,37 @@
 <div class="contents topic" id="page-contents">
 <p class="topic-title">Page Contents</p>
 <ul class="auto-toc simple">
-<li><a class="reference internal" href="#don-t-repeat-yourself" id="id1">1&nbsp;&nbsp;&nbsp;&quot;Don't Repeat Yourself&quot;</a><ul class="auto-toc">
-<li><a class="reference internal" href="#no-copy-and-pasting" id="id2">1.1&nbsp;&nbsp;&nbsp;No Copy-and-pasting</a></li>
-<li><a class="reference internal" href="#automate-empirical-results-completely" id="id3">1.2&nbsp;&nbsp;&nbsp;Automate empirical results completely</a></li>
+<li><a class="reference internal" href="#don-t-repeat-yourself" id="toc-entry-1">1&nbsp;&nbsp;&nbsp;&quot;Don't Repeat Yourself&quot;</a><ul class="auto-toc">
+<li><a class="reference internal" href="#no-copy-and-pasting" id="toc-entry-2">1.1&nbsp;&nbsp;&nbsp;No Copy-and-pasting</a></li>
+<li><a class="reference internal" href="#automate-empirical-results-completely" id="toc-entry-3">1.2&nbsp;&nbsp;&nbsp;Automate empirical results completely</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#write-self-documenting-code" id="id4">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a><ul class="auto-toc">
-<li><a class="reference internal" href="#no-magic-numbers" id="id5">2.1&nbsp;&nbsp;&nbsp;No &quot;magic&quot; numbers</a></li>
-<li><a class="reference internal" href="#use-functions-like-paragraphs" id="id6">2.2&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></li>
-<li><a class="reference internal" href="#use-docstrings" id="id7">2.3&nbsp;&nbsp;&nbsp;Use docstrings</a></li>
-<li><a class="reference internal" href="#scripts-should-only-contain-functions-constants-and-an-if-main-block" id="id8">2.4&nbsp;&nbsp;&nbsp;Scripts should only contain functions, constants, and an &quot;if-main&quot; block</a></li>
+<li><a class="reference internal" href="#write-self-documenting-code" id="toc-entry-4">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a><ul class="auto-toc">
+<li><a class="reference internal" href="#no-magic-numbers" id="toc-entry-5">2.1&nbsp;&nbsp;&nbsp;No &quot;magic&quot; numbers</a></li>
+<li><a class="reference internal" href="#use-functions-like-paragraphs" id="toc-entry-6">2.2&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></li>
+<li><a class="reference internal" href="#use-docstrings" id="toc-entry-7">2.3&nbsp;&nbsp;&nbsp;Use docstrings</a></li>
+<li><a class="reference internal" href="#scripts-should-only-contain-functions-constants-and-an-if-main-block" id="toc-entry-8">2.4&nbsp;&nbsp;&nbsp;Scripts should only contain functions, constants, and an &quot;if-main&quot; block</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#use-a-consistent-style" id="id9">3&nbsp;&nbsp;&nbsp;Use a consistent style</a><ul class="auto-toc">
-<li><a class="reference internal" href="#lines-should-be-less-than-80-characters-wide" id="id10">3.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></li>
-<li><a class="reference internal" href="#indentation" id="id11">3.2&nbsp;&nbsp;&nbsp;Indentation</a></li>
-<li><a class="reference internal" href="#imports" id="id12">3.3&nbsp;&nbsp;&nbsp;Imports</a></li>
-<li><a class="reference internal" href="#don-t-use-the-same-variable-name-for-different-things" id="id13">3.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></li>
-<li><a class="reference internal" href="#make-lowercase-uppercase-meaningful" id="id14">3.5&nbsp;&nbsp;&nbsp;Make lowercase/uppercase meaningful</a></li>
-<li><a class="reference internal" href="#other-stuff" id="id15">3.6&nbsp;&nbsp;&nbsp;Other stuff</a></li>
+<li><a class="reference internal" href="#use-a-consistent-style" id="toc-entry-9">3&nbsp;&nbsp;&nbsp;Use a consistent style</a><ul class="auto-toc">
+<li><a class="reference internal" href="#lines-should-be-less-than-80-characters-wide" id="toc-entry-10">3.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></li>
+<li><a class="reference internal" href="#indentation" id="toc-entry-11">3.2&nbsp;&nbsp;&nbsp;Indentation</a></li>
+<li><a class="reference internal" href="#imports" id="toc-entry-12">3.3&nbsp;&nbsp;&nbsp;Imports</a></li>
+<li><a class="reference internal" href="#don-t-use-the-same-variable-name-for-different-things" id="toc-entry-13">3.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></li>
+<li><a class="reference internal" href="#make-lowercase-uppercase-meaningful" id="toc-entry-14">3.5&nbsp;&nbsp;&nbsp;Make lowercase/uppercase meaningful</a></li>
+<li><a class="reference internal" href="#other-stuff" id="toc-entry-15">3.6&nbsp;&nbsp;&nbsp;Other stuff</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#example-script" id="id16">4&nbsp;&nbsp;&nbsp;Example Script</a><ul class="auto-toc">
-<li><a class="reference internal" href="#example-bad-script" id="id17">4.1&nbsp;&nbsp;&nbsp;Example Bad Script</a></li>
+<li><a class="reference internal" href="#example-script" id="toc-entry-16">4&nbsp;&nbsp;&nbsp;Example Script</a><ul class="auto-toc">
+<li><a class="reference internal" href="#example-bad-script" id="toc-entry-17">4.1&nbsp;&nbsp;&nbsp;Example Bad Script</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#follow-robust-development-practices" id="id18">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a><ul class="auto-toc">
-<li><a class="reference internal" href="#build-your-code-incrementally-in-a-script" id="id19">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></li>
-<li><a class="reference internal" href="#don-t-run-snippets-of-code-in-isolation" id="id20">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></li>
-<li><a class="reference internal" href="#use-the-ipython-terminal-and-a-text-editor" id="id21">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></li>
-<li><a class="reference internal" href="#manage-your-installed-libraries-using-a-virtual-environment" id="id22">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></li>
-<li><a class="reference internal" href="#use-universal-immutable-identifiers-whenever-possible" id="id23">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></li>
+<li><a class="reference internal" href="#follow-robust-development-practices" id="toc-entry-18">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a><ul class="auto-toc">
+<li><a class="reference internal" href="#build-your-code-incrementally-in-a-script" id="toc-entry-19">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></li>
+<li><a class="reference internal" href="#don-t-run-snippets-of-code-in-isolation" id="toc-entry-20">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></li>
+<li><a class="reference internal" href="#use-the-ipython-terminal-and-a-text-editor" id="toc-entry-21">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></li>
+<li><a class="reference internal" href="#manage-your-installed-libraries-using-a-virtual-environment" id="toc-entry-22">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></li>
+<li><a class="reference internal" href="#use-universal-immutable-identifiers-whenever-possible" id="toc-entry-23">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></li>
 </ul>
 </li>
 </ul>
@@ -141,9 +141,9 @@ may not rememeber what Present You is doing today and why.</p>
 <blockquote class="twitter-tweet"> <p lang="en" dir="ltr">     &quot;Any code of your own that you haven&#39;t looked at for six or     more months might as well have been written by someone else.&quot; -     Eagleson&#39;s law</p>&mdash; Programming Wisdom (@CodeWisdom)     <a href="https://twitter.com/CodeWisdom/status/1089880021441933312?ref_src=twsrc%5Etfw">     January 28, 2019     </a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p><em>Note:</em> This guide is written with Python in mind, but very little of it is
 specific to Python. The principles are just as helpful in Stata, R, and other languages.</p>
 <div class="section" id="don-t-repeat-yourself">
-<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;&quot;Don't Repeat Yourself&quot;</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">1&nbsp;&nbsp;&nbsp;&quot;Don't Repeat Yourself&quot;</a></h2>
 <blockquote class="twitter-tweet"> <p lang="en" dir="ltr"> &quot;DRY - Don’t Repeat Yourself - Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.&quot; - Andy Hunt &amp; Dave Thomas</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/1089155243965861888?ref_src=twsrc%5Etfw">January 26, 2019</a> </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><div class="section" id="no-copy-and-pasting">
-<h3><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;No Copy-and-pasting</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-2">1.1&nbsp;&nbsp;&nbsp;No Copy-and-pasting</a></h3>
 <p>Variables and algorithms should be defined in exactly one place. This is a
 cardinal rule. If you copy and paste code to use it in multiple places, it is
 difficult to make sure any changes you make later also get copied and pasted.</p>
@@ -156,7 +156,7 @@ script. That way you know for a certainty that every regression is using
 exactly the same sample, even if you come in and change something later.</p>
 </div>
 <div class="section" id="automate-empirical-results-completely">
-<h3><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;Automate empirical results completely</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-3">1.2&nbsp;&nbsp;&nbsp;Automate empirical results completely</a></h3>
 <p>Figures and tables created by your code should be inserted directly into
 presentations or papers without manual editing.
 You don't want to have to tweak tables every time you re-create them.
@@ -165,7 +165,7 @@ Don't repeat yourself!</p>
 </div>
 </div>
 <div class="section" id="write-self-documenting-code">
-<h2><a class="toc-backref" href="#id4">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-4">2&nbsp;&nbsp;&nbsp;Write self-documenting code</a></h2>
 <blockquote class="twitter-tweet"> <p lang="en" dir="ltr"> “Good code is its own best documentation. As you&#39;re about to add a comment, ask yourself, &#39;How can I improve the code so that this comment isn&#39;t needed?&#39; Improve the code and then document it to make it even clearer.” - Steve McConnell</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/1090308606409478144?ref_src=twsrc%5Etfw"> January 29, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>Give descriptive names to variables, functions, and files.
 Err on the side of names being too long and descriptive.
 It takes longer to type these names but the added information will be worth it
@@ -193,7 +193,7 @@ respectively. This is not a requirement but we have found that it's easy to
 mix up &quot;latitude&quot; and &quot;longitude&quot;.</li>
 </ul>
 <div class="section" id="no-magic-numbers">
-<h3><a class="toc-backref" href="#id5">2.1&nbsp;&nbsp;&nbsp;No &quot;magic&quot; numbers</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-5">2.1&nbsp;&nbsp;&nbsp;No &quot;magic&quot; numbers</a></h3>
 <p>A <a class="reference external" href="https://stackoverflow.com/questions/47882/what-is-a-magic-number-and-why-is-it-bad">&quot;magic number&quot;</a>
 is a number in code that is directly used, usually with no information about
 what the number represents or why that specific number is used.</p>
@@ -224,7 +224,7 @@ code be self explanatory.</p>
 </pre></div>
 </div>
 <div class="section" id="use-functions-like-paragraphs">
-<h3><a class="toc-backref" href="#id6">2.2&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-6">2.2&nbsp;&nbsp;&nbsp;Use functions like paragraphs</a></h3>
 <p>The main unit of code should be functions. Even if you're only going to use a
 function once, breaking your script into functions makes it easier to read.</p>
 <p>Suppose it takes 30 lines of code to create a balanced panel within your data.
@@ -232,7 +232,7 @@ Even if you only do it once, a line like <code>df = create_balanced_panel(df)</c
 is much easier to digest than the 30 lines themselves.</p>
 </div>
 <div class="section" id="use-docstrings">
-<h3><a class="toc-backref" href="#id7">2.3&nbsp;&nbsp;&nbsp;Use docstrings</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-7">2.3&nbsp;&nbsp;&nbsp;Use docstrings</a></h3>
 <p>Python has a special convention called docstrings. At the beginning of a script
 or the beginning of a function, you can add a multiline string with triple
 quotes <code>&quot;&quot;&quot;</code> that will serve as the documentation for that script or
@@ -257,7 +257,7 @@ of <code>my_function</code> if it exists.</p>
 like <code>/* */</code> in Stata, to achieve the same goal.</p>
 </div>
 <div class="section" id="scripts-should-only-contain-functions-constants-and-an-if-main-block">
-<h3><a class="toc-backref" href="#id8">2.4&nbsp;&nbsp;&nbsp;Scripts should only contain functions, constants, and an &quot;if-main&quot; block</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-8">2.4&nbsp;&nbsp;&nbsp;Scripts should only contain functions, constants, and an &quot;if-main&quot; block</a></h3>
 <p><strong>IMPORTANT:</strong> Most of the guidance on this page is stylistic, aimed at
 making you more productive as a programmer while having litte impact on what
 your code actually does.
@@ -337,7 +337,7 @@ executed if we run <code>python cleandata.py</code> from the command line or
 </div>
 </div>
 <div class="section" id="use-a-consistent-style">
-<h2><a class="toc-backref" href="#id9">3&nbsp;&nbsp;&nbsp;Use a consistent style</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-9">3&nbsp;&nbsp;&nbsp;Use a consistent style</a></h2>
 <p>Just like for writing prose, there are style guides for writing code which help
 make your writing easier to read.
 Python has an official style guide called PEP8 that contains more rules than
@@ -348,7 +348,7 @@ It can be integrated into the Atom editor using the <code>linter-flake8</code>
 plugin.</p>
 <p>A few examples of important PEP8 rules that we'll follow:</p>
 <div class="section" id="lines-should-be-less-than-80-characters-wide">
-<h3><a class="toc-backref" href="#id10">3.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-10">3.1&nbsp;&nbsp;&nbsp;Lines should be less than 80 characters wide</a></h3>
 <p>Fortunately line wrapping in Python is very easy.
 Anything within parentheses can be broken across lines, including function
 calls:</p>
@@ -402,7 +402,7 @@ In Stata, <code>///</code> says &quot;the following line is really part of this 
 can also change the delimiter to <code>;</code> using <code>#delimiter ;</code>.</p>
 </div>
 <div class="section" id="indentation">
-<h3><a class="toc-backref" href="#id11">3.2&nbsp;&nbsp;&nbsp;Indentation</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-11">3.2&nbsp;&nbsp;&nbsp;Indentation</a></h3>
 <p>Whitespace is important in Python and messing up indentation can cause your
 code to crash.</p>
 <ul class="simple">
@@ -439,7 +439,7 @@ on that line, indent once.</li>
 </pre></div>
 </div>
 <div class="section" id="imports">
-<h3><a class="toc-backref" href="#id12">3.3&nbsp;&nbsp;&nbsp;Imports</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-12">3.3&nbsp;&nbsp;&nbsp;Imports</a></h3>
 <ul class="simple">
 <li>Imports go at the top of the file.</li>
 <li><em>NEVER</em> import an entire package like this: <code>from numpy import *</code>.</li>
@@ -457,7 +457,7 @@ on that line, indent once.</li>
 </pre></div>
 </div>
 <div class="section" id="don-t-use-the-same-variable-name-for-different-things">
-<h3><a class="toc-backref" href="#id13">3.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-13">3.4&nbsp;&nbsp;&nbsp;Don't use the same variable name for different things</a></h3>
 <p>Python (and Stata and R) are dynamically-typed languages, which means that they
 just figure out what kind of data a variable is, like a string, an integer or a
 decimal float. As a result, it's common to see people re-use variable names for
@@ -477,7 +477,7 @@ naming your variables:</p>
 </pre></div>
 </div>
 <div class="section" id="make-lowercase-uppercase-meaningful">
-<h3><a class="toc-backref" href="#id14">3.5&nbsp;&nbsp;&nbsp;Make lowercase/uppercase meaningful</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-14">3.5&nbsp;&nbsp;&nbsp;Make lowercase/uppercase meaningful</a></h3>
 <p>Variable and function names are all lowercase with underscores:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Good</span>
 <span class="n">my_descriptive_name</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span>
@@ -503,7 +503,7 @@ a capital and follow &quot;Camel case&quot; or &quot;CapWords&quot; convention:<
 </pre></div>
 </div>
 <div class="section" id="other-stuff">
-<h3><a class="toc-backref" href="#id15">3.6&nbsp;&nbsp;&nbsp;Other stuff</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-15">3.6&nbsp;&nbsp;&nbsp;Other stuff</a></h3>
 <ul class="simple">
 <li>Spaces around assignments: <code>x = 7</code> not <code>x=7</code>.</li>
 <li>No spaces around keyword variables: <code>function(arg1=y, arg2=3)</code>.</li>
@@ -531,7 +531,7 @@ scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</
 </div>
 </div>
 <div class="section" id="example-script">
-<h2><a class="toc-backref" href="#id16">4&nbsp;&nbsp;&nbsp;Example Script</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-16">4&nbsp;&nbsp;&nbsp;Example Script</a></h2>
 <div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Task: read the words from the file `tmp.txt` and calculate each word&#39;s score</span>
 <span class="sd">based on the &quot;value&quot; of its letters, where A=1, B=2, etc. Then calculate how</span>
@@ -589,7 +589,7 @@ scripts) should start with an underscore, e.g., <code>_drop_missings()</code>.</
     <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_triangle&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 </pre></div>
 <div class="section" id="example-bad-script">
-<h3><a class="toc-backref" href="#id17">4.1&nbsp;&nbsp;&nbsp;Example Bad Script</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-17">4.1&nbsp;&nbsp;&nbsp;Example Bad Script</a></h3>
 <p>Each of the functions in the above script is referenced only once, so why write
 re-usable functions at all?
 Below is the same script re-written without functions or an if-main block.
@@ -612,9 +612,9 @@ Is it easier or harder to follow what's going on in the code?</p>
 </div>
 </div>
 <div class="section" id="follow-robust-development-practices">
-<h2><a class="toc-backref" href="#id18">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-18">5&nbsp;&nbsp;&nbsp;Follow Robust Development Practices</a></h2>
 <div class="section" id="build-your-code-incrementally-in-a-script">
-<h3><a class="toc-backref" href="#id19">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-19">5.1&nbsp;&nbsp;&nbsp;Build your code incrementally in a script</a></h3>
 <p>It's pretty common for data work in social science to look like this: You open
 Stata, R, Python, etc., and start poking around on the command line, interacting
 with the data until you get where you want. Then you use the command history
@@ -657,7 +657,7 @@ done so.</p>
 <p>When you're done, there should be a very simple (maybe empty) if-main block.</p>
 </div>
 <div class="section" id="don-t-run-snippets-of-code-in-isolation">
-<h3><a class="toc-backref" href="#id20">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-20">5.2&nbsp;&nbsp;&nbsp;Don't run snippets of code in isolation</a></h3>
 <p>Spyder and Stata's do-file editor both have buttons that let you highlight a
 few lines of code and run only those. <em>Don't use them.</em> Run scripts from the
 beginning. It is too easy to spend ages &quot;fixing&quot; a piece of code by running it
@@ -665,7 +665,7 @@ as a snippet only to find that when you run the script as a whole, you never
 actually fixed the problem (or introduced a new one).</p>
 </div>
 <div class="section" id="use-the-ipython-terminal-and-a-text-editor">
-<h3><a class="toc-backref" href="#id21">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-21">5.3&nbsp;&nbsp;&nbsp;Use the IPython terminal and a text editor</a></h3>
 <p>Jupyter and Spyder are great tools for analyzing data in Python. However, it is
 hard to keep track of your computing environemnt (which versions of packages
 are loaded, etc.) while using these tools. Our preferred solution is to use a
@@ -676,7 +676,7 @@ run your code.</p>
 look for in a good editor.</p>
 </div>
 <div class="section" id="manage-your-installed-libraries-using-a-virtual-environment">
-<h3><a class="toc-backref" href="#id22">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-22">5.4&nbsp;&nbsp;&nbsp;Manage your installed libraries using a virtual environment</a></h3>
 <p>Let's say you work on Project A for a while using Pandas 0.18 and Numpy 1.12
 and some other Python packages. You submit Project A and start on Project B.
 Project B requires some features in Pandas 0.22, so you upgrade. While you're
@@ -694,7 +694,7 @@ online, e.g., <a class="reference external" href="https://towardsdatascience.com
 environment for each one.</p>
 </div>
 <div class="section" id="use-universal-immutable-identifiers-whenever-possible">
-<h3><a class="toc-backref" href="#id23">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-23">5.5&nbsp;&nbsp;&nbsp;Use universal, immutable identifiers whenever possible</a></h3>
 <p>For example, use FIPS, not your own made up county ID's. Any time you introduce
 your own arbitrary identifiers, you run the risk of introducing inconsistencies
 between datasets.</p>
@@ -745,13 +745,13 @@ guarantee that the merge is correct.</p>
       </div>
    </div>
 </footer>
-<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/respond.min.js"></script>
 
     <!-- Google Analytics -->
     <script type="text/javascript">

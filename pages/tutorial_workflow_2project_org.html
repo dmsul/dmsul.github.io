@@ -9,7 +9,7 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_workflow_2project_org.html">
+<link rel="canonical" href="https://www.danielmsullivan.com/pages/tutorial_workflow_2project_org.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
         <meta name="description" content="&#34;Writing Code in Econ&#34; Series Overview Previous: Software Setup Next: Best Practices when Coding Page Contents 1   Data-only project 1.1   Where&#39;s the data? 1.2   Define data locations once (and only once) 1.3   Pull it all together 2   Full empirical project 2.1   Output path 2.2   Code organization &#34;Never memorize anything you can look up.&#34; ~ Albert Einstein, maybe It&#39;s a good idea …" />
@@ -17,16 +17,16 @@
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Project File Organization"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_workflow_2project_org.html"/>
+    <meta property="og:url" content="https://www.danielmsullivan.com/pages/tutorial_workflow_2project_org.html"/>
     <meta property="og:description" content="&#34;Writing Code in Econ&#34; Series Overview Previous: Software Setup Next: Best Practices when Coding Page Contents 1   Data-only project 1.1   Where&#39;s the data? 1.2   Define data locations once (and only once) 1.3   Pull it all together 2   Full empirical project 2.1   Output path 2.2   Code organization &#34;Never memorize anything you can look up.&#34; ~ Albert Einstein, maybe It&#39;s a good idea …" />
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
 
 
 
@@ -46,24 +46,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+                <a href="https://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
 
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/code.html">Code</a></li>
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
                           <ul class="dropdown-menu">
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
                           </ul>
                         </li>
             </ul>
@@ -93,15 +93,15 @@
 <div class="contents topic" id="page-contents">
 <p class="topic-title">Page Contents</p>
 <ul class="auto-toc simple">
-<li><a class="reference internal" href="#data-only-project" id="id1">1&nbsp;&nbsp;&nbsp;Data-only project</a><ul class="auto-toc">
-<li><a class="reference internal" href="#where-s-the-data" id="id2">1.1&nbsp;&nbsp;&nbsp;Where's the data?</a></li>
-<li><a class="reference internal" href="#define-data-locations-once-and-only-once" id="id3">1.2&nbsp;&nbsp;&nbsp;Define data locations once (and only once)</a></li>
-<li><a class="reference internal" href="#pull-it-all-together" id="id4">1.3&nbsp;&nbsp;&nbsp;Pull it all together</a></li>
+<li><a class="reference internal" href="#data-only-project" id="toc-entry-1">1&nbsp;&nbsp;&nbsp;Data-only project</a><ul class="auto-toc">
+<li><a class="reference internal" href="#where-s-the-data" id="toc-entry-2">1.1&nbsp;&nbsp;&nbsp;Where's the data?</a></li>
+<li><a class="reference internal" href="#define-data-locations-once-and-only-once" id="toc-entry-3">1.2&nbsp;&nbsp;&nbsp;Define data locations once (and only once)</a></li>
+<li><a class="reference internal" href="#pull-it-all-together" id="toc-entry-4">1.3&nbsp;&nbsp;&nbsp;Pull it all together</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#full-empirical-project" id="id5">2&nbsp;&nbsp;&nbsp;Full empirical project</a><ul class="auto-toc">
-<li><a class="reference internal" href="#output-path" id="id6">2.1&nbsp;&nbsp;&nbsp;Output path</a></li>
-<li><a class="reference internal" href="#code-organization" id="id7">2.2&nbsp;&nbsp;&nbsp;Code organization</a></li>
+<li><a class="reference internal" href="#full-empirical-project" id="toc-entry-5">2&nbsp;&nbsp;&nbsp;Full empirical project</a><ul class="auto-toc">
+<li><a class="reference internal" href="#output-path" id="toc-entry-6">2.1&nbsp;&nbsp;&nbsp;Output path</a></li>
+<li><a class="reference internal" href="#code-organization" id="toc-entry-7">2.2&nbsp;&nbsp;&nbsp;Code organization</a></li>
 </ul>
 </li>
 </ul>
@@ -119,7 +119,7 @@ logic like &quot;a script like X would probably be in folder Y&quot; than it is 
 through every file and every folder searching for X.</p>
 <p>The file and folder structure outlined here is one way to do that.</p>
 <div class="section" id="data-only-project">
-<h2><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Data-only project</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">1&nbsp;&nbsp;&nbsp;Data-only project</a></h2>
 <p>An important principle in coding is to only define something once, whether it's
 a variable or a function, and refer back to that singular definition everywhere
 else. No copying and pasting snippets of code! If you find an error in a
@@ -152,7 +152,7 @@ computer.</p>
 <p>The <code>__init__.py</code> files will usually be empty and are there to let Python
 know that the folder is part of a Python package (see <a class="reference external" href="https://stackoverflow.com/questions/448271/what-is-init-py-for">here</a>).</p>
 <div class="section" id="where-s-the-data">
-<h3><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;Where's the data?</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-2">1.1&nbsp;&nbsp;&nbsp;Where's the data?</a></h3>
 <p>Notice that there's no <code>data</code> folder here. That's because the data files
 are (usually ) not kept in the Python package or the Git repository.
 First, they often can't be, since raw data files can be several gigabytes which
@@ -183,7 +183,7 @@ That way you know that anything not in <code>src/</code> was created by you and 
 be recreated as long as you have the code and the source data.</p>
 </div>
 <div class="section" id="define-data-locations-once-and-only-once">
-<h3><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;Define data locations once (and only once)</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-3">1.2&nbsp;&nbsp;&nbsp;Define data locations once (and only once)</a></h3>
 <p>The <code>util/</code> folder is for scripts that will be used a lot within the data
 cleaning itself but not by any other Python code or projects. In fact,
 <code>util/</code> will often just contain a single file, <code>env.py</code>. The
@@ -240,7 +240,7 @@ be used in code outside <code>data_project_name</code>. Other projects will have
 their own data access functions.</p>
 </div>
 <div class="section" id="pull-it-all-together">
-<h3><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;Pull it all together</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-4">1.3&nbsp;&nbsp;&nbsp;Pull it all together</a></h3>
 <p>The <code>clean</code> folder contains scripts that clean the raw data.
 Usually we'll call the barebones basic script that reads the source data
 <code>raw.py</code>, but sometimes that's all there is. If it's a very simple
@@ -264,7 +264,7 @@ want, and for that you just have to look in a single <code>__init__.py</code> fi
 </div>
 </div>
 <div class="section" id="full-empirical-project">
-<h2><a class="toc-backref" href="#id5">2&nbsp;&nbsp;&nbsp;Full empirical project</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-5">2&nbsp;&nbsp;&nbsp;Full empirical project</a></h2>
 <p>Full projects that form the basis of an academic paper are structured in a
 similar way.</p>
 <pre class="literal-block">
@@ -297,7 +297,7 @@ including <code>bib</code> files and anything else that goes with the draft.  Sa
 goes for <code>present/</code> (presentations) and <code>lit/</code> (other papers from
 the literature we'll need to refer to).</p>
 <div class="section" id="output-path">
-<h3><a class="toc-backref" href="#id6">2.1&nbsp;&nbsp;&nbsp;Output path</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-6">2.1&nbsp;&nbsp;&nbsp;Output path</a></h3>
 <p>The <code>util/</code> folder is the same as above. The <code>util/env.py</code> file will
 also have an <code>out_path</code> function that defines where we want the output of
 analyses saved.  This will usually just point to the <code>out/</code> folder,
@@ -308,7 +308,7 @@ for August 2018. Adding the month-year folder is handled automatically by
 <code>out_path</code>.</p>
 </div>
 <div class="section" id="code-organization">
-<h3><a class="toc-backref" href="#id7">2.2&nbsp;&nbsp;&nbsp;Code organization</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-7">2.2&nbsp;&nbsp;&nbsp;Code organization</a></h3>
 <p>Python makes it very easy to import functions from one file into another.
 One danger of this that you can get circular imports, where Script A imports
 from Script B and Script B imports from Script A. Python will raise an error if
@@ -392,13 +392,13 @@ python plot_a_variable.py --grayscale
       </div>
    </div>
 </footer>
-<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/respond.min.js"></script>
 
     <!-- Google Analytics -->
     <script type="text/javascript">

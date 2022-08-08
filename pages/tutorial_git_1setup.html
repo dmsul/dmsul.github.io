@@ -9,7 +9,7 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_git_1setup.html">
+<link rel="canonical" href="https://www.danielmsullivan.com/pages/tutorial_git_1setup.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
         <meta name="description" content="A Brief Intro to Git Overview Next: First Steps: Making Commits First, make sure you can access git from the command line by executing the following command: $ git --version You should see something like this: $ git --version git version 2.17.1.windows.2 If instead you see bash: git: command not found, double check you have git installed. [Coming soon: Tutoral on installation and …" />
@@ -17,16 +17,16 @@
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Setting up Git"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_git_1setup.html"/>
+    <meta property="og:url" content="https://www.danielmsullivan.com/pages/tutorial_git_1setup.html"/>
     <meta property="og:description" content="A Brief Intro to Git Overview Next: First Steps: Making Commits First, make sure you can access git from the command line by executing the following command: $ git --version You should see something like this: $ git --version git version 2.17.1.windows.2 If instead you see bash: git: command not found, double check you have git installed. [Coming soon: Tutoral on installation and …" />
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
 
 
 
@@ -46,24 +46,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+                <a href="https://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
 
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/code.html">Code</a></li>
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
                           <ul class="dropdown-menu">
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
                           </ul>
                         </li>
             </ul>
@@ -105,26 +105,26 @@ Instead of a options menu, git is configured through a <code>.gitconfig</code> f
 in your home directory.
 You can quickly set it up by copying the following settings into your
 <code>.gitconfig</code> file:</p>
-<div class="highlight"><pre><span></span>[user]
-        name <span class="o">=</span> Firstname Lastname               <span class="c1"># Fill this in</span>
-        email <span class="o">=</span> me@mailhost.com                 <span class="c1"># Fill this in</span>
-[push]
-        <span class="k">default</span> <span class="o">=</span> matching
-[core]
-        excludesfile <span class="o">=</span> ~/.gitignore_global
-        autocrlf <span class="o">=</span> false
-        fileMode <span class="o">=</span> false
-        editor <span class="o">=</span> code.exe                       <span class="c1"># Fill this in</span>
-[color]
-        ui <span class="o">=</span> true
-[difftool]
-        <span class="k">prompt</span> <span class="o">=</span> false
-[alias]
-        st <span class="o">=</span> status
-        ci <span class="o">=</span> commit
-        ch <span class="o">=</span> checkout
-        br <span class="o">=</span> branch -vva
-        shortlog <span class="o">=</span> log --graph --abbrev-commit --decorate --date=relative --format=format:&#39;%C(bold blue)%h%C(reset) - %C(bold yellow)%d%C(reset) %C(white)%s%C(reset)&#39; --all
+<div class="highlight"><pre><span></span>[user]<span class="w"></span>
+<span class="w">        </span>name<span class="w"> </span><span class="o">=</span><span class="w"> </span>Firstname<span class="w"> </span>Lastname<span class="w">               </span><span class="c1"># Fill this in</span>
+<span class="w">        </span>email<span class="w"> </span><span class="o">=</span><span class="w"> </span>me@mailhost.com<span class="w">                 </span><span class="c1"># Fill this in</span>
+[push]<span class="w"></span>
+<span class="w">        </span><span class="k">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>matching<span class="w"></span>
+[core]<span class="w"></span>
+<span class="w">        </span>excludesfile<span class="w"> </span><span class="o">=</span><span class="w"> </span>~/.gitignore_global<span class="w"></span>
+<span class="w">        </span>autocrlf<span class="w"> </span><span class="o">=</span><span class="w"> </span>false<span class="w"></span>
+<span class="w">        </span>fileMode<span class="w"> </span><span class="o">=</span><span class="w"> </span>false<span class="w"></span>
+<span class="w">        </span>editor<span class="w"> </span><span class="o">=</span><span class="w"> </span>code.exe<span class="w">                       </span><span class="c1"># Fill this in</span>
+[color]<span class="w"></span>
+<span class="w">        </span>ui<span class="w"> </span><span class="o">=</span><span class="w"> </span>true<span class="w"></span>
+[difftool]<span class="w"></span>
+<span class="w">        </span><span class="k">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>false<span class="w"></span>
+[alias]<span class="w"></span>
+<span class="w">        </span>st<span class="w"> </span><span class="o">=</span><span class="w"> </span>status<span class="w"></span>
+<span class="w">        </span>ci<span class="w"> </span><span class="o">=</span><span class="w"> </span>commit<span class="w"></span>
+<span class="w">        </span>ch<span class="w"> </span><span class="o">=</span><span class="w"> </span>checkout<span class="w"></span>
+<span class="w">        </span>br<span class="w"> </span><span class="o">=</span><span class="w"> </span>branch<span class="w"> </span>-vva<span class="w"></span>
+<span class="w">        </span>shortlog<span class="w"> </span><span class="o">=</span><span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--abbrev-commit<span class="w"> </span>--decorate<span class="w"> </span>--date=relative<span class="w"> </span>--format=format:&#39;%C(bold<span class="w"> </span>blue)%h%C(reset)<span class="w"> </span>-<span class="w"> </span>%C(bold<span class="w"> </span>yellow)%d%C(reset)<span class="w"> </span>%C(white)%s%C(reset)&#39;<span class="w"> </span>--all<span class="w"></span>
 </pre></div>
 <p>Double check that your <code>.gitconfig</code> is ready by running this command:</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>cat ~/.gitconfig
@@ -171,13 +171,13 @@ You can quickly set it up by copying the following settings into your
       </div>
    </div>
 </footer>
-<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/respond.min.js"></script>
 
     <!-- Google Analytics -->
     <script type="text/javascript">

@@ -9,7 +9,7 @@
 
 
 
-<link rel="canonical" href="http://www.danielmsullivan.com/pages/tutorial_vim.html">
+<link rel="canonical" href="https://www.danielmsullivan.com/pages/tutorial_vim.html">
 
         <meta name="author" content="Daniel M. Sullivan" />
         <meta name="description" content="Contents Intro The Buffer Normal Mode Moving around the buffer Basic motion commands move the cursor... Moving quickly between words Jumping within a line Moving to a specific point in the buffer Searching the buffer Composing Commands Editing the text in Normal Mode (and more composing commands) Special Motion Commands Undo/Redo Saving and quitting Misc. Other Commands Scrolling Insert Mode Visual &#34;Mode&#34; Other stuff …" />
@@ -17,16 +17,16 @@
     <meta property="og:site_name" content="Daniel M. Sullivan" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="The (very) basics of Vim"/>
-    <meta property="og:url" content="http://www.danielmsullivan.com/pages/tutorial_vim.html"/>
+    <meta property="og:url" content="https://www.danielmsullivan.com/pages/tutorial_vim.html"/>
     <meta property="og:description" content="Contents Intro The Buffer Normal Mode Moving around the buffer Basic motion commands move the cursor... Moving quickly between words Jumping within a line Moving to a specific point in the buffer Searching the buffer Composing Commands Editing the text in Normal Mode (and more composing commands) Special Motion Commands Undo/Redo Saving and quitting Misc. Other Commands Scrolling Insert Mode Visual &#34;Mode&#34; Other stuff …" />
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="http://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
+    <link href="https://www.danielmsullivan.com/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.danielmsullivan.com/theme/css/style.css" type="text/css"/>
 
 
 
@@ -46,24 +46,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a href="http://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
+                <a href="https://www.danielmsullivan.com/" class="navbar-brand">Daniel M. Sullivan</a>
 
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                        <li><a href="http://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/research.html">Research</a></li>
-                        <li><a href="http://www.danielmsullivan.com/pages/code.html">Code</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pdf/Sullivan_CV.pdf">CV</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/research.html">Research</a></li>
+                        <li><a href="https://www.danielmsullivan.com/pages/code.html">Code</a></li>
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
                           <ul class="dropdown-menu">
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
-                            <li><a href="http://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_stata_to_python.html">Stata-to-Python Equivalents</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_workflow_0overview.html">Writing Code in Social Science</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_intro_to_python.html">Python</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_git_0overview.html">Git</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorial_vim.html">Vim</a></li>
+                            <li><a href="https://www.danielmsullivan.com/pages/tutorials.html">All tutorials</a></li>
                           </ul>
                         </li>
             </ul>
@@ -87,43 +87,43 @@
             <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#intro" id="id1">Intro</a></li>
-<li><a class="reference internal" href="#the-buffer" id="id2">The Buffer</a></li>
-<li><a class="reference internal" href="#normal-mode" id="id3">Normal Mode</a><ul>
-<li><a class="reference internal" href="#moving-around-the-buffer" id="id4">Moving around the buffer</a><ul>
-<li><a class="reference internal" href="#basic-motion-commands-move-the-cursor" id="id5">Basic motion commands move the cursor...</a></li>
-<li><a class="reference internal" href="#moving-quickly-between-words" id="id6">Moving quickly between words</a></li>
-<li><a class="reference internal" href="#jumping-within-a-line" id="id7">Jumping within a line</a></li>
-<li><a class="reference internal" href="#moving-to-a-specific-point-in-the-buffer" id="id8">Moving to a specific point in the buffer</a></li>
-<li><a class="reference internal" href="#searching-the-buffer" id="id9">Searching the buffer</a></li>
+<li><a class="reference internal" href="#intro" id="toc-entry-1">Intro</a></li>
+<li><a class="reference internal" href="#the-buffer" id="toc-entry-2">The Buffer</a></li>
+<li><a class="reference internal" href="#normal-mode" id="toc-entry-3">Normal Mode</a><ul>
+<li><a class="reference internal" href="#moving-around-the-buffer" id="toc-entry-4">Moving around the buffer</a><ul>
+<li><a class="reference internal" href="#basic-motion-commands-move-the-cursor" id="toc-entry-5">Basic motion commands move the cursor...</a></li>
+<li><a class="reference internal" href="#moving-quickly-between-words" id="toc-entry-6">Moving quickly between words</a></li>
+<li><a class="reference internal" href="#jumping-within-a-line" id="toc-entry-7">Jumping within a line</a></li>
+<li><a class="reference internal" href="#moving-to-a-specific-point-in-the-buffer" id="toc-entry-8">Moving to a specific point in the buffer</a></li>
+<li><a class="reference internal" href="#searching-the-buffer" id="toc-entry-9">Searching the buffer</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#composing-commands" id="id10">Composing Commands</a></li>
-<li><a class="reference internal" href="#editing-the-text-in-normal-mode-and-more-composing-commands" id="id11">Editing the text in Normal Mode (and more composing commands)</a><ul>
-<li><a class="reference internal" href="#special-motion-commands" id="id12">Special Motion Commands</a></li>
-<li><a class="reference internal" href="#undo-redo" id="id13">Undo/Redo</a></li>
+<li><a class="reference internal" href="#composing-commands" id="toc-entry-10">Composing Commands</a></li>
+<li><a class="reference internal" href="#editing-the-text-in-normal-mode-and-more-composing-commands" id="toc-entry-11">Editing the text in Normal Mode (and more composing commands)</a><ul>
+<li><a class="reference internal" href="#special-motion-commands" id="toc-entry-12">Special Motion Commands</a></li>
+<li><a class="reference internal" href="#undo-redo" id="toc-entry-13">Undo/Redo</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#saving-and-quitting" id="id14">Saving and quitting</a></li>
-<li><a class="reference internal" href="#misc-other-commands" id="id15">Misc. Other Commands</a></li>
-<li><a class="reference internal" href="#scrolling" id="id16">Scrolling</a></li>
+<li><a class="reference internal" href="#saving-and-quitting" id="toc-entry-14">Saving and quitting</a></li>
+<li><a class="reference internal" href="#misc-other-commands" id="toc-entry-15">Misc. Other Commands</a></li>
+<li><a class="reference internal" href="#scrolling" id="toc-entry-16">Scrolling</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#insert-mode" id="id17">Insert Mode</a></li>
-<li><a class="reference internal" href="#visual-mode" id="id18">Visual &quot;Mode&quot;</a></li>
-<li><a class="reference internal" href="#other-stuff" id="id19">Other stuff</a><ul>
-<li><a class="reference internal" href="#registers-for-yank-and-paste" id="id20">Registers (for yank and paste)</a></li>
-<li><a class="reference internal" href="#search-and-replace" id="id21">Search and Replace</a></li>
-<li><a class="reference internal" href="#advanced-motion-ish-commands" id="id22">Advanced motion(ish) commands</a></li>
-<li><a class="reference internal" href="#repeating-commands" id="id23">Repeating Commands</a><ul>
-<li><a class="reference internal" href="#macros" id="id24">Macros</a></li>
-<li><a class="reference internal" href="#repeating-commands-with-the-key" id="id25">Repeating Commands with the <code>.</code> Key</a></li>
+<li><a class="reference internal" href="#insert-mode" id="toc-entry-17">Insert Mode</a></li>
+<li><a class="reference internal" href="#visual-mode" id="toc-entry-18">Visual &quot;Mode&quot;</a></li>
+<li><a class="reference internal" href="#other-stuff" id="toc-entry-19">Other stuff</a><ul>
+<li><a class="reference internal" href="#registers-for-yank-and-paste" id="toc-entry-20">Registers (for yank and paste)</a></li>
+<li><a class="reference internal" href="#search-and-replace" id="toc-entry-21">Search and Replace</a></li>
+<li><a class="reference internal" href="#advanced-motion-ish-commands" id="toc-entry-22">Advanced motion(ish) commands</a></li>
+<li><a class="reference internal" href="#repeating-commands" id="toc-entry-23">Repeating Commands</a><ul>
+<li><a class="reference internal" href="#macros" id="toc-entry-24">Macros</a></li>
+<li><a class="reference internal" href="#repeating-commands-with-the-key" id="toc-entry-25">Repeating Commands with the <code>.</code> Key</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#marks" id="id26">Marks</a></li>
-<li><a class="reference internal" href="#spellcheck" id="id27">Spellcheck</a></li>
-<li><a class="reference internal" href="#predictive-completion-while-in-insert-mode" id="id28">Predictive completion (while in Insert Mode)</a></li>
-<li><a class="reference internal" href="#global-command-by-line" id="id29">Global command by line</a></li>
+<li><a class="reference internal" href="#marks" id="toc-entry-26">Marks</a></li>
+<li><a class="reference internal" href="#spellcheck" id="toc-entry-27">Spellcheck</a></li>
+<li><a class="reference internal" href="#predictive-completion-while-in-insert-mode" id="toc-entry-28">Predictive completion (while in Insert Mode)</a></li>
+<li><a class="reference internal" href="#global-command-by-line" id="toc-entry-29">Global command by line</a></li>
 </ul>
 </li>
 </ul>
@@ -131,7 +131,7 @@
 <p><strong>NOTE</strong>: Specific examples given for options, flags, commands variations,
 etc., are not comprehensive.</p>
 <div class="section" id="intro">
-<h2><a class="toc-backref" href="#id1">Intro</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">Intro</a></h2>
 <p>Vim is hard at first. It's a different paradigm. But once you get comfortable,
 usually after a few days, you'll wonder how you ever lived without it.</p>
 <p>My advice in learning Vim, like any new skill, process, or language, is to
@@ -141,7 +141,7 @@ those, put a few more commands on another sticky note. Keep the old one as a
 reference as long as you need it.</p>
 </div>
 <div class="section" id="the-buffer">
-<h2><a class="toc-backref" href="#id2">The Buffer</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">The Buffer</a></h2>
 <p>A &quot;buffer&quot; is a block of text you edit using Vim, and several buffers can be
 open at once.</p>
 <p>When you open a file in MS Word, the operating system locks the file so no one
@@ -158,7 +158,7 @@ you loaded the buffer from).</p>
 <p>This is why Vim's documentation only refers to editing buffers, not files.</p>
 </div>
 <div class="section" id="normal-mode">
-<h2><a class="toc-backref" href="#id3">Normal Mode</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Normal Mode</a></h2>
 <p>Vim has two main &quot;modes,&quot; one for typing (&quot;Insert mode&quot;) and one for everything
 else (&quot;Normal mode&quot;), including moving the cursor around the screen,
 copy/pasting, doing search and replace, etc.
@@ -171,9 +171,9 @@ Some keys move the cursor, some delete words, etc.</p>
 <p>The power of Vim lies in these commands and how they work together to help you
 accomplish more editing with fewer keystrokes and less effort.</p>
 <div class="section" id="moving-around-the-buffer">
-<h3><a class="toc-backref" href="#id4">Moving around the buffer</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-4">Moving around the buffer</a></h3>
 <div class="section" id="basic-motion-commands-move-the-cursor">
-<h4><a class="toc-backref" href="#id5">Basic motion commands move the cursor...</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-5">Basic motion commands move the cursor...</a></h4>
 <ul class="simple">
 <li><code>j</code> - down</li>
 <li><code>k</code> - up</li>
@@ -182,7 +182,7 @@ accomplish more editing with fewer keystrokes and less effort.</p>
 </ul>
 </div>
 <div class="section" id="moving-quickly-between-words">
-<h4><a class="toc-backref" href="#id6">Moving quickly between words</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-6">Moving quickly between words</a></h4>
 <ul class="simple">
 <li><code>w</code> - forward beginning of next &quot;word&quot;</li>
 <li><code>e</code> - end of current word (or end next word if currently at end of word)</li>
@@ -202,7 +202,7 @@ on the type of file you're editing).</li>
 </ul>
 </div>
 <div class="section" id="jumping-within-a-line">
-<h4><a class="toc-backref" href="#id7">Jumping within a line</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-7">Jumping within a line</a></h4>
 <ul class="simple">
 <li><code>0</code> - Move to beginning of line</li>
 <li><code>^</code> - Move to first non-space character in line (same as &quot;0&quot; if the
@@ -213,7 +213,7 @@ line starts with a non-space character)</li>
 and end of a string, respectively</p>
 </div>
 <div class="section" id="moving-to-a-specific-point-in-the-buffer">
-<h4><a class="toc-backref" href="#id8">Moving to a specific point in the buffer</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-8">Moving to a specific point in the buffer</a></h4>
 <ul class="simple">
 <li><code>[#]gg</code> - go to line <code>[#]</code> (Example <code>20gg</code> goes to line 20)</li>
 <li><code>gg</code> - go to beginning of buffer</li>
@@ -227,7 +227,7 @@ repeatedly will jump you back and forth.</li>
 </ul>
 </div>
 <div class="section" id="searching-the-buffer">
-<h4><a class="toc-backref" href="#id9">Searching the buffer</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-9">Searching the buffer</a></h4>
 <ul class="simple">
 <li><code>f&lt;char&gt;</code> - Find <code>&lt;char&gt;</code>. Puts cursor on next instance of
 <code>&lt;char&gt;</code> in the current line. Example: <code>fa</code> will jump to the next
@@ -254,7 +254,7 @@ useful for finding all instances of the variable your cursor is on.</li>
 </div>
 </div>
 <div class="section" id="composing-commands">
-<h3><a class="toc-backref" href="#id10">Composing Commands</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-10">Composing Commands</a></h3>
 <p>Most motion and editing commands can take a number before them to execute that
 number of times.</p>
 <ul class="simple">
@@ -265,7 +265,7 @@ number of times.</p>
 </ul>
 </div>
 <div class="section" id="editing-the-text-in-normal-mode-and-more-composing-commands">
-<h3><a class="toc-backref" href="#id11">Editing the text in Normal Mode (and more composing commands)</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-11">Editing the text in Normal Mode (and more composing commands)</a></h3>
 <p>Most composing of actual text will be done in Insert Mode, explained below.
 However, there are a number of commands that are meant to quickly edit the text
 without leaving Normal Mode.</p>
@@ -319,7 +319,7 @@ use <code>yyp</code>, which yanks the current line and then pastes it.</li>
 <li><code>&lt;[m]</code> - Un-indent, opposite of <code>&gt;</code>.</li>
 </ul>
 <div class="section" id="special-motion-commands">
-<h4><a class="toc-backref" href="#id12">Special Motion Commands</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-12">Special Motion Commands</a></h4>
 <ul class="simple">
 <li><code>daw</code> - &quot;Delete a word&quot;; delete the word under the cursor plus any trailing space.</li>
 <li><code>diw</code> - &quot;Delete inner word&quot;; delete the word under the cursor, leave spaces.</li>
@@ -336,7 +336,7 @@ including the parens</li>
 </ul>
 </div>
 <div class="section" id="undo-redo">
-<h4><a class="toc-backref" href="#id13">Undo/Redo</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-13">Undo/Redo</a></h4>
 <ul class="simple">
 <li><code>u</code> - undo (like Ctrl+Z in Word)</li>
 <li><code>c-r</code> - redo (like Ctrl+Y in Word)</li>
@@ -344,7 +344,7 @@ including the parens</li>
 </div>
 </div>
 <div class="section" id="saving-and-quitting">
-<h3><a class="toc-backref" href="#id14">Saving and quitting</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-14">Saving and quitting</a></h3>
 <p>Some important (or longer) commands begin with <code>:</code>. After typing
 <code>:</code>, you will a colon appear in the bottom left of the screen, followed
 by any subsequent characters you type. Many commands only require the first few
@@ -385,7 +385,7 @@ changed by another program and this write will overwrite those changes)</li>
 <code>:wq!</code> - force write and quit</p>
 </div>
 <div class="section" id="misc-other-commands">
-<h3><a class="toc-backref" href="#id15">Misc. Other Commands</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-15">Misc. Other Commands</a></h3>
 <p>Change letter case</p>
 <ul class="simple">
 <li><code>~</code> - toggle the case of this character</li>
@@ -408,7 +408,7 @@ breaks overly long lines to smaller lines, by default 80 characters).</li>
 </ul>
 </div>
 <div class="section" id="scrolling">
-<h3><a class="toc-backref" href="#id16">Scrolling</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-16">Scrolling</a></h3>
 <ul class="simple">
 <li><code>c-e</code> - scroll forward, keeping cursor in place</li>
 <li><code>e-y</code> - scroll backward, keeping cursor in place</li>
@@ -429,7 +429,7 @@ especially old ones.</p>
 </div>
 </div>
 <div class="section" id="insert-mode">
-<h2><a class="toc-backref" href="#id17">Insert Mode</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-17">Insert Mode</a></h2>
 <p>Most commands are executed in Normal Mode. If you actually want to add to the
 text (type a &quot;j&quot; instead of moving down one line) you need to enter Insert
 Mode. There are several ways to do this.</p>
@@ -468,7 +468,7 @@ replace/overwrite mode in Word)</li>
 </ul>
 </div>
 <div class="section" id="visual-mode">
-<h2><a class="toc-backref" href="#id18">Visual &quot;Mode&quot;</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-18">Visual &quot;Mode&quot;</a></h2>
 <ul class="simple">
 <li><code>v[m]</code> - Go into visual (highlight) mode to select characters, then use
 usual motion commands like <code>j</code> or <code>k</code> to add to selection as
@@ -484,9 +484,9 @@ horizontally</li>
 and it will (usually) behave as you'd expect.</p>
 </div>
 <div class="section" id="other-stuff">
-<h2><a class="toc-backref" href="#id19">Other stuff</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-19">Other stuff</a></h2>
 <div class="section" id="registers-for-yank-and-paste">
-<h3><a class="toc-backref" href="#id20">Registers (for yank and paste)</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-20">Registers (for yank and paste)</a></h3>
 <p><code>&quot;&lt;char&gt;y</code> - yank to register <code>&lt;char&gt;</code>.  This allows you to have
 multiple things in your clipboard. Note the Vim clipboard is separate from the
 OS clipboard. To move between the two (copy/paste between Vim and another
@@ -510,7 +510,7 @@ whatever whatever you yanked with <code>yy</code>. There is a plugin to
 override this behavior (I think by Tim Pope).</p>
 </div>
 <div class="section" id="search-and-replace">
-<h3><a class="toc-backref" href="#id21">Search and Replace</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-21">Search and Replace</a></h3>
 <p><code>:&lt;range&gt;s/&lt;RegEx&gt;/&lt;str&gt;/&lt;flags&gt;</code> - substitute first instance of
 <code>&lt;RegEx&gt;</code> in each line in <code>&lt;range&gt;</code> with <code>&lt;str&gt;</code>.
 <code>&lt;flags&gt;</code> change default behavior.</p>
@@ -538,7 +538,7 @@ within the matched RegEx that should be substituted. Example:</p>
 not &quot;2019 was great!&quot; to &quot;2020 was great!&quot;.</p>
 </div>
 <div class="section" id="advanced-motion-ish-commands">
-<h3><a class="toc-backref" href="#id22">Advanced motion(ish) commands</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-22">Advanced motion(ish) commands</a></h3>
 <p>There are &quot;motion&quot; commands that can be used with delete, yank, etc., that can
 be used to target specific text objects.  <code>dw</code> will delete from cursor to
 beginning of next word, so will not delete the entire current word under the
@@ -571,9 +571,9 @@ cursor is already at the beginning of the word).</p>
 </ul>
 </div>
 <div class="section" id="repeating-commands">
-<h3><a class="toc-backref" href="#id23">Repeating Commands</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-23">Repeating Commands</a></h3>
 <div class="section" id="macros">
-<h4><a class="toc-backref" href="#id24">Macros</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-24">Macros</a></h4>
 <p>Macros let you record a series of commands and replay them with a single
 command.  Hit <code>q</code> then some letter, for example <code>a</code>, to begin
 recording macro &quot;a&quot;.  Do your series of commands, then  hit <code>q</code> to stop
@@ -582,7 +582,7 @@ Using <code>[#]&#64;a</code> repeats a <code>[#]</code> times, e.g., <code>5&#64
 the macro 5 times in a row.</p>
 </div>
 <div class="section" id="repeating-commands-with-the-key">
-<h4><a class="toc-backref" href="#id25">Repeating Commands with the <code>.</code> Key</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-25">Repeating Commands with the <code>.</code> Key</a></h4>
 <p>The command <code>.</code> repeats last edit command you executed, including insert,
 replace, indent, etc.  <strong>This is one of the most useful features in Vim.</strong>
 Some examples:</p>
@@ -604,7 +604,7 @@ Some examples:</p>
 </div>
 </div>
 <div class="section" id="marks">
-<h3><a class="toc-backref" href="#id26">Marks</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-26">Marks</a></h3>
 <p>Lower case are local, upper case are global (across files). Jumping to a mark
 is a standard motion command for deleting, yanking, etc.</p>
 <ul class="simple">
@@ -624,7 +624,7 @@ is a standard motion command for deleting, yanking, etc.</p>
 </ul>
 </div>
 <div class="section" id="spellcheck">
-<h3><a class="toc-backref" href="#id27">Spellcheck</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-27">Spellcheck</a></h3>
 <p>Turn on with <code>:set spell</code>, turn off with <code>:set nospell</code>.</p>
 <ul class="simple">
 <li><code>z=</code> - Suggest correctly spelled words</li>
@@ -635,7 +635,7 @@ is a standard motion command for deleting, yanking, etc.</p>
 </ul>
 </div>
 <div class="section" id="predictive-completion-while-in-insert-mode">
-<h3><a class="toc-backref" href="#id28">Predictive completion (while in Insert Mode)</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-28">Predictive completion (while in Insert Mode)</a></h3>
 <ul class="simple">
 <li><code>c-p</code> - predictive completion (word)</li>
 <li><code>c-x c-l</code> - predictive completion (line)</li>
@@ -650,7 +650,7 @@ they're a bit too demanding for most laptops and only useful on desktop
 computers.</p>
 </div>
 <div class="section" id="global-command-by-line">
-<h3><a class="toc-backref" href="#id29">Global command by line</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-29">Global command by line</a></h3>
 <ul class="simple">
 <li><code>:g/&lt;RegEx&gt;/&lt;edit command&gt;</code> - perform the edit command on every line that matches RegEx</li>
 <li><code>:g!/...</code> or <code>:v/...</code> - the same but for lines that don't match</li>
@@ -702,13 +702,13 @@ computers.</p>
       </div>
    </div>
 </footer>
-<script src="http://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://www.danielmsullivan.com/theme/js/respond.min.js"></script>
+<script src="https://www.danielmsullivan.com/theme/js/respond.min.js"></script>
 
     <!-- Google Analytics -->
     <script type="text/javascript">
